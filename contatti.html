@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Contatti — Mea Culpa Lab</title>
+<meta name="description" content="Raccontaci cosa hai in mente. Nessun listino, nessun pacchetto preconfezionato — solo una proposta costruita su di te.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Mulish:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── PROMISE BAND ───────────────────────────────── */
+#promise { background: #fff; padding: 90px var(--pad-x); display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.promise-item { background: var(--grey-bg); border-radius: 22px; padding: 40px 34px; transition: transform .3s; }
+.promise-item:hover { transform: translateY(-4px); }
+.promise-icon {
+  width: 48px; height: 48px; background: var(--blue); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; margin-bottom: 24px;
+}
+.promise-icon svg { width: 22px; height: 22px; }
+.promise-title { font-family: var(--ff-d); font-size: 26px; text-transform: uppercase; color: var(--black); margin-bottom: 10px; }
+.promise-text { font-size: 14px; font-weight: 300; color: var(--grey); line-height: 1.7; }
+
+/* ── FORM + INFO ────────────────────────────────── */
+#contatti-main { background: var(--black); color: #fff; padding: 110px var(--pad-x); position: relative; overflow: hidden; }
+#contatti-main::before {
+  content: 'INIZIAMO';
+  position: absolute; bottom: -40px; right: -10px;
+  font-family: var(--ff-d); font-size: 260px; line-height: 1;
+  color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.04);
+  pointer-events: none;
+}
+.ct-wrap { display: grid; grid-template-columns: 1fr 1.1fr; gap: 88px; max-width: 1280px; margin: 0 auto; position: relative; z-index: 1; }
+.ct-left > p { font-size: 15px; font-weight: 300; color: rgba(255,255,255,.8); line-height: 1.75; margin: 22px 0 40px; max-width: 440px; }
+.ct-info { display: flex; flex-direction: column; gap: 20px; }
+.ct-info-item { display: flex; align-items: center; gap: 16px; }
+.ct-info-icon {
+  width: 44px; height: 44px; flex-shrink: 0;
+  background: rgba(255,255,255,.07); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.ct-info-icon svg { width: 18px; height: 18px; }
+.ct-info-label { font-family: var(--ff-b); font-size: 10px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.62); }
+.ct-info-value { font-family: var(--ff-b); font-size: 15px; font-weight: 600; color: #fff; }
+.ct-info-value a { color: #fff; text-decoration: none; transition: color .2s; }
+.ct-info-value a:hover { color: var(--blue-lt); }
+.ct-sectors { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 40px; }
+.ct-sector {
+  font-family: var(--ff-b); font-size: 12px; font-weight: 600;
+  color: rgba(255,255,255,.8);
+  border: 1px solid rgba(255,255,255,.3);
+  padding: 6px 14px; border-radius: 200px;
+}
+.ct-form-wrap { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.14); border-radius: 22px; padding: 44px; }
+.ct-form-label {
+  font-family: var(--ff-b); font-size: 11px; font-weight: 800;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--blue-lt); margin-bottom: 28px;
+}
+
+@media (max-width: 900px) {
+  #promise { grid-template-columns: 1fr; }
+  .ct-wrap { grid-template-columns: 1fr; gap: 56px; }
+  .ct-form-wrap { padding: 28px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+    <path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/>
+  </svg>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">MEA<em>CULPA</em>LAB</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="progetti.html">Progetti</a></li>
+    <li><a href="about.html">Chi siamo</a></li>
+    <li><a href="contatti.html" class="active">Contatti</a></li>
+  </ul>
+  <a href="contatti.html" class="nav-cta">Preventivo</a>
+  <button class="nav-burger" id="navBurger" aria-label="Apri menu">
+    <span class="b1"></span><span class="b2"></span><span class="b3"></span>
+  </button>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="progetti.html">Progetti</a></li>
+    <li><a href="about.html">Chi siamo</a></li>
+    <li><a href="contatti.html" class="active">Contatti</a></li>
+  </ul>
+  <a href="contatti.html" class="nav-mobile-cta">Richiedi preventivo</a>
+</div>
+
+<!-- HERO -->
+<section class="page-hero is-blue">
+  <div>
+    <div class="sec-label lt" style="margin-bottom:28px">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
+      <span>Mea Culpa Lab — Brescia</span>
+    </div>
+    <h1><span class="anim-letters">Parliamo del</span></h1>
+    <div class="hero-row">
+      <h1><span class="anim-letters">tuo progetto</span></h1>
+      <svg class="hero-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/>
+      </svg>
+      <a href="#contatti-main" class="blob-cta">
+        <span class="blob-bg"></span>
+        <span>Scrivici</span>
+      </a>
+    </div>
+    <p class="hero-sub">Raccontaci cosa hai in mente. Nessun listino, nessun pacchetto preconfezionato — solo una proposta costruita su di te.</p>
+  </div>
+</section>
+
+<!-- PROMISE BAND -->
+<div id="promise">
+  <div class="promise-item reveal">
+    <div class="promise-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg></div>
+    <div class="promise-title">Risposta in 24 ore.</div>
+    <p class="promise-text">Non lasciamo le richieste in sospeso. Ogni messaggio riceve una risposta entro un giorno lavorativo.</p>
+  </div>
+  <div class="promise-item reveal d2">
+    <div class="promise-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg></div>
+    <div class="promise-title">Preventivo su misura.</div>
+    <p class="promise-text">Nessun catalogo da sfogliare. Il preventivo nasce dalla tua esigenza specifica, non da un listino standard.</p>
+  </div>
+  <div class="promise-item reveal d3">
+    <div class="promise-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/></svg></div>
+    <div class="promise-title">Zero impegno iniziale.</div>
+    <p class="promise-text">La prima conversazione non ti vincola a niente. Parliamo, capiamo cosa ti serve, poi decidi tu.</p>
+  </div>
+</div>
+
+<!-- FORM + INFO -->
+<section id="contatti-main">
+  <div class="ct-wrap">
+
+    <div class="ct-left reveal">
+      <div class="sec-label lt">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
+        <span>Scrivici</span>
+      </div>
+      <h2 style="color:#fff">Hai un progetto? <span class="ghost">Iniziamo.</span></h2>
+      <p>Che tu stia pensando a divise per la tua scuola, capi per un evento, capi per la tua azienda o kit per una squadra sportiva — il punto di partenza è sempre lo stesso: una conversazione.</p>
+
+      <div class="ct-info">
+        <div class="ct-info-item">
+          <div class="ct-info-icon"><svg viewBox="0 0 18 18" fill="none"><path d="M3 3h12v12H3V3zm0 3l6 4 6-4" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div>
+            <div class="ct-info-label">Email</div>
+            <div class="ct-info-value"><a href="mailto:info@meaculpalab.it">info@meaculpalab.it</a></div>
+          </div>
+        </div>
+        <div class="ct-info-item">
+          <div class="ct-info-icon"><svg viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="4" stroke="white" stroke-width="1.2"/><circle cx="9" cy="9" r="3" stroke="white" stroke-width="1.2"/><circle cx="13" cy="5" r="1" fill="white"/></svg></div>
+          <div>
+            <div class="ct-info-label">Instagram</div>
+            <div class="ct-info-value"><a href="https://instagram.com/meaculpalab" target="_blank" rel="noopener">@meaculpalab</a></div>
+          </div>
+        </div>
+        <div class="ct-info-item">
+          <div class="ct-info-icon"><svg viewBox="0 0 18 18" fill="none"><path d="M9 2C5.1 2 2 5.1 2 9s3.1 7 7 7 7-3.1 7-7-3.1-7-7-7z" stroke="white" stroke-width="1.2"/><path d="M9 5v4l3 2" stroke="white" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+          <div>
+            <div class="ct-info-label">Sede</div>
+            <div class="ct-info-value">Brescia, Italia</div>
+          </div>
+        </div>
+        <div class="ct-info-item">
+          <div class="ct-info-icon"><svg viewBox="0 0 18 18" fill="none"><path d="M2 4h14v10H2V4z" stroke="white" stroke-width="1.2" stroke-linecap="round"/><path d="M2 4l7 7 7-7" stroke="white" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+          <div>
+            <div class="ct-info-label">Brand collegato</div>
+            <div class="ct-info-value"><a href="https://meaculpaclothing.it" target="_blank">meaculpaclothing.it ↗</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ct-sectors">
+        <span class="ct-sector">Scuole</span>
+        <span class="ct-sector">Aziende</span>
+        <span class="ct-sector">Sport &amp; Grest</span>
+        <span class="ct-sector">Startup</span>
+        <span class="ct-sector">Eventi</span>
+        <span class="ct-sector">Associazioni</span>
+        <span class="ct-sector">Brand</span>
+      </div>
+    </div>
+
+    <div class="ct-form-wrap reveal d2">
+      <div class="ct-form-label">Inviaci un messaggio</div>
+      <form class="ct-form" onsubmit="handleSub(event)">
+        <div class="frow">
+          <div class="fld">
+            <label>Nome e cognome *</label>
+            <input type="text" name="nome" placeholder="Mario Rossi" required>
+          </div>
+          <div class="fld">
+            <label>Organizzazione *</label>
+            <input type="text" name="organizzazione" placeholder="Scuola / Azienda / ASD" required>
+          </div>
+        </div>
+        <div class="frow">
+          <div class="fld">
+            <label>Email *</label>
+            <input type="email" name="email" placeholder="mario@esempio.it" required>
+          </div>
+          <div class="fld">
+            <label>Settore</label>
+            <select name="settore">
+              <option value="">Seleziona...</option>
+              <option>Scuola</option>
+              <option>Sport / Grest</option>
+              <option>Azienda</option>
+              <option>Evento / Community</option>
+              <option>Startup</option>
+              <option>Brand / Collaborazione</option>
+              <option>Associazione</option>
+              <option>Altro</option>
+            </select>
+          </div>
+        </div>
+        <div class="fld">
+          <label>Tipo di prodotto</label>
+          <select name="tipo_prodotto">
+            <option value="">Seleziona...</option>
+            <option>Abbigliamento / Divise</option>
+            <option>Cappellini / Accessori</option>
+            <option>Gadget / Accessori</option>
+            <option>Grafica / Branding</option>
+            <option>Tutto insieme</option>
+            <option>Non so ancora — voglio parlarne</option>
+          </select>
+        </div>
+        <div class="fld">
+          <label>Messaggio</label>
+          <textarea name="messaggio" placeholder="Descrivi il progetto — tipologia di capo, quantità, tempistiche, budget indicativo..."></textarea>
+        </div>
+        <button type="submit" class="submit">Invia richiesta →</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo">MEA<em>CULPA</em>LAB</div>
+  <ul class="foot-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="progetti.html">Progetti</a></li>
+    <li><a href="about.html">Chi siamo</a></li>
+    <li><a href="contatti.html" class="active">Contatti</a></li>
+  </ul>
+  <div class="foot-copy">© 2026 Mea Culpa Lab — Brescia</div>
+</footer>
+
+<script>
+window.addEventListener('load',()=>{
+  setTimeout(()=>document.getElementById('loader').classList.add('done'),400);
+});
+function splitLetters(el){
+  const text=el.textContent;
+  el.textContent='';
+  [...text].forEach((ch,i)=>{
+    const s=document.createElement('span');
+    s.className='letter';
+    s.style.transitionDelay=(i*24)+'ms';
+    s.innerHTML=ch===' '?'&nbsp;':ch;
+    el.appendChild(s);
+  });
+}
+document.querySelectorAll('.anim-letters').forEach(splitLetters);
+window.addEventListener('load',()=>{
+  setTimeout(()=>{
+    document.querySelectorAll('.anim-letters .letter').forEach(l=>l.classList.add('in'));
+  },550);
+});
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in');}),{threshold:.08});
+document.querySelectorAll('.reveal,.reveal-scale').forEach(r=>obs.observe(r));
+const burger=document.getElementById('navBurger'),mob=document.getElementById('navMobile');
+burger.addEventListener('click',()=>{burger.classList.toggle('open');mob.classList.toggle('open');document.body.style.overflow=mob.classList.contains('open')?'hidden':'';});
+mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('open');mob.classList.remove('open');document.body.style.overflow='';}));
+
+/* FORM — sostituire INSERIRE_ENDPOINT con l'ID Formspree (es. xabc1234) */
+const FORMSPREE_URL='https://formspree.io/f/INSERIRE_ENDPOINT';
+async function handleSub(e){
+  e.preventDefault();
+  const form=e.target,btn=form.querySelector('[type="submit"]'),orig=btn.textContent;
+  btn.textContent='Invio...';btn.disabled=true;
+  try{
+    const r=await fetch(FORMSPREE_URL,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});
+    if(r.ok){btn.textContent='Inviato ✓';form.reset();setTimeout(()=>{btn.textContent=orig;btn.disabled=false;},4000);}
+    else throw new Error();
+  }catch{btn.textContent='Errore — riprova';setTimeout(()=>{btn.textContent=orig;btn.disabled=false;},3000);}
+}
+</script>
+
+<script src="effects.js" defer></script>
+</body>
+</html>
