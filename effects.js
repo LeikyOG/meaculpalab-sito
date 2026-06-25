@@ -20,24 +20,7 @@
 
   if (reduced) return;
 
-  /* ── Cursore custom (dot + anello con inerzia) ──────────────── */
-  if (fine) {
-    const dot  = document.createElement('div'); dot.className  = 'cur-dot';
-    const ring = document.createElement('div'); ring.className = 'cur-ring';
-    document.body.append(dot, ring);
-    let mx = innerWidth / 2, my = innerHeight / 2;
-    let rx = mx, ry = my, sc = 1, cs = 1;
-    addEventListener('mousemove', e => {
-      mx = e.clientX; my = e.clientY;
-      dot.style.transform = `translate(${mx}px,${my}px)`;
-      sc = e.target.closest('a,button,.work-toggle,.svc-toggle,input,select,textarea') ? 2.1 : 1;
-    }, { passive: true });
-    (function loop() {
-      rx += (mx - rx) * .15; ry += (my - ry) * .15; cs += (sc - cs) * .18;
-      ring.style.transform = `translate(${rx}px,${ry}px) scale(${cs.toFixed(3)})`;
-      requestAnimationFrame(loop);
-    })();
-  }
+  /* Cursore "ago + filo" gestito via CSS (cursor: url) in style.css */
 
   /* ── Tilt 3D sulle card al passaggio del mouse ──────────────── */
   const TILT = [

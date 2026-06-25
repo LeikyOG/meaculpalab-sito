@@ -115,15 +115,48 @@
   .lb-prev { left: 10px; } .lb-next { right: 10px; }
   .lb-prev, .lb-next { width: 44px; height: 44px; }
 }
+
+/* ── GRIGLIA PROGETTI ───────────────────────────── */
+#progetti { background: #fff; padding: 84px var(--pad-x) 104px; }
+.proj-wrap { max-width: 1320px; margin: 0 auto; }
+.proj-intro { margin-bottom: 46px; }
+.pgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.pcard { display: flex; flex-direction: column; text-align: left; background: none; border: none; padding: 0; cursor: pointer; font: inherit; color: inherit; }
+.pcard-img { display: block; aspect-ratio: 4/5; overflow: hidden; border-radius: 18px; background: var(--grey-bg); }
+.pcard-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.6,.2,1); }
+.pcard:hover .pcard-img img { transform: scale(1.05); }
+.pcard-body { padding: 16px 4px 0; }
+.pcard-cat { font-family: var(--ff-b); font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); }
+.pcard-name { display: block; font-family: var(--ff-d); font-size: 30px; text-transform: uppercase; line-height: 1; color: var(--black); margin: 9px 0 7px; }
+.pcard-head { display: block; font-size: 14px; font-weight: 300; color: var(--grey); line-height: 1.5; }
+@media (max-width: 900px) { .pgrid { grid-template-columns: repeat(2, 1fr); gap: 16px; } .pcard-name { font-size: 26px; } }
+@media (max-width: 560px) { .pgrid { grid-template-columns: 1fr; } }
+
+/* ── MODALE PROGETTO ────────────────────────────── */
+.pmodal { position: fixed; inset: 0; z-index: 2000; display: none; }
+.pmodal.open { display: block; }
+.pmodal-backdrop { position: absolute; inset: 0; background: rgba(12,29,50,.55); backdrop-filter: blur(4px); }
+.pmodal-box { position: absolute; top: 4vh; left: 50%; transform: translateX(-50%); width: min(820px, 92vw); max-height: 92vh; overflow: auto; background: #fff; border-radius: 22px; box-shadow: 0 40px 100px rgba(12,29,50,.4); }
+.pmodal-x { position: fixed; top: 16px; right: 16px; width: 42px; height: 42px; border-radius: 50%; border: none; background: rgba(255,255,255,.92); color: var(--black); font-size: 22px; line-height: 1; cursor: pointer; z-index: 5; box-shadow: 0 4px 14px rgba(12,29,50,.18); }
+.pm-main { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
+.pm-info { padding: 38px clamp(26px,5vw,60px) 56px; }
+.pm-cat { font-family: var(--ff-b); font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--blue); }
+.pm-name { font-family: var(--ff-d); font-size: clamp(40px,5.5vw,64px); text-transform: uppercase; line-height: .95; margin: 10px 0 16px; }
+.pm-head { font-family: var(--ff-d); font-size: clamp(20px,2.4vw,28px); color: var(--black); text-transform: uppercase; line-height: 1.05; margin-bottom: 26px; opacity: .5; }
+.pm-story p { font-size: 15.5px; font-weight: 300; color: var(--grey); line-height: 1.85; margin-bottom: 14px; max-width: 64ch; }
+.pm-info .made-title, .pm-section-label { font-family: var(--ff-b); font-weight: 800; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--black); margin: 32px 0 14px; }
+.pm-info .made-list { margin: 0 0 4px 18px; } .pm-info .made-list li { font-size: 14.5px; font-weight: 300; color: var(--grey); line-height: 1.75; }
+.pm-info .proj-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+.pm-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.pm-gallery img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; border-radius: 12px; }
+@media (prefers-reduced-motion: reduce) { .pcard-img img { transition: none; } }
 </style>
 </head>
 <body>
 
 <!-- LOADER -->
 <div class="loader" id="loader">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-    <path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/>
-  </svg>
+  <svg class="flask" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path class="flask-liquid" d="M9.33 11.6H14.67L17.95 16.9a1.5 1.5 0 0 1-1.33 2.2H7.38a1.5 1.5 0 0 1-1.33-2.2z" fill="currentColor"/><circle class="flask-bubble b1" cx="11.2" cy="4.7" r="1" fill="currentColor"/><circle class="flask-bubble b2" cx="12.3" cy="4" r="1.3" fill="currentColor"/><circle class="flask-bubble b3" cx="13" cy="5" r=".85" fill="currentColor"/><circle class="flask-bubble b4" cx="12" cy="5.3" r=".6" fill="currentColor"/><path d="M9.3 3h5.4M10.6 3v6.4L6.05 16.9a1.5 1.5 0 0 0 1.33 2.2h9.24a1.5 1.5 0 0 0 1.33-2.2L13.4 9.4V3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </div>
 
 <!-- NAV -->
@@ -154,21 +187,19 @@
 <section class="page-hero is-navy">
   <div>
     <div class="sec-label lt" style="margin-bottom:28px">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
+      <svg class="flask" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path class="flask-liquid" d="M9.33 11.6H14.67L17.95 16.9a1.5 1.5 0 0 1-1.33 2.2H7.38a1.5 1.5 0 0 1-1.33-2.2z" fill="currentColor"/><circle class="flask-bubble b1" cx="11.2" cy="4.7" r="1" fill="currentColor"/><circle class="flask-bubble b2" cx="12.3" cy="4" r="1.3" fill="currentColor"/><circle class="flask-bubble b3" cx="13" cy="5" r=".85" fill="currentColor"/><circle class="flask-bubble b4" cx="12" cy="5.3" r=".6" fill="currentColor"/><path d="M9.3 3h5.4M10.6 3v6.4L6.05 16.9a1.5 1.5 0 0 0 1.33 2.2h9.24a1.5 1.5 0 0 0 1.33-2.2L13.4 9.4V3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span>Mea Culpa Lab — Portfolio</span>
     </div>
     <h1><span class="anim-letters">Progetti che non</span></h1>
     <div class="hero-row">
       <h1><span class="anim-letters">restano su carta</span></h1>
-      <svg class="hero-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="color:var(--blue-lt)">
-        <path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/>
-      </svg>
+      <svg class="hero-star flask" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path class="flask-liquid" d="M9.33 11.6H14.67L17.95 16.9a1.5 1.5 0 0 1-1.33 2.2H7.38a1.5 1.5 0 0 1-1.33-2.2z" fill="currentColor"/><circle class="flask-bubble b1" cx="11.2" cy="4.7" r="1" fill="currentColor"/><circle class="flask-bubble b2" cx="12.3" cy="4" r="1.3" fill="currentColor"/><circle class="flask-bubble b3" cx="13" cy="5" r=".85" fill="currentColor"/><circle class="flask-bubble b4" cx="12" cy="5.3" r=".6" fill="currentColor"/><path d="M9.3 3h5.4M10.6 3v6.4L6.05 16.9a1.5 1.5 0 0 0 1.33 2.2h9.24a1.5 1.5 0 0 0 1.33-2.2L13.4 9.4V3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
-    <p class="hero-sub">Scuole, startup, aziende, eventi, associazioni e squadre sportive: trasformiamo idee, loghi e momenti in prodotti da indossare, vendere, regalare o ricordare.</p>
+    <p class="hero-sub">Alcuni dei progetti che abbiamo seguito dall'idea alla consegna: capi, accessori e identit&agrave; curati nel dettaglio, per realt&agrave; molto diverse tra loro.</p>
     <div class="hero-stats">
-      <div><div class="h-num">16+</div><div class="h-lbl">Progetti realizzati</div></div>
-      <div><div class="h-num">6</div><div class="h-lbl">Categorie</div></div>
       <div><div class="h-num">360°</div><div class="h-lbl">Dal concept alla consegna</div></div>
+      <div><div class="h-num">100%</div><div class="h-lbl">Filiera italiana</div></div>
+      <div><div class="h-num">0</div><div class="h-lbl">Intermediari</div></div>
     </div>
   </div>
 </section>
@@ -176,706 +207,24 @@
 <!-- PROGETTI -->
 <section id="progetti">
   <div class="proj-wrap">
-
-    <!-- ══ IN EVIDENZA ══ -->
-    <div class="proj-group">
-      <div class="sec-label dk reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
-        <span>In evidenza</span>
-      </div>
-      <div class="work-list">
-
-        <!-- JET HR -->
-        <div class="work-item reveal">
-          <button class="work-toggle" type="button">
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-            <span class="work-name">Jet HR</span>
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-          </button>
-          <div class="work-content">
-            <div class="proj-detail-clip">
-              <div class="proj-detail">
-                <div class="proj-media">
-                  <img loading="lazy" decoding="async" class="main-img" src="assets/img_8410ccc734d6.webp" alt="Jet HR">
-                  <div class="proj-gallery">
-                    <figure><img loading="lazy" decoding="async" src="assets/img_348e0d3e16ac.webp" alt="Jet HR prodotto"><figcaption>Prodotto</figcaption></figure>
-                    <figure><img loading="lazy" decoding="async" src="assets/img_2f7f7dbefc07.webp" alt="Jet HR ambientata"><figcaption>Ambientata</figcaption></figure>
-                    <figure><img loading="lazy" decoding="async" src="assets/img_3d0692335f63.webp" alt="Jet HR dettaglio"><figcaption>Dettaglio</figcaption></figure>
-                  </div>
-                </div>
-                <div class="proj-info">
-                  <span class="work-cat">Startup / HR-tech</span>
-                  <div class="proj-headline">Cappellini che parlano come una startup.</div>
-                  <div class="proj-story">
-                    <p>Jet HR è una startup nel mondo delle risorse umane: giovane, ironica, diretta. Quando hanno deciso di partecipare a due fiere — Host per la ristorazione e Richmond per l'HR — avevano bisogno di capi coerenti con il loro tono di voce, non con quello di una grande corporate.</p>
-                    <p>Siamo partiti dalle frasi che giravano internamente in azienda — quelle che ti dicono tutto su una cultura aziendale. "Bella raga giorno di paga", "Meno stress, più spritz", "Dillo alla mamma dillo all'HR". Le abbiamo messe su cappellini. Il risultato? Capi che fanno ridere chi li riceve e fanno capire subito che Jet HR non è come tutte le altre.</p>
-                    <p>Tre modelli diversi, tutti ricamati, pensati per fiere, uso interno e regalo. Perché un cappellino ben fatto dura molto più di un roll-up in fiera.</p>
-                  </div>
-                  <div class="made-title">Cosa abbiamo realizzato</div>
-                  <ul class="made-list">
-                    <li>Cappellino grigio ricamato "Bella raga giorno di paga"</li>
-                    <li>Cappellino grigio "Meno stress, più spritz"</li>
-                    <li>Cappellino navy corduroy "Dillo alla mamma dillo all'HR"</li>
-                    <li>Concept copy per ogni cappellino</li>
-                    <li>Shooting immagini prodotto</li>
-                    <li>Immagini ambientate</li>
-                  </ul>
-                  <div class="proj-tags"><span class="stag">Cappellini</span><span class="stag">Ricamo</span><span class="stag">Fiera</span><span class="stag">Capi aziendali</span></div>
-                  <div class="proj-ctas">
-                    <a href="https://www.jethr.com/" target="_blank" rel="noopener" class="work-link">Visita il sito →</a>
-                    <a href="contatti.html" class="btn btn-dark">Progetto simile</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- LEOPET -->
-        <div class="work-item reveal">
-          <button class="work-toggle" type="button">
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-            <span class="work-name">Leopet</span>
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-          </button>
-          <div class="work-content">
-            <div class="proj-detail-clip">
-              <div class="proj-detail">
-                <div class="proj-media">
-                  <img loading="lazy" decoding="async" class="main-img" src="assets/img_8a346a380a9e.webp" alt="Leopet">
-                  <div class="proj-gallery">
-                    <figure><img loading="lazy" decoding="async" src="assets/img_118cff4521a9.webp" alt="Leopet t-shirt"><figcaption>T-shirt</figcaption></figure>
-                    <figure><img loading="lazy" decoding="async" src="assets/img_b91e8bd0d005.webp" alt="Leopet gilet"><figcaption>Gilet</figcaption></figure>
-                    <figure><img loading="lazy" decoding="async" src="assets/img_8754d1e7c892.webp" alt="Leopet ambientata"><figcaption>Ambientata</figcaption></figure>
-                  </div>
-                </div>
-                <div class="proj-info">
-                  <span class="work-cat">Azienda / Pet products</span>
-                  <div class="proj-headline">Divise da lavoro, ma con identità.</div>
-                  <div class="proj-story">
-                    <p>Leopet è un'azienda italiana nel settore pet products. Il progetto è partito da un'esigenza concreta: rinnovare l'immagine e dotare il team di divise riconoscibili, adatte al lavoro quotidiano tra negozio, magazzino e clienti.</p>
-                    <p>Abbiamo lavorato sul rebrand del logo e poi costruito intorno una linea di divise coordinata: t-shirt, gilet ad alta visibilità, materiali per due brand — Leopet e Carbone Pet Products. Ogni capo pensato per durare, riconoscersi e comunicare professionalità anche nel lavoro pratico.</p>
-                  </div>
-                  <div class="made-title">Cosa abbiamo realizzato</div>
-                  <ul class="made-list">
-                    <li>Rebrand logo Leopet e Carbone Pet Products</li>
-                    <li>T-shirt azzurra Leopet</li>
-                    <li>T-shirt Carbone Pet Products</li>
-                    <li>Gilet alta visibilità Leopet</li>
-                    <li>Gilet alta visibilità Carbone</li>
-                    <li>Immagini prodotto e ambientate</li>
-                  </ul>
-                  <div class="proj-tags"><span class="stag">Divise da lavoro</span><span class="stag">Rebrand logo</span><span class="stag">T-shirt</span><span class="stag">Gilet</span></div>
-                  <div class="proj-ctas">
-                    <a href="https://leopet.it/" target="_blank" rel="noopener" class="work-link">Visita il sito →</a>
-                    <a href="contatti.html" class="btn btn-dark">Progetto simile</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- INDUSTRIAL DATA LABS -->
-        <div class="work-item reveal">
-          <button class="work-toggle" type="button">
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-            <span class="work-name">Industrial Data Labs</span>
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-          </button>
-          <div class="work-content">
-            <div class="proj-detail-clip">
-              <div class="proj-detail">
-                <div class="proj-media">
-                  <img loading="lazy" decoding="async" class="main-img" src="assets/img_100c9dfbccaa.webp" alt="Industrial Data Labs">
-                  <div class="proj-gallery">
-                    <figure><img loading="lazy" decoding="async" src="assets/img_cf37458956e0.webp" alt="Industrial Data Labs t-shirt"><figcaption>T-shirt</figcaption></figure>
-                    <figure><img loading="lazy" decoding="async" src="assets/img_6f9917955899.webp" alt="Industrial Data Labs cappellino"><figcaption>Cappellino</figcaption></figure>
-                    <figure><img loading="lazy" decoding="async" src="assets/img_f550c0487f25.webp" alt="Industrial Data Labs ambientata"><figcaption>Ambientata</figcaption></figure>
-                  </div>
-                </div>
-                <div class="proj-info">
-                  <span class="work-cat">Azienda B2B / Tech industriale</span>
-                  <div class="proj-headline">Quando il B2B incontra l'ironia.</div>
-                  <div class="proj-story">
-                    <p>Industrial Data Labs lavora nel mondo dell'automazione industriale B2B. Contesto tecnico, clienti seri, fiere specifiche di settore. Non il tipo di azienda a cui pensi quando parli di capi creativi — eppure.</p>
-                    <p>Siamo partiti da un insight semplice: in un settore dove tutti portano in fiera le solite penne e block notes, un cappellino con scritto "VALVE INVADERS" si ricorda. Abbiamo costruito un concept grafico ispirato alla cultura pop, con frasi che giocano sul mondo industriale: "MAY THE TORQUE BE WITH YOU", "HOUSTON WE SOLVED THE PROBLEM". T-shirt nere e bianche, cappellino beige, tutto con stampe grafiche pensate per sembrare un brand streetwear, non uno stand fieristico.</p>
-                  </div>
-                  <div class="made-title">Cosa abbiamo realizzato</div>
-                  <ul class="made-list">
-                    <li>Concept grafico e copy per ogni prodotto</li>
-                    <li>T-shirt nere "VALVE INVADERS"</li>
-                    <li>T-shirt bianche "MAY THE TORQUE BE WITH YOU"</li>
-                    <li>T-shirt "HOUSTON WE SOLVED THE PROBLEM"</li>
-                    <li>Cappellino beige con grafica personalizzata</li>
-                    <li>Shooting prodotto e immagini ambientate</li>
-                  </ul>
-                  <div class="proj-tags"><span class="stag">T-shirt</span><span class="stag">Cappellini</span><span class="stag">Fiera</span><span class="stag">Concept grafico</span></div>
-                  <div class="proj-ctas">
-                    <a href="https://industrialdatalabs.com/" target="_blank" rel="noopener" class="work-link">Visita il sito →</a>
-                    <a href="contatti.html" class="btn btn-dark">Progetto simile</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- LOVE SOCIETY -->
-        <div class="work-item reveal">
-          <button class="work-toggle" type="button">
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-            <span class="work-name">Love Society</span>
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-          </button>
-          <div class="work-content">
-            <div class="proj-detail-clip">
-              <div class="proj-detail">
-                <div class="proj-media">
-                  <img loading="lazy" decoding="async" class="main-img" src="assets/img_6baa608c1f55.webp" alt="Love Society">
-                  <div class="proj-gallery">
-                    <figure><img loading="lazy" decoding="async" src="assets/img_ab158d1ae29b.webp" alt="Love Society prodotto"><figcaption>Prodotto</figcaption></figure>
-                    <figure><img loading="lazy" decoding="async" src="assets/img_54b92d0fe1a0.webp" alt="Love Society ambientata"><figcaption>Ambientata</figcaption></figure>
-                  </div>
-                </div>
-                <div class="proj-info">
-                  <span class="work-cat">Brand / Lifestyle</span>
-                  <div class="proj-headline">Cappellini che viaggiano.</div>
-                  <div class="proj-story">
-                    <p>Love Society è un brand lifestyle legato a viaggio, community e abbigliamento. Per loro la cura del prodotto è tutto: ogni capo deve essere coerente con un'identità visiva precisa e riconoscibile.</p>
-                    <p>Abbiamo prodotto cappellini in velluto e corduroy, neri e marroni, con ricamo "LOCAL ANYWHERE" e "LOVE SOCIETY". Prodotto finito, pronto per essere venduto e indossato.</p>
-                  </div>
-                  <div class="made-title">Cosa abbiamo realizzato</div>
-                  <ul class="made-list">
-                    <li>Cappellini corduroy neri e marroni</li>
-                    <li>Ricamo "LOCAL ANYWHERE"</li>
-                    <li>Ricamo "LOVE SOCIETY"</li>
-                    <li>Shooting prodotto e ambientato</li>
-                  </ul>
-                  <div class="proj-tags"><span class="stag">Cappellini</span><span class="stag">Ricamo</span><span class="stag">Brand</span></div>
-                  <div class="proj-ctas">
-                    <a href="https://www.instagram.com/lovesociety.jpg/" target="_blank" rel="noopener" class="work-link">Instagram →</a>
-                    <a href="contatti.html" class="btn btn-dark">Progetto simile</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
+    <div class="proj-intro reveal">
+      <div class="sec-label dk"><svg class="flask" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path class="flask-liquid" d="M9.33 11.6H14.67L17.95 16.9a1.5 1.5 0 0 1-1.33 2.2H7.38a1.5 1.5 0 0 1-1.33-2.2z" fill="currentColor"/><circle class="flask-bubble b1" cx="11.2" cy="4.7" r="1" fill="currentColor"/><circle class="flask-bubble b2" cx="12.3" cy="4" r="1.3" fill="currentColor"/><circle class="flask-bubble b3" cx="13" cy="5" r=".85" fill="currentColor"/><circle class="flask-bubble b4" cx="12" cy="5.3" r=".6" fill="currentColor"/><path d="M9.3 3h5.4M10.6 3v6.4L6.05 16.9a1.5 1.5 0 0 0 1.33 2.2h9.24a1.5 1.5 0 0 0 1.33-2.2L13.4 9.4V3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Portfolio</span></div>
+      <h2>Alcuni dei nostri <span class="ghost">progetti.</span></h2>
     </div>
-
-    <!-- ══ AZIENDE & STARTUP ══ -->
-    <div class="proj-group" id="aziende">
-      <div class="sec-label dk reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
-        <span>Aziende &amp; Startup</span>
-      </div>
-      <div class="work-list">
-
-        <!-- DF ASSICURAZIONI -->
-        <div class="work-item reveal">
-          <button class="work-toggle" type="button">
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-            <span class="work-name">DF Assicurazioni</span>
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-          </button>
-          <div class="work-content">
-            <div class="proj-detail-clip">
-              <div class="proj-detail">
-                <div class="proj-media">
-                  <img loading="lazy" decoding="async" class="main-img" src="assets/img_1b2a8f73d5d3.webp" alt="DF Assicurazioni">
-                  <div class="proj-gallery">
-                    <figure><img loading="lazy" decoding="async" src="assets/img_4fb4d4e27e5e.webp" alt="DF Assicurazioni prodotto"><figcaption>Prodotto</figcaption></figure>
-                    <figure><img loading="lazy" decoding="async" src="assets/img_6a5907f6e51b.webp" alt="DF Assicurazioni ambientata"><figcaption>Ambientata</figcaption></figure>
-                  </div>
-                </div>
-                <div class="proj-info">
-                  <span class="work-cat">Azienda / Evento sportivo</span>
-                  <div class="proj-headline">Un torneo, una maglietta, un team.</div>
-                  <div class="proj-story">
-                    <p>DF Assicurazioni Unipol aveva bisogno di qualcosa di semplice ma efficace: una maglietta per il loro torneo di padel aziendale. Non un gadget qualsiasi — un capo che facesse sentire il team unito, riconoscibile e parte di qualcosa.</p>
-                    <p>Abbiamo realizzato t-shirt personalizzate con grafica e logo coordinati. Piccolo progetto, grande impatto sul campo.</p>
-                  </div>
-                  <div class="made-title">Cosa abbiamo realizzato</div>
-                  <ul class="made-list">
-                    <li>T-shirt personalizzate per torneo padel</li>
-                    <li>Grafica coordinata al brand</li>
-                  </ul>
-                  <div class="proj-tags"><span class="stag">T-shirt</span><span class="stag">Evento padel</span><span class="stag">Team building</span></div>
-                  <div class="proj-ctas">
-                    <a href="contatti.html" class="btn btn-dark">Progetto simile</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- EVERGREEN -->
-        <div class="work-item reveal">
-          <button class="work-toggle" type="button">
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-            <span class="work-name">Evergreen</span>
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-          </button>
-          <div class="work-content">
-            <div class="proj-detail-clip">
-              <div class="proj-detail">
-                <div class="proj-media">
-                  <img loading="lazy" decoding="async" class="main-img" src="assets/img_0f8a2ec9acba.webp" alt="Evergreen Brescia">
-                  <div class="proj-gallery">
-                    <figure><img loading="lazy" decoding="async" src="assets/img_7dff6f05d7e5.webp" alt="Evergreen stand"><figcaption>Stand</figcaption></figure>
-                    <figure><img loading="lazy" decoding="async" src="assets/img_1a8a65c2922f.webp" alt="Evergreen dettaglio"><figcaption>Dettaglio</figcaption></figure>
-                  </div>
-                </div>
-                <div class="proj-info">
-                  <span class="work-cat">Associazione / Benefica</span>
-                  <div class="proj-headline">Una maglietta che vale più di una maglietta.</div>
-                  <div class="proj-story">
-                    <p>Evergreen è un'associazione culturale e benefica attiva sul territorio di Brescia. Il prodotto qui non è solo una maglietta: è uno strumento di comunità, un modo per rendere riconoscibili volontari e partecipanti, per dare un'identità visiva a chi fa del bene.</p>
-                    <p>Abbiamo realizzato t-shirt verdi con grafica Evergreen Brescia. Semplici, riconoscibili, pensate per durare e per essere indossate con orgoglio.</p>
-                  </div>
-                  <div class="made-title">Cosa abbiamo realizzato</div>
-                  <ul class="made-list">
-                    <li>T-shirt verdi Evergreen Brescia</li>
-                    <li>Shooting immagini prodotto e ambientate</li>
-                  </ul>
-                  <div class="proj-tags"><span class="stag">T-shirt</span><span class="stag">Associazione</span><span class="stag">Community</span></div>
-                  <div class="proj-ctas">
-                    <a href="https://linktr.ee/evergreenbrescia" target="_blank" rel="noopener" class="work-link">Linktree →</a>
-                    <a href="contatti.html" class="btn btn-dark">Progetto simile</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
+    <div class="pgrid">
+      <button class="pcard reveal" data-i="0" type="button"><span class="pcard-img"><img loading="lazy" decoding="async" src="assets/img_8410ccc734d6.webp" alt="Jet HR"></span><span class="pcard-body"><span class="pcard-cat">Startup / HR-tech</span><span class="pcard-name">Jet HR</span><span class="pcard-head">Cappellini che parlano come una startup.</span></span></button><button class="pcard reveal" data-i="1" type="button"><span class="pcard-img"><img loading="lazy" decoding="async" src="assets/img_8a346a380a9e.webp" alt="Leopet"></span><span class="pcard-body"><span class="pcard-cat">Azienda / Pet products</span><span class="pcard-name">Leopet</span><span class="pcard-head">Divise da lavoro, ma con identità.</span></span></button><button class="pcard reveal" data-i="2" type="button"><span class="pcard-img"><img loading="lazy" decoding="async" src="assets/img_100c9dfbccaa.webp" alt="Industrial Data Labs"></span><span class="pcard-body"><span class="pcard-cat">Azienda B2B / Tech industriale</span><span class="pcard-name">Industrial Data Labs</span><span class="pcard-head">Quando il B2B incontra l&#x27;ironia.</span></span></button><button class="pcard reveal" data-i="3" type="button"><span class="pcard-img"><img loading="lazy" decoding="async" src="assets/img_6baa608c1f55.webp" alt="Love Society"></span><span class="pcard-body"><span class="pcard-cat">Brand / Lifestyle</span><span class="pcard-name">Love Society</span><span class="pcard-head">Cappellini che viaggiano.</span></span></button><button class="pcard reveal" data-i="4" type="button"><span class="pcard-img"><img loading="lazy" decoding="async" src="assets/img_1b2a8f73d5d3.webp" alt="DF Assicurazioni"></span><span class="pcard-body"><span class="pcard-cat">Azienda / Evento sportivo</span><span class="pcard-name">DF Assicurazioni</span><span class="pcard-head">Un torneo, una maglietta, un team.</span></span></button><button class="pcard reveal" data-i="5" type="button"><span class="pcard-img"><img loading="lazy" decoding="async" src="assets/img_0f8a2ec9acba.webp" alt="Evergreen"></span><span class="pcard-body"><span class="pcard-cat">Associazione / Benefica</span><span class="pcard-name">Evergreen</span><span class="pcard-head">Una maglietta che vale più di una maglietta.</span></span></button><button class="pcard reveal" data-i="6" type="button"><span class="pcard-img"><img loading="lazy" decoding="async" src="assets/img_c92594bc7fc9.webp" alt="Feel It"></span><span class="pcard-body"><span class="pcard-cat">Evento musicale / Capsule</span><span class="pcard-name">Feel It</span><span class="pcard-head">Una capsule nata tra il palco e la pista.</span></span></button><button class="pcard reveal" data-i="7" type="button"><span class="pcard-img"><img loading="lazy" decoding="async" src="assets/img_425527943315.webp" alt="Soleil"></span><span class="pcard-body"><span class="pcard-cat">Evento musicale / Community</span><span class="pcard-name">Soleil</span><span class="pcard-head">Capi che durano dopo la serata.</span></span></button><button class="pcard reveal" data-i="8" type="button"><span class="pcard-img"><img loading="lazy" decoding="async" src="assets/img_f48aa0d8c82c.webp" alt="Konteiner X"></span><span class="pcard-body"><span class="pcard-cat">Brand / Retail / Stagionale</span><span class="pcard-name">Konteiner X</span><span class="pcard-head">T-shirt di Natale, ma non le solite.</span></span></button><button class="pcard reveal" data-i="9" type="button"><span class="pcard-img"><img loading="lazy" decoding="async" src="assets/img_9d553615f646.webp" alt="APD River"></span><span class="pcard-body"><span class="pcard-cat">Sport / Calcio</span><span class="pcard-name">APD River</span><span class="pcard-head">Una squadra, una nuova identità.</span></span></button><button class="pcard reveal" data-i="10" type="button"><span class="pcard-img"><img loading="lazy" decoding="async" src="assets/img_2022e8719cf3.webp" alt="CUS Brescia"></span><span class="pcard-body"><span class="pcard-cat">Sport / Grest</span><span class="pcard-name">CUS Brescia</span><span class="pcard-head">Abbigliamento che resiste al grest.</span></span></button><button class="pcard reveal" data-i="11" type="button"><span class="pcard-img"><img loading="lazy" decoding="async" src="assets/img_2c0d13328f02.webp" alt="Mea Culpa Team"></span><span class="pcard-body"><span class="pcard-cat">Sport / Progetto interno</span><span class="pcard-name">Mea Culpa Team</span><span class="pcard-head">Il campo come laboratorio.</span></span></button><button class="pcard reveal" data-i="12" type="button"><span class="pcard-img"><img loading="lazy" decoding="async" src="assets/img_38da5c8f53b7.webp" alt="Istituto Stanga"></span><span class="pcard-body"><span class="pcard-cat">Scuola / Identità e comunicazione</span><span class="pcard-name">Istituto Stanga</span><span class="pcard-head">Identità scolastica che si indossa.</span></span></button><button class="pcard reveal" data-i="13" type="button"><span class="pcard-img"><img loading="lazy" decoding="async" src="assets/img_a2158988441a.webp" alt="Liceo Calini"></span><span class="pcard-body"><span class="pcard-cat">Scuola</span><span class="pcard-name">Liceo Calini</span><span class="pcard-head">Comunicazione e capi per una scuola con identità forte.</span></span></button><button class="pcard reveal" data-i="14" type="button"><span class="pcard-img"><img loading="lazy" decoding="async" src="assets/img_320cae0c4525.webp" alt="Tartaglia Olivieri"></span><span class="pcard-body"><span class="pcard-cat">Scuola</span><span class="pcard-name">Tartaglia Olivieri</span><span class="pcard-head">Capi e comunicazione per rafforzare identità e comunità.</span></span></button><button class="pcard reveal" data-i="15" type="button"><span class="pcard-img"><img loading="lazy" decoding="async" src="assets/img_2e2f670de94f.webp" alt="Liceo Arnaldo"></span><span class="pcard-body"><span class="pcard-cat">Scuola</span><span class="pcard-name">Liceo Arnaldo</span><span class="pcard-head">Appartenenza e identità visiva per studenti e staff.</span></span></button>
     </div>
-
-    <!-- ══ EVENTI & COMMUNITY ══ -->
-    <div class="proj-group" id="eventi">
-      <div class="sec-label dk reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
-        <span>Eventi &amp; Community</span>
-      </div>
-      <div class="work-list">
-
-        <!-- FEEL IT -->
-        <div class="work-item reveal">
-          <button class="work-toggle" type="button">
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-            <span class="work-name">Feel It</span>
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-          </button>
-          <div class="work-content">
-            <div class="proj-detail-clip">
-              <div class="proj-detail">
-                <div class="proj-media">
-                  <img loading="lazy" decoding="async" class="main-img" src="assets/img_c92594bc7fc9.webp" alt="Feel It">
-                  <div class="proj-gallery">
-                    <figure><img loading="lazy" decoding="async" src="assets/img_c1fe3ebd53f4.webp" alt="Feel It t-shirt nera"><figcaption>T-shirt nera</figcaption></figure>
-                    <figure><img loading="lazy" decoding="async" src="assets/img_018b0cd3c374.webp" alt="Feel It t-shirt bianca"><figcaption>T-shirt bianca</figcaption></figure>
-                    <figure><img loading="lazy" decoding="async" src="assets/img_45cf9975754d.webp" alt="Feel It ambientata"><figcaption>Ambientata</figcaption></figure>
-                  </div>
-                </div>
-                <div class="proj-info">
-                  <span class="work-cat">Evento musicale / Capsule</span>
-                  <div class="proj-headline">Una capsule nata tra il palco e la pista.</div>
-                  <div class="proj-story">
-                    <p>Feel It è un evento musicale che unisce musica, community e identità visiva forte. Una serata non si ricorda solo per la musica — si ricorda anche per quello che porti a casa. Qui il capo non è un gadget: è parte del racconto.</p>
-                    <p>Abbiamo lavorato su grafiche potenti, pensate per stare su t-shirt bianche e nere. Front e back, stile streetwear, immagini ambientate in contesto festa. Produzione e vendita congiunta con il nostro brand Mea Culpa Clothing.</p>
-                  </div>
-                  <div class="made-title">Cosa abbiamo realizzato</div>
-                  <ul class="made-list">
-                    <li>Concept grafico e direzione artistica</li>
-                    <li>T-shirt bianche e nere front/back</li>
-                    <li>Shooting immagini prodotto</li>
-                    <li>Immagini ambientate in contesto party</li>
-                    <li>Produzione e vendita congiunta</li>
-                  </ul>
-                  <div class="proj-tags"><span class="stag">T-shirt</span><span class="stag">Capsule</span><span class="stag">Evento</span><span class="stag">Grafica</span></div>
-                  <div class="proj-ctas">
-                    <a href="https://www.instagram.com/feel_it_party/" target="_blank" rel="noopener" class="work-link">Instagram →</a>
-                    <a href="contatti.html" class="btn btn-dark">Progetto simile</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SOLEIL -->
-        <div class="work-item reveal">
-          <button class="work-toggle" type="button">
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-            <span class="work-name">Soleil</span>
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-          </button>
-          <div class="work-content">
-            <div class="proj-detail-clip">
-              <div class="proj-detail">
-                <div class="proj-media">
-                  <img loading="lazy" decoding="async" class="main-img" src="assets/img_425527943315.webp" alt="Soleil">
-                  <div class="proj-gallery">
-                    <figure><img loading="lazy" decoding="async" src="assets/img_e4dabe3032b1.webp" alt="Soleil prodotto"><figcaption>Prodotto</figcaption></figure>
-                    <figure><img loading="lazy" decoding="async" src="assets/img_0fcf102b7c22.webp" alt="Soleil ambientata"><figcaption>Ambientata</figcaption></figure>
-                  </div>
-                </div>
-                <div class="proj-info">
-                  <span class="work-cat">Evento musicale / Community</span>
-                  <div class="proj-headline">Capi che durano dopo la serata.</div>
-                  <div class="proj-story">
-                    <p>Soleil è un evento musicale con una community riconoscibile. La collaborazione con Mea Culpa ha prodotto una grafica originale e capi personalizzati pensati per essere indossati, venduti e ricordati ben oltre la serata.</p>
-                  </div>
-                  <div class="made-title">Cosa abbiamo realizzato</div>
-                  <ul class="made-list">
-                    <li>Concept grafico evento</li>
-                    <li>Capi personalizzati per evento</li>
-                    <li>Produzione e vendita congiunta</li>
-                  </ul>
-                  <div class="proj-tags"><span class="stag">Capi evento</span><span class="stag">Grafica</span><span class="stag">Collab</span></div>
-                  <div class="proj-ctas">
-                    <a href="https://www.instagram.com/soleil_party/" target="_blank" rel="noopener" class="work-link">Instagram →</a>
-                    <a href="contatti.html" class="btn btn-dark">Progetto simile</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- KONTEINER X -->
-        <div class="work-item reveal">
-          <button class="work-toggle" type="button">
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-            <span class="work-name">Konteiner X</span>
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-          </button>
-          <div class="work-content">
-            <div class="proj-detail-clip">
-              <div class="proj-detail">
-                <div class="proj-media">
-                  <img loading="lazy" decoding="async" class="main-img" src="assets/img_f48aa0d8c82c.webp" alt="Konteiner X">
-                  <div class="proj-gallery">
-                    <figure><img loading="lazy" decoding="async" src="assets/img_7fe3066b8982.webp" alt="Konteiner X t-shirt"><figcaption>T-shirt</figcaption></figure>
-                    <figure><img loading="lazy" decoding="async" src="assets/img_c95fbca4f504.webp" alt="Konteiner X ambientata"><figcaption>Ambientata</figcaption></figure>
-                  </div>
-                </div>
-                <div class="proj-info">
-                  <span class="work-cat">Brand / Retail / Stagionale</span>
-                  <div class="proj-headline">T-shirt di Natale, ma non le solite.</div>
-                  <div class="proj-story">
-                    <p>Konteiner X è un negozio di abbigliamento con un'identità visiva precisa. Per le feste abbiamo collaborato su una capsule di t-shirt natalizie con grafica originale, pensata per essere venduta in negozio e coerente con l'estetica del brand.</p>
-                  </div>
-                  <div class="made-title">Cosa abbiamo realizzato</div>
-                  <ul class="made-list">
-                    <li>T-shirt natalizie capsule</li>
-                    <li>Grafica stagionale</li>
-                    <li>Produzione in collaborazione</li>
-                  </ul>
-                  <div class="proj-tags"><span class="stag">T-shirt</span><span class="stag">Natale</span><span class="stag">Collab</span></div>
-                  <div class="proj-ctas">
-                    <a href="https://www.instagram.com/thekontainerx/" target="_blank" rel="noopener" class="work-link">Instagram →</a>
-                    <a href="contatti.html" class="btn btn-dark">Progetto simile</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- ══ SPORT ══ -->
-    <div class="proj-group" id="sport">
-      <div class="sec-label dk reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
-        <span>Sport</span>
-      </div>
-      <div class="work-list">
-
-        <!-- APD RIVER -->
-        <div class="work-item reveal">
-          <button class="work-toggle" type="button">
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-            <span class="work-name">APD River</span>
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-          </button>
-          <div class="work-content">
-            <div class="proj-detail-clip">
-              <div class="proj-detail">
-                <div class="proj-media">
-                  <img loading="lazy" decoding="async" class="main-img" src="assets/img_9d553615f646.webp" alt="APD River Club United">
-                  <div class="proj-gallery">
-                    <figure><img loading="lazy" decoding="async" src="assets/img_ef23b5c1e5c8.webp" alt="APD River divisa"><figcaption>Divisa</figcaption></figure>
-                    <figure><img loading="lazy" decoding="async" src="assets/img_cc8dfe383c4e.webp" alt="APD River dettaglio"><figcaption>Dettaglio</figcaption></figure>
-                    <figure><img loading="lazy" decoding="async" src="assets/img_264d1f3d099d.webp" alt="APD River squadra"><figcaption>Squadra</figcaption></figure>
-                  </div>
-                </div>
-                <div class="proj-info">
-                  <span class="work-cat">Sport / Calcio</span>
-                  <div class="proj-headline">Una squadra, una nuova identità.</div>
-                  <div class="proj-story">
-                    <p>APD River Club United è una squadra di calcio con una storia e un'identità da valorizzare. Il progetto è partito da un rebrand: nuovo logo, nuova grafica, nuove divise. Perché una squadra che si veste bene gioca anche meglio — o almeno ci crede di più.</p>
-                    <p>Abbiamo seguito tutto: dal concept visivo alla produzione delle divise, passando per accessori e materiali coordinati.</p>
-                  </div>
-                  <div class="made-title">Cosa abbiamo realizzato</div>
-                  <ul class="made-list">
-                    <li>Rebrand logo e identità visiva</li>
-                    <li>Divise da gioco</li>
-                    <li>Abbigliamento sportivo coordinato</li>
-                    <li>Accessori (cappellini, calzettoni)</li>
-                  </ul>
-                  <div class="proj-tags"><span class="stag">Divise calcio</span><span class="stag">Rebrand</span><span class="stag">Accessori</span></div>
-                  <div class="proj-ctas">
-                    <a href="https://www.apdriverclubunited.it/" target="_blank" rel="noopener" class="work-link">Visita il sito →</a>
-                    <a href="contatti.html" class="btn btn-dark">Progetto simile</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CUS BRESCIA -->
-        <div class="work-item reveal">
-          <button class="work-toggle" type="button">
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-            <span class="work-name">CUS Brescia</span>
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-          </button>
-          <div class="work-content">
-            <div class="proj-detail-clip">
-              <div class="proj-detail">
-                <div class="proj-media">
-                  <img loading="lazy" decoding="async" class="main-img" src="assets/img_2022e8719cf3.webp" alt="CUS Brescia">
-                  <div class="proj-gallery">
-                    <figure><img loading="lazy" decoding="async" src="assets/img_ea7827eb8912.webp" alt="CUS Brescia t-shirt"><figcaption>T-shirt</figcaption></figure>
-                    <figure><img loading="lazy" decoding="async" src="assets/img_75a903cbb1ed.webp" alt="CUS Brescia cappellino"><figcaption>Cappellino</figcaption></figure>
-                  </div>
-                </div>
-                <div class="proj-info">
-                  <span class="work-cat">Sport / Grest</span>
-                  <div class="proj-headline">Abbigliamento che resiste al grest.</div>
-                  <div class="proj-story">
-                    <p>CUS Brescia è una realtà sportiva e educativa. Per il loro grest estivo avevano bisogno di abbigliamento pensato per bambini e ragazzi: riconoscibile, resistente, adatto a giornate intense tra sport, giochi e attività all'aperto.</p>
-                  </div>
-                  <div class="made-title">Cosa abbiamo realizzato</div>
-                  <ul class="made-list">
-                    <li>Abbigliamento sportivo per bambini</li>
-                    <li>Capi personalizzati grest</li>
-                  </ul>
-                  <div class="proj-tags"><span class="stag">Grest</span><span class="stag">Bambini</span><span class="stag">Sportivo</span></div>
-                  <div class="proj-ctas">
-                    <a href="https://cusbrescia.it/" target="_blank" rel="noopener" class="work-link">Visita il sito →</a>
-                    <a href="contatti.html" class="btn btn-dark">Progetto simile</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- MEA CULPA TEAM -->
-        <div class="work-item reveal">
-          <button class="work-toggle" type="button">
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-            <span class="work-name">Mea Culpa Team</span>
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-          </button>
-          <div class="work-content">
-            <div class="proj-detail-clip">
-              <div class="proj-detail">
-                <div class="proj-media">
-                  <img loading="lazy" decoding="async" class="main-img" src="assets/img_2c0d13328f02.webp" alt="Mea Culpa Team">
-                  <div class="proj-gallery">
-                    <figure><img loading="lazy" decoding="async" src="assets/img_ce27d11a2b0f.webp" alt="Mea Culpa Team divisa"><figcaption>Divisa</figcaption></figure>
-                    <figure><img loading="lazy" decoding="async" src="assets/img_0672e0635c36.webp" alt="Mea Culpa Team ambientata"><figcaption>Ambientata</figcaption></figure>
-                  </div>
-                </div>
-                <div class="proj-info">
-                  <span class="work-cat">Sport / Progetto interno</span>
-                  <div class="proj-headline">Il campo come laboratorio.</div>
-                  <div class="proj-story">
-                    <p>A volte il miglior modo per capire un prodotto è farlo per sé. Mea Culpa Team è la squadra di calcio che abbiamo sponsorizzato internamente: un laboratorio sul campo per sperimentare identità visiva sportiva, divise, concept grafico e linguaggio del mondo sport.</p>
-                  </div>
-                  <div class="made-title">Cosa abbiamo realizzato</div>
-                  <ul class="made-list">
-                    <li>Logo e identità visiva squadra</li>
-                    <li>Concept grafico divise</li>
-                    <li>Produzione divise da calcio</li>
-                  </ul>
-                  <div class="proj-tags"><span class="stag">Divise calcio</span><span class="stag">Logo</span><span class="stag">Interno</span></div>
-                  <div class="proj-ctas">
-                    <a href="contatti.html" class="btn btn-dark">Progetto simile</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- ══ SCUOLE ══ -->
-    <div class="proj-group" id="scuole">
-      <div class="sec-label dk reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
-        <span>Scuole</span>
-      </div>
-      <div class="work-list">
-
-        <!-- STANGA -->
-        <div class="work-item reveal">
-          <button class="work-toggle" type="button">
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-            <span class="work-name">Istituto Stanga</span>
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-          </button>
-          <div class="work-content">
-            <div class="proj-detail-clip">
-              <div class="proj-detail">
-                <div class="proj-media">
-                  <img loading="lazy" decoding="async" class="main-img" src="assets/img_822d764b7c6c.webp" alt="Istituto Stanga">
-                  <div class="proj-gallery">
-                    <figure><img loading="lazy" decoding="async" src="assets/img_38da5c8f53b7.webp" alt="Istituto Stanga fronte"><figcaption>Fronte</figcaption></figure>
-                    <figure><img loading="lazy" decoding="async" src="assets/img_31844bbaa801.webp" alt="Istituto Stanga retro"><figcaption>Retro</figcaption></figure>
-                  </div>
-                </div>
-                <div class="proj-info">
-                  <span class="work-cat">Scuola / Identità e comunicazione</span>
-                  <div class="proj-headline">Identità scolastica che si indossa.</div>
-                  <div class="proj-story">
-                    <p>L'Istituto Stanga è una scuola con una storia e un'identità da valorizzare. Il progetto con Mea Culpa Lab ha abbracciato grafica, comunicazione digitale e produzione: un lavoro su più livelli per dare forma visiva all'appartenenza scolastica.</p>
-                    <p>Dai capi personalizzati per studenti e staff, alle grafiche per il sito e i materiali di comunicazione — tutto costruito per sembrare pensato, non improvvisato.</p>
-                  </div>
-                  <div class="made-title">Cosa abbiamo realizzato</div>
-                  <ul class="made-list">
-                    <li>Abbigliamento personalizzato scuola</li>
-                    <li>Grafiche per comunicazione digitale</li>
-                    <li>Supporto strategia marketing</li>
-                  </ul>
-                  <div class="proj-tags"><span class="stag">Abbigliamento</span><span class="stag">Grafica</span><span class="stag">Marketing</span></div>
-                  <div class="proj-ctas">
-                    <a href="https://istitutostanga.edu.it/" target="_blank" rel="noopener" class="work-link">Visita il sito →</a>
-                    <a href="contatti.html" class="btn btn-dark">Progetto simile</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CALINI -->
-        <div class="work-item reveal">
-          <button class="work-toggle" type="button">
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-            <span class="work-name">Liceo Calini</span>
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-          </button>
-          <div class="work-content">
-            <div class="proj-detail-clip">
-              <div class="proj-detail">
-                <div class="proj-media">
-                  <img loading="lazy" decoding="async" class="main-img" src="assets/img_a2158988441a.webp" alt="Liceo Calini">
-                  <div class="proj-gallery">
-                    <figure><img loading="lazy" decoding="async" src="assets/img_7ffd1d74183b.webp" alt="Liceo Calini fronte"><figcaption>Fronte</figcaption></figure>
-                    <figure><img loading="lazy" decoding="async" src="assets/img_98255b779740.webp" alt="Liceo Calini retro"><figcaption>Retro</figcaption></figure>
-                  </div>
-                </div>
-                <div class="proj-info">
-                  <span class="work-cat">Scuola</span>
-                  <div class="proj-headline">Comunicazione e capi per una scuola con identità forte.</div>
-                  <div class="proj-story">
-                    <p>Per il Liceo Calini abbiamo lavorato su grafiche, comunicazione scolastica e produzione di capi personalizzati. Prodotti pensati per rafforzare il senso di appartenenza tra studenti e staff.</p>
-                  </div>
-                  <div class="proj-ctas">
-                    <a href="https://www.liceocalini.edu.it/" target="_blank" rel="noopener" class="work-link">Visita il sito →</a>
-                    <a href="contatti.html" class="btn btn-dark">Progetto simile</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- TARTAGLIA -->
-        <div class="work-item reveal">
-          <button class="work-toggle" type="button">
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-            <span class="work-name">Tartaglia Olivieri</span>
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-          </button>
-          <div class="work-content">
-            <div class="proj-detail-clip">
-              <div class="proj-detail">
-                <div class="proj-media">
-                  <img loading="lazy" decoding="async" class="main-img" src="assets/img_320cae0c4525.webp" alt="Tartaglia Olivieri">
-                  <div class="proj-gallery">
-                    <figure><img loading="lazy" decoding="async" src="assets/img_32ce34a5fc26.webp" alt="Tartaglia Olivieri fronte"><figcaption>Fronte</figcaption></figure>
-                    <figure><img loading="lazy" decoding="async" src="assets/img_1687dfb0fcf5.webp" alt="Tartaglia Olivieri retro"><figcaption>Retro</figcaption></figure>
-                  </div>
-                </div>
-                <div class="proj-info">
-                  <span class="work-cat">Scuola</span>
-                  <div class="proj-headline">Capi e comunicazione per rafforzare identità e comunità.</div>
-                  <div class="proj-story">
-                    <p>Con Tartaglia Olivieri abbiamo costruito un percorso su comunicazione scolastica e produzione di abbigliamento: grafiche, capi e materiali pensati per eventi, classi e senso di gruppo.</p>
-                  </div>
-                  <div class="proj-ctas">
-                    <a href="https://www.tartaglia-olivieri.edu.it/" target="_blank" rel="noopener" class="work-link">Visita il sito →</a>
-                    <a href="contatti.html" class="btn btn-dark">Progetto simile</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ARNALDO -->
-        <div class="work-item reveal">
-          <button class="work-toggle" type="button">
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-            <span class="work-name">Liceo Arnaldo</span>
-            <span class="work-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3h2v12.2l4.6-4.6 1.4 1.4-7 7-7-7 1.4-1.4L11 15.2V3z"/></svg></span>
-          </button>
-          <div class="work-content">
-            <div class="proj-detail-clip">
-              <div class="proj-detail">
-                <div class="proj-media">
-                  <img loading="lazy" decoding="async" class="main-img" src="assets/img_2e2f670de94f.webp" alt="Liceo Arnaldo">
-                  <div class="proj-gallery">
-                    <figure><img loading="lazy" decoding="async" src="assets/img_962f22ed9791.webp" alt="Liceo Arnaldo fronte"><figcaption>Fronte</figcaption></figure>
-                    <figure><img loading="lazy" decoding="async" src="assets/img_6a2525211dca.webp" alt="Liceo Arnaldo retro"><figcaption>Retro</figcaption></figure>
-                  </div>
-                </div>
-                <div class="proj-info">
-                  <span class="work-cat">Scuola</span>
-                  <div class="proj-headline">Appartenenza e identità visiva per studenti e staff.</div>
-                  <div class="proj-story">
-                    <p>Per il Liceo Arnaldo abbiamo lavorato su comunicazione e produzione di capi personalizzati, con focus su giovani, appartenenza e identità scolastica contemporanea.</p>
-                  </div>
-                  <div class="proj-ctas">
-                    <a href="https://liceoarnaldo.edu.it/" target="_blank" rel="noopener" class="work-link">Visita il sito →</a>
-                    <a href="contatti.html" class="btn btn-dark">Progetto simile</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
   </div>
 </section>
+
+<!-- MODALE PROGETTO -->
+<div class="pmodal" id="pmodal" aria-hidden="true">
+  <div class="pmodal-backdrop" data-close></div>
+  <div class="pmodal-box" role="dialog" aria-modal="true">
+    <button class="pmodal-x" data-close aria-label="Chiudi">&times;</button>
+    <div class="pmodal-content" id="pmodalContent"></div>
+  </div>
+</div>
 
 <!-- MICRO BAND -->
 <div class="micro-band">
@@ -1016,5 +365,37 @@ else document.addEventListener('DOMContentLoaded', initLightbox);
 </div>
 
 <script src="effects.js" defer></script>
+<script>
+const PROJECTS = [{"name": "Jet HR", "cat": "Startup / HR-tech", "head": "Cappellini che parlano come una startup.", "img": "assets/img_8410ccc734d6.webp", "gallery": ["assets/img_348e0d3e16ac.webp", "assets/img_2f7f7dbefc07.webp", "assets/img_3d0692335f63.webp"], "story": "<p>Jet HR è una startup nel mondo delle risorse umane: giovane, ironica, diretta. Quando hanno deciso di partecipare a due fiere — Host per la ristorazione e Richmond per l'HR — avevano bisogno di capi coerenti con il loro tono di voce, non con quello di una grande corporate.</p>\n                    <p>Siamo partiti dalle frasi che giravano internamente in azienda — quelle che ti dicono tutto su una cultura aziendale. \"Bella raga giorno di paga\", \"Meno stress, più spritz\", \"Dillo alla mamma dillo all'HR\". Le abbiamo messe su cappellini. Il risultato? Capi che fanno ridere chi li riceve e fanno capire subito che Jet HR non è come tutte le altre.</p>\n                    <p>Tre modelli diversi, tutti ricamati, pensati per fiere, uso interno e regalo. Perché un cappellino ben fatto dura molto più di un roll-up in fiera.</p>", "made": ["Cappellino grigio ricamato \"Bella raga giorno di paga\"", "Cappellino grigio \"Meno stress, più spritz\"", "Cappellino navy corduroy \"Dillo alla mamma dillo all'HR\"", "Concept copy per ogni cappellino", "Shooting immagini prodotto", "Immagini ambientate"], "tags": ["Cappellini", "Ricamo", "Fiera", "Capi aziendali"], "link": {"href": "https://www.jethr.com/", "label": "Visita il sito"}}, {"name": "Leopet", "cat": "Azienda / Pet products", "head": "Divise da lavoro, ma con identità.", "img": "assets/img_8a346a380a9e.webp", "gallery": ["assets/img_118cff4521a9.webp", "assets/img_b91e8bd0d005.webp", "assets/img_8754d1e7c892.webp"], "story": "<p>Leopet è un'azienda italiana nel settore pet products. Il progetto è partito da un'esigenza concreta: rinnovare l'immagine e dotare il team di divise riconoscibili, adatte al lavoro quotidiano tra negozio, magazzino e clienti.</p>\n                    <p>Abbiamo lavorato sul rebrand del logo e poi costruito intorno una linea di divise coordinata: t-shirt, gilet ad alta visibilità, materiali per due brand — Leopet e Carbone Pet Products. Ogni capo pensato per durare, riconoscersi e comunicare professionalità anche nel lavoro pratico.</p>", "made": ["Rebrand logo Leopet e Carbone Pet Products", "T-shirt azzurra Leopet", "T-shirt Carbone Pet Products", "Gilet alta visibilità Leopet", "Gilet alta visibilità Carbone", "Immagini prodotto e ambientate"], "tags": ["Divise da lavoro", "Rebrand logo", "T-shirt", "Gilet"], "link": {"href": "https://leopet.it/", "label": "Visita il sito"}}, {"name": "Industrial Data Labs", "cat": "Azienda B2B / Tech industriale", "head": "Quando il B2B incontra l'ironia.", "img": "assets/img_100c9dfbccaa.webp", "gallery": ["assets/img_cf37458956e0.webp", "assets/img_6f9917955899.webp", "assets/img_f550c0487f25.webp"], "story": "<p>Industrial Data Labs lavora nel mondo dell'automazione industriale B2B. Contesto tecnico, clienti seri, fiere specifiche di settore. Non il tipo di azienda a cui pensi quando parli di capi creativi — eppure.</p>\n                    <p>Siamo partiti da un insight semplice: in un settore dove tutti portano in fiera le solite penne e block notes, un cappellino con scritto \"VALVE INVADERS\" si ricorda. Abbiamo costruito un concept grafico ispirato alla cultura pop, con frasi che giocano sul mondo industriale: \"MAY THE TORQUE BE WITH YOU\", \"HOUSTON WE SOLVED THE PROBLEM\". T-shirt nere e bianche, cappellino beige, tutto con stampe grafiche pensate per sembrare un brand streetwear, non uno stand fieristico.</p>", "made": ["Concept grafico e copy per ogni prodotto", "T-shirt nere \"VALVE INVADERS\"", "T-shirt bianche \"MAY THE TORQUE BE WITH YOU\"", "T-shirt \"HOUSTON WE SOLVED THE PROBLEM\"", "Cappellino beige con grafica personalizzata", "Shooting prodotto e immagini ambientate"], "tags": ["T-shirt", "Cappellini", "Fiera", "Concept grafico"], "link": {"href": "https://industrialdatalabs.com/", "label": "Visita il sito"}}, {"name": "Love Society", "cat": "Brand / Lifestyle", "head": "Cappellini che viaggiano.", "img": "assets/img_6baa608c1f55.webp", "gallery": ["assets/img_ab158d1ae29b.webp", "assets/img_54b92d0fe1a0.webp"], "story": "<p>Love Society è un brand lifestyle legato a viaggio, community e abbigliamento. Per loro la cura del prodotto è tutto: ogni capo deve essere coerente con un'identità visiva precisa e riconoscibile.</p>\n                    <p>Abbiamo prodotto cappellini in velluto e corduroy, neri e marroni, con ricamo \"LOCAL ANYWHERE\" e \"LOVE SOCIETY\". Prodotto finito, pronto per essere venduto e indossato.</p>", "made": ["Cappellini corduroy neri e marroni", "Ricamo \"LOCAL ANYWHERE\"", "Ricamo \"LOVE SOCIETY\"", "Shooting prodotto e ambientato"], "tags": ["Cappellini", "Ricamo", "Brand"], "link": null}, {"name": "DF Assicurazioni", "cat": "Azienda / Evento sportivo", "head": "Un torneo, una maglietta, un team.", "img": "assets/img_1b2a8f73d5d3.webp", "gallery": ["assets/img_4fb4d4e27e5e.webp", "assets/img_6a5907f6e51b.webp"], "story": "<p>DF Assicurazioni Unipol aveva bisogno di qualcosa di semplice ma efficace: una maglietta per il loro torneo di padel aziendale. Non un gadget qualsiasi — un capo che facesse sentire il team unito, riconoscibile e parte di qualcosa.</p>\n                    <p>Abbiamo realizzato t-shirt personalizzate con grafica e logo coordinati. Piccolo progetto, grande impatto sul campo.</p>", "made": ["T-shirt personalizzate per torneo padel", "Grafica coordinata al brand"], "tags": ["T-shirt", "Evento padel", "Team building"], "link": null}, {"name": "Evergreen", "cat": "Associazione / Benefica", "head": "Una maglietta che vale più di una maglietta.", "img": "assets/img_0f8a2ec9acba.webp", "gallery": ["assets/img_7dff6f05d7e5.webp", "assets/img_1a8a65c2922f.webp"], "story": "<p>Evergreen è un'associazione culturale e benefica attiva sul territorio di Brescia. Il prodotto qui non è solo una maglietta: è uno strumento di comunità, un modo per rendere riconoscibili volontari e partecipanti, per dare un'identità visiva a chi fa del bene.</p>\n                    <p>Abbiamo realizzato t-shirt verdi con grafica Evergreen Brescia. Semplici, riconoscibili, pensate per durare e per essere indossate con orgoglio.</p>", "made": ["T-shirt verdi Evergreen Brescia", "Shooting immagini prodotto e ambientate"], "tags": ["T-shirt", "Associazione", "Community"], "link": {"href": "https://linktr.ee/evergreenbrescia", "label": "Linktree"}}, {"name": "Feel It", "cat": "Evento musicale / Capsule", "head": "Una capsule nata tra il palco e la pista.", "img": "assets/img_c92594bc7fc9.webp", "gallery": ["assets/img_c1fe3ebd53f4.webp", "assets/img_018b0cd3c374.webp", "assets/img_45cf9975754d.webp"], "story": "<p>Feel It è un evento musicale che unisce musica, community e identità visiva forte. Una serata non si ricorda solo per la musica — si ricorda anche per quello che porti a casa. Qui il capo non è un gadget: è parte del racconto.</p>\n                    <p>Abbiamo lavorato su grafiche potenti, pensate per stare su t-shirt bianche e nere. Front e back, stile streetwear, immagini ambientate in contesto festa. Produzione e vendita congiunta con il nostro brand Mea Culpa Clothing.</p>", "made": ["Concept grafico e direzione artistica", "T-shirt bianche e nere front/back", "Shooting immagini prodotto", "Immagini ambientate in contesto party", "Produzione e vendita congiunta"], "tags": ["T-shirt", "Capsule", "Evento", "Grafica"], "link": null}, {"name": "Soleil", "cat": "Evento musicale / Community", "head": "Capi che durano dopo la serata.", "img": "assets/img_425527943315.webp", "gallery": ["assets/img_e4dabe3032b1.webp", "assets/img_0fcf102b7c22.webp"], "story": "<p>Soleil è un evento musicale con una community riconoscibile. La collaborazione con Mea Culpa ha prodotto una grafica originale e capi personalizzati pensati per essere indossati, venduti e ricordati ben oltre la serata.</p>", "made": ["Concept grafico evento", "Capi personalizzati per evento", "Produzione e vendita congiunta"], "tags": ["Capi evento", "Grafica", "Collab"], "link": null}, {"name": "Konteiner X", "cat": "Brand / Retail / Stagionale", "head": "T-shirt di Natale, ma non le solite.", "img": "assets/img_f48aa0d8c82c.webp", "gallery": ["assets/img_7fe3066b8982.webp", "assets/img_c95fbca4f504.webp"], "story": "<p>Konteiner X è un negozio di abbigliamento con un'identità visiva precisa. Per le feste abbiamo collaborato su una capsule di t-shirt natalizie con grafica originale, pensata per essere venduta in negozio e coerente con l'estetica del brand.</p>", "made": ["T-shirt natalizie capsule", "Grafica stagionale", "Produzione in collaborazione"], "tags": ["T-shirt", "Natale", "Collab"], "link": null}, {"name": "APD River", "cat": "Sport / Calcio", "head": "Una squadra, una nuova identità.", "img": "assets/img_9d553615f646.webp", "gallery": ["assets/img_ef23b5c1e5c8.webp", "assets/img_cc8dfe383c4e.webp", "assets/img_264d1f3d099d.webp"], "story": "<p>APD River Club United è una squadra di calcio con una storia e un'identità da valorizzare. Il progetto è partito da un rebrand: nuovo logo, nuova grafica, nuove divise. Perché una squadra che si veste bene gioca anche meglio — o almeno ci crede di più.</p>\n                    <p>Abbiamo seguito tutto: dal concept visivo alla produzione delle divise, passando per accessori e materiali coordinati.</p>", "made": ["Rebrand logo e identità visiva", "Divise da gioco", "Abbigliamento sportivo coordinato", "Accessori (cappellini, calzettoni)"], "tags": ["Divise calcio", "Rebrand", "Accessori"], "link": {"href": "https://www.apdriverclubunited.it/", "label": "Visita il sito"}}, {"name": "CUS Brescia", "cat": "Sport / Grest", "head": "Abbigliamento che resiste al grest.", "img": "assets/img_2022e8719cf3.webp", "gallery": ["assets/img_ea7827eb8912.webp", "assets/img_75a903cbb1ed.webp"], "story": "<p>CUS Brescia è una realtà sportiva e educativa. Per il loro grest estivo avevano bisogno di abbigliamento pensato per bambini e ragazzi: riconoscibile, resistente, adatto a giornate intense tra sport, giochi e attività all'aperto.</p>", "made": ["Abbigliamento sportivo per bambini", "Capi personalizzati grest"], "tags": ["Grest", "Bambini", "Sportivo"], "link": {"href": "https://cusbrescia.it/", "label": "Visita il sito"}}, {"name": "Mea Culpa Team", "cat": "Sport / Progetto interno", "head": "Il campo come laboratorio.", "img": "assets/img_2c0d13328f02.webp", "gallery": ["assets/img_ce27d11a2b0f.webp", "assets/img_0672e0635c36.webp"], "story": "<p>A volte il miglior modo per capire un prodotto è farlo per sé. Mea Culpa Team è la squadra di calcio che abbiamo sponsorizzato internamente: un laboratorio sul campo per sperimentare identità visiva sportiva, divise, concept grafico e linguaggio del mondo sport.</p>", "made": ["Logo e identità visiva squadra", "Concept grafico divise", "Produzione divise da calcio"], "tags": ["Divise calcio", "Logo", "Interno"], "link": null}, {"name": "Istituto Stanga", "cat": "Scuola / Identità e comunicazione", "head": "Identità scolastica che si indossa.", "img": "assets/img_38da5c8f53b7.webp", "gallery": ["assets/img_822d764b7c6c.webp", "assets/img_31844bbaa801.webp"], "story": "<p>L'Istituto Stanga è una scuola con una storia e un'identità da valorizzare. Il progetto con Mea Culpa Lab ha abbracciato grafica, comunicazione digitale e produzione: un lavoro su più livelli per dare forma visiva all'appartenenza scolastica.</p>\n                    <p>Dai capi personalizzati per studenti e staff, alle grafiche per il sito e i materiali di comunicazione — tutto costruito per sembrare pensato, non improvvisato.</p>", "made": ["Abbigliamento personalizzato scuola", "Grafiche per comunicazione digitale", "Supporto strategia marketing"], "tags": ["Abbigliamento", "Grafica", "Marketing"], "link": {"href": "https://istitutostanga.edu.it/", "label": "Visita il sito"}}, {"name": "Liceo Calini", "cat": "Scuola", "head": "Comunicazione e capi per una scuola con identità forte.", "img": "assets/img_a2158988441a.webp", "gallery": ["assets/img_7ffd1d74183b.webp", "assets/img_98255b779740.webp"], "story": "<p>Per il Liceo Calini abbiamo lavorato su grafiche, comunicazione scolastica e produzione di capi personalizzati. Prodotti pensati per rafforzare il senso di appartenenza tra studenti e staff.</p>", "made": [], "tags": [], "link": {"href": "https://www.liceocalini.edu.it/", "label": "Visita il sito"}}, {"name": "Tartaglia Olivieri", "cat": "Scuola", "head": "Capi e comunicazione per rafforzare identità e comunità.", "img": "assets/img_320cae0c4525.webp", "gallery": ["assets/img_32ce34a5fc26.webp", "assets/img_1687dfb0fcf5.webp"], "story": "<p>Con Tartaglia Olivieri abbiamo costruito un percorso su comunicazione scolastica e produzione di abbigliamento: grafiche, capi e materiali pensati per eventi, classi e senso di gruppo.</p>", "made": [], "tags": [], "link": {"href": "https://www.tartaglia-olivieri.edu.it/", "label": "Visita il sito"}}, {"name": "Liceo Arnaldo", "cat": "Scuola", "head": "Appartenenza e identità visiva per studenti e staff.", "img": "assets/img_2e2f670de94f.webp", "gallery": ["assets/img_962f22ed9791.webp", "assets/img_6a2525211dca.webp"], "story": "<p>Per il Liceo Arnaldo abbiamo lavorato su comunicazione e produzione di capi personalizzati, con focus su giovani, appartenenza e identità scolastica contemporanea.</p>", "made": [], "tags": [], "link": {"href": "https://liceoarnaldo.edu.it/", "label": "Visita il sito"}}];
+(()=>{
+  const modal = document.getElementById('pmodal');
+  const content = document.getElementById('pmodalContent');
+  if(!modal) return;
+  function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function open(i){
+    const p = PROJECTS[i]; if(!p) return;
+    const gal = (p.gallery||[]).map(s=>`<img loading="lazy" decoding="async" src="${s}" alt="${esc(p.name)}">`).join('');
+    const made = (p.made&&p.made.length)?`<div class="made-title">Cosa abbiamo realizzato</div><ul class="made-list">${p.made.map(m=>`<li>${m}</li>`).join('')}</ul>`:'';
+    const tags = (p.tags&&p.tags.length)?`<div class="proj-tags">${p.tags.map(t=>`<span class="stag">${esc(t)}</span>`).join('')}</div>`:'';
+    content.innerHTML =
+      `<img class="pm-main" src="${p.img}" alt="${esc(p.name)}">`+
+      `<div class="pm-info">`+
+        `<span class="pm-cat">${esc(p.cat)}</span>`+
+        `<h3 class="pm-name">${esc(p.name)}</h3>`+
+        `<p class="pm-head">${p.head}</p>`+
+        `<div class="pm-story">${p.story}</div>`+
+        `${made}${tags}`+
+        (gal?`<div class="pm-section-label">Galleria</div><div class="pm-gallery">${gal}</div>`:'')+
+      `</div>`;
+    modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+    const box=modal.querySelector('.pmodal-box'); if(box) box.scrollTop=0;
+  }
+  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  document.querySelectorAll('.pcard').forEach(c=>c.addEventListener('click',()=>open(+c.dataset.i)));
+  modal.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',close));
+  addEventListener('keydown',e=>{ if(e.key==='Escape') close(); });
+})();
+</script>
 </body>
 </html>

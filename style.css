@@ -56,30 +56,33 @@ nav.scrolled {
   color: #fff;
   flex-shrink: 0;
 }
-.nav-logo em { font-style: normal; color: var(--blue); }
+.nav-logo em { font-style: normal; color: #fff; margin: 0 .1em; transition: color .3s; }
+nav.scrolled .nav-logo em { color: var(--blue-lt); }
 .nav-links {
-  display: flex; gap: 6px; list-style: none;
+  display: flex; gap: 8px; list-style: none;
 }
 .nav-links a {
   font-family: var(--ff-b);
   font-size: 13px; font-weight: 600;
   text-decoration: none;
-  color: rgba(255,255,255,0.92);
-  background: rgba(255,255,255,0.12);
-  padding: 8px 20px;
+  color: rgba(255,255,255,0.85);
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 8px 18px;
   border-radius: 30px;
-  transition: background .2s, color .2s;
+  transition: background .2s, color .2s, border-color .2s;
 }
-.nav-links a:hover { background: rgba(255,255,255,0.16); color: #fff; }
-.nav-links a.active { background: rgba(255,255,255,0.14); color: #fff; }
+.nav-links a:hover { background: rgba(255,255,255,0.10); color: #fff; border-color: rgba(255,255,255,0.22); }
+.nav-links a.active { background: rgba(255,255,255,0.14); color: #fff; border-color: rgba(255,255,255,0.18); }
 .nav-cta {
   font-family: var(--ff-b); font-size: 13px; font-weight: 700;
   background: var(--blue); color: #fff;
-  padding: 10px 24px; border-radius: 30px;
+  padding: 10px 26px; border-radius: 30px;
   text-decoration: none;
-  transition: background .2s;
+  box-shadow: 0 6px 18px rgba(37,88,160,.32);
+  transition: background .2s, transform .2s, box-shadow .2s;
 }
-.nav-cta:hover { background: var(--blue-lt); }
+.nav-cta:hover { background: var(--blue-lt); transform: translateY(-1px); box-shadow: 0 9px 24px rgba(37,88,160,.42); }
 
 /* ── HAMBURGER ───────────────────────────────────────────────── */
 .nav-burger {
@@ -141,12 +144,47 @@ nav.scrolled {
   display: flex; align-items: center; gap: 8px;
   margin-bottom: 20px;
 }
-.sec-label svg {
-  width: 22px; height: 22px;
-  animation: spin-slow 10s linear infinite;
-  flex-shrink: 0;
-  fill: currentColor;
+.sec-label svg { width: 25px; height: 25px; flex-shrink: 0; }
+
+/* ── AMPOLLA / FLASK (concept laboratorio) ──────────────────── */
+.flask { display: inline-block; overflow: visible; }
+.flask-liquid {
+  opacity: .5;
+  transform-box: fill-box; transform-origin: 50% 100%;
+  animation: flask-bob 3.4s ease-in-out infinite;
 }
+@keyframes flask-bob { 0%,100% { transform: translateY(0) scaleY(1); } 50% { transform: translateY(-.4px) scaleY(1.025); } }
+
+/* bollicine che escono dal collo e salgono oltre l'ampolla (ebollizione) */
+.flask-bubble { transform-box: fill-box; transform-origin: 50% 50%; opacity: 0; }
+.flask-bubble.b1 { animation: boil-a 2.1s ease-in infinite; }
+.flask-bubble.b2 { animation: boil-b 2.7s ease-in infinite .55s; }
+.flask-bubble.b3 { animation: boil-c 2.3s ease-in infinite 1.05s; }
+.flask-bubble.b4 { animation: boil-a 2.9s ease-in infinite 1.6s; }
+@keyframes boil-a {
+  0%  { transform: translate(0,2px) scale(.3); opacity: 0; }
+  20% { opacity: .95; }
+  60% { transform: translate(-1.1px,-5px) scale(1); }
+  80% { opacity: .55; }
+  100%{ transform: translate(.5px,-12px) scale(1.1); opacity: 0; }
+}
+@keyframes boil-b {
+  0%  { transform: translate(0,2px) scale(.3); opacity: 0; }
+  20% { opacity: .95; }
+  55% { transform: translate(1.1px,-5px) scale(1); }
+  80% { opacity: .5; }
+  100%{ transform: translate(-.8px,-13px) scale(1.12); opacity: 0; }
+}
+@keyframes boil-c {
+  0%  { transform: translate(0,2px) scale(.3); opacity: 0; }
+  22% { opacity: .9; }
+  100%{ transform: translate(1.1px,-11px) scale(1.05); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .flask-bubble { animation: none; opacity: .5; }
+  .flask-liquid { animation: none; }
+}
+
 .sec-label span {
   font-family: var(--ff-b); font-size: 12px; font-weight: 700;
   letter-spacing: .16em; text-transform: uppercase;
@@ -553,8 +591,7 @@ footer {
 }
 .loader.done { opacity: 0; visibility: hidden; pointer-events: none; }
 .loader svg {
-  width: 60px; height: 60px; color: #fff;
-  animation: spin-slow 2.4s linear infinite;
+  width: 64px; height: 64px; color: #fff;
 }
 
 /* ── PAGE HERO (pagine interne) ──────────────────────────────── */
@@ -576,13 +613,12 @@ footer {
 .hero-star {
   width: clamp(60px, 8vw, 118px); height: clamp(60px, 8vw, 118px);
   color: var(--black);
-  animation: spin-slow 10s linear infinite;
   flex-shrink: 0;
 }
 .hero-row { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
 
 /* ── MANIFESTO (sticky scroll) ───────────────────────────────── */
-.manifesto { position: relative; height: 300vh; }
+.manifesto { position: relative; height: 175vh; }
 .manifesto-sticky {
   position: sticky; top: 0;
   height: 100vh; width: 100%;
@@ -621,7 +657,7 @@ footer {
 .manifesto-statement em { font-style: normal; color: var(--blue-lt); }
 
 @media (max-width: 900px) {
-  .manifesto { height: 220vh; }
+  .manifesto { height: 150vh; }
   .manifesto-svg { width: 300%; }
   .manifesto-svg textPath { font-size: 130px; }
 }
@@ -637,22 +673,7 @@ footer {
 /* Nav auto-hide */
 nav.nav-hidden { transform: translateY(-110%); }
 
-/* Cursore custom */
-.cur-dot {
-  position: fixed; left: -4px; top: -4px;
-  width: 8px; height: 8px; border-radius: 50%;
-  background: var(--blue-lt);
-  z-index: 9000; pointer-events: none;
-}
-.cur-ring {
-  position: fixed; left: -21px; top: -21px;
-  width: 42px; height: 42px; border-radius: 50%;
-  border: 1.5px solid rgba(58,114,192,.55);
-  z-index: 9000; pointer-events: none;
-}
-@media (max-width: 900px), (pointer: coarse) {
-  .cur-dot, .cur-ring { display: none; }
-}
+/* nessun cursore personalizzato — si usa quello di sistema */
 
 /* Sfere decorative fluttuanti negli hero */
 #hero::after, .page-hero::after {

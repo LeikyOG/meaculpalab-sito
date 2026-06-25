@@ -19,16 +19,16 @@
   position: relative; overflow: hidden;
 }
 #hero h1 {
-  font-size: clamp(58px, 10.5vw, 168px);
-  line-height: .88;
+  font-size: clamp(46px, 7.6vw, 118px);
+  line-height: .9;
   color: #fff;
 }
 #hero .hero-star { color: var(--black); }
 #hero .hero-sub {
-  font-size: 16px; font-weight: 300;
-  color: rgba(255,255,255,.92);
-  max-width: 460px; line-height: 1.7;
-  margin: 28px 0 0;
+  font-size: clamp(17px, 1.5vw, 20px); font-weight: 400;
+  color: rgba(255,255,255,.94);
+  max-width: 580px; line-height: 1.65;
+  margin: 34px 0 0;
 }
 /* cartamodello come animazione di caricamento */
 #loader svg.loader-sketch {
@@ -37,27 +37,28 @@
 }
 .loader-sketch .draw {
   stroke-dasharray: 1; stroke-dashoffset: 1;
-  animation: loadDraw 1.9s ease .15s forwards;
+  animation: loadDraw 1s ease .08s forwards;
 }
-.loader-sketch .draw.db { animation-delay: .55s; }
-.loader-sketch .draw.dc { animation-delay: 1s; }
-.loader-sketch .sk-mark { opacity: 0; animation: loadMark .7s ease 1.45s forwards; }
+.loader-sketch .draw.db { animation-delay: .3s; }
+.loader-sketch .draw.dc { animation-delay: .55s; }
+.loader-sketch .sk-mark { opacity: 0; animation: loadMark .45s ease .8s forwards; }
 @keyframes loadDraw { to { stroke-dashoffset: 0; } }
 @keyframes loadMark { to { opacity: .85; } }
 @media (prefers-reduced-motion: reduce) {
   .loader-sketch .draw { stroke-dashoffset: 0; animation: none; }
   .loader-sketch .sk-mark { opacity: .85; animation: none; }
 }
-/* ── CHI SIAMO ──────────────────────────────────── */
-#chi-siamo { background: #fff; padding: 110px var(--pad-x); }
-.chi-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 80px; align-items: center; max-width: 1280px; margin: 0 auto; }
-.chi-grid .body-text p { font-size: 16px; font-weight: 300; color: var(--grey); line-height: 1.8; margin-top: 22px; }
-.chi-grid .body-text p strong { color: var(--black); font-weight: 700; }
-.chi-img {
-  aspect-ratio: 4/5; background: var(--grey-bg);
-  border-radius: 22px; overflow: hidden; position: relative;
-}
-.chi-img-inner { position: absolute; inset: 0; background-size: cover; background-position: center; }
+/* ── NUMERI (fascia compatta) ───────────────────── */
+#numeri-home { background: #fff; padding: 60px var(--pad-x); border-bottom: 1px solid var(--bd-light); }
+.nh-wrap { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 48px; flex-wrap: wrap; }
+.nh-lead { font-family: var(--ff-d); font-size: clamp(24px, 3vw, 42px); text-transform: uppercase; line-height: 1; color: var(--black); max-width: 340px; }
+.nh-lead em { font-style: normal; color: var(--blue); }
+.nh-stats { display: flex; gap: clamp(24px, 4vw, 60px); flex-wrap: wrap; }
+.nh-stat { display: flex; flex-direction: column; }
+.nh-stat .num { font-family: var(--ff-d); font-size: clamp(40px, 5vw, 66px); line-height: 1; color: var(--blue); }
+.nh-stat .lbl { font-family: var(--ff-b); font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--grey); margin-top: 6px; }
+.nh-cta { white-space: nowrap; }
+@media (max-width: 900px) { .nh-wrap { flex-direction: column; align-items: flex-start; gap: 32px; } }
 
 /* ── SERVIZI (navy accordion) ───────────────────── */
 #servizi { background: var(--black); color: #fff; padding: 90px var(--pad-x) 110px; }
@@ -92,47 +93,23 @@
 /* ── PROCESSO ───────────────────────────────────── */
 #processo { background: var(--black); color: #fff; padding: 100px var(--pad-x); }
 .proc-wrap { max-width: 1280px; margin: 0 auto; }
-.proc-wrap h2 { margin-bottom: 70px; }
+.proc-wrap h2 { margin-bottom: 18px; }
+.proc-wrap .proc-lead { font-size: 16px; font-weight: 300; color: rgba(255,255,255,.8); line-height: 1.75; max-width: 600px; }
 
 /* ── LAVORI ─────────────────────────────────────── */
 #lavori { background: #fff; padding: 100px var(--pad-x); }
 .lavori-wrap { max-width: 1380px; margin: 0 auto; }
 .lavori-cta { text-align: center; margin-top: 48px; }
-/* ── LISTA PROGETTI HOVER ───────────────────────── */
-.hov-list { position: relative; }
-.hov-row {
-  display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 22px;
-  padding: 20px 8px; border-top: 1px solid var(--bd-light);
-  text-decoration: none; color: inherit; position: relative;
-}
-.hov-list .hov-row:last-of-type { border-bottom: 1px solid var(--bd-light); }
-.hov-index { font-family: var(--ff-b); font-size: 12px; font-weight: 800; letter-spacing: .1em; color: var(--grey-lt); transition: color .35s; }
-.hov-name {
-  font-family: var(--ff-d); font-size: clamp(38px, 6vw, 104px); line-height: 1;
-  text-transform: uppercase; color: var(--grey-lt);
-  transition: color .35s, transform .45s cubic-bezier(.2,.6,.2,1);
-}
-.hov-cat { font-family: var(--ff-b); font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--grey-lt); transition: color .35s; white-space: nowrap; }
-.hov-go { font-family: var(--ff-d); font-size: 28px; color: var(--blue); opacity: 0; transform: translateX(-12px); transition: opacity .35s, transform .45s cubic-bezier(.2,.6,.2,1); }
-.hov-row:hover .hov-name { color: var(--black); transform: translateX(14px); }
-.hov-row:hover .hov-index { color: var(--blue); }
-.hov-row:hover .hov-cat { color: var(--grey); }
-.hov-row:hover .hov-go { opacity: 1; transform: translateX(0); }
-.hov-preview {
-  position: fixed; left: 0; top: 0; z-index: 60;
-  width: clamp(240px, 24vw, 360px); aspect-ratio: 4/3;
-  transform: translate(28px, -50%);
-  border-radius: 14px; overflow: hidden; pointer-events: none;
-  opacity: 0; visibility: hidden; transition: opacity .3s ease;
-  box-shadow: 0 28px 70px rgba(12,29,50,.32);
-}
-.hov-preview.show { opacity: 1; visibility: visible; }
-.hov-preview img { width: 100%; height: 100%; object-fit: cover; display: block; clip-path: inset(0 0 100% 0); transition: clip-path .5s cubic-bezier(.2,.6,.2,1); }
-.hov-preview.show img { clip-path: inset(0 0 0 0); }
-@media (max-width: 900px) {
-  .hov-row { grid-template-columns: auto 1fr auto; padding: 16px 4px; gap: 16px; }
-  .hov-go, .hov-preview { display: none; }
-}
+/* ── GRIGLIA PROGETTI COMPATTA (home) ───────────── */
+.hp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.hp-card { text-decoration: none; color: inherit; display: flex; flex-direction: column; }
+.hp-img { display: block; aspect-ratio: 4/3; overflow: hidden; border-radius: 14px; background: var(--grey-bg); }
+.hp-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s cubic-bezier(.2,.6,.2,1); }
+.hp-card:hover .hp-img img { transform: scale(1.05); }
+.hp-meta { display: flex; flex-direction: column; padding: 12px 2px 0; }
+.hp-cat { font-family: var(--ff-b); font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); }
+.hp-name { font-family: var(--ff-d); font-size: 24px; text-transform: uppercase; line-height: 1; color: var(--black); margin-top: 5px; }
+@media (max-width: 900px) { .hp-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; } }
 
 /* ── EXTRA ──────────────────────────────────────── */
 #extra { background: var(--grey-bg); padding: 100px var(--pad-x); }
@@ -167,6 +144,24 @@
   .chi-grid, .extra-grid, .ct-grid { grid-template-columns: 1fr; gap: 48px; }
   #hero { padding-top: 100px; }
 }
+
+/* ── CLIENTI (loghi scorrimento) ────────────────── */
+#clienti { background: var(--black); padding: 64px 0; overflow: hidden; }
+.cli-head { text-align: center; margin-bottom: 40px; padding: 0 var(--pad-x); }
+.cli-head h2 { color: #fff; }
+.cli-head h2 .ghost { -webkit-text-stroke-color: rgba(255,255,255,.72); }
+.cli-head p { font-size: 14px; font-weight: 300; color: rgba(255,255,255,.55); margin-top: 12px; }
+.logos-wrap { overflow: hidden; position: relative; }
+.logos-wrap::before, .logos-wrap::after { content: ''; position: absolute; top: 0; bottom: 0; width: 100px; z-index: 2; pointer-events: none; }
+.logos-wrap::before { left: 0; background: linear-gradient(to right, var(--black), transparent); }
+.logos-wrap::after { right: 0; background: linear-gradient(to left, var(--black), transparent); }
+.logos-track { display: flex; width: max-content; animation: logoscroll 45s linear infinite; }
+.logos-track:hover { animation-play-state: paused; }
+@keyframes logoscroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.logo-item { display: flex; align-items: center; justify-content: center; width: 176px; height: 100px; flex-shrink: 0; margin: 0 9px; padding: 20px 26px; background: #fff; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,.28); }
+.logo-img { max-width: 100%; max-height: 46px; width: auto; height: auto; object-fit: contain; opacity: .92; transition: opacity .3s, transform .3s; }
+.logo-item:hover .logo-img { opacity: 1; transform: scale(1.04); }
+@media (prefers-reduced-motion: reduce) { .logos-track { animation: none; } }
 </style>
 </head>
 <body>
@@ -234,42 +229,29 @@
 <section id="hero">
   <div>
     <div class="sec-label lt" style="margin-bottom:28px">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
+      <svg class="flask" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path class="flask-liquid" d="M9.33 11.6H14.67L17.95 16.9a1.5 1.5 0 0 1-1.33 2.2H7.38a1.5 1.5 0 0 1-1.33-2.2z" fill="currentColor"/><circle class="flask-bubble b1" cx="11.2" cy="4.7" r="1" fill="currentColor"/><circle class="flask-bubble b2" cx="12.3" cy="4" r="1.3" fill="currentColor"/><circle class="flask-bubble b3" cx="13" cy="5" r=".85" fill="currentColor"/><circle class="flask-bubble b4" cx="12" cy="5.3" r=".6" fill="currentColor"/><path d="M9.3 3h5.4M10.6 3v6.4L6.05 16.9a1.5 1.5 0 0 0 1.33 2.2h9.24a1.5 1.5 0 0 0 1.33-2.2L13.4 9.4V3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span>Abbigliamento B2B — Brescia, Italia</span>
     </div>
     <h1><span class="anim-letters">Abbigliamento</span></h1>
     <h1><span class="anim-letters">personalizzato</span></h1>
     <div class="hero-row">
       <h1><span class="anim-letters">dal concept al capo</span></h1>
-      <svg class="hero-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-        <path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/>
-      </svg>
+      <svg class="hero-star flask" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path class="flask-liquid" d="M9.33 11.6H14.67L17.95 16.9a1.5 1.5 0 0 1-1.33 2.2H7.38a1.5 1.5 0 0 1-1.33-2.2z" fill="currentColor"/><circle class="flask-bubble b1" cx="11.2" cy="4.7" r="1" fill="currentColor"/><circle class="flask-bubble b2" cx="12.3" cy="4" r="1.3" fill="currentColor"/><circle class="flask-bubble b3" cx="13" cy="5" r=".85" fill="currentColor"/><circle class="flask-bubble b4" cx="12" cy="5.3" r=".6" fill="currentColor"/><path d="M9.3 3h5.4M10.6 3v6.4L6.05 16.9a1.5 1.5 0 0 0 1.33 2.2h9.24a1.5 1.5 0 0 0 1.33-2.2L13.4 9.4V3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <a href="contatti.html" class="blob-cta">
         <span class="blob-bg"></span>
         <span>Richiedi<br>preventivo</span>
       </a>
     </div>
-    <p class="hero-sub">Produciamo capi su misura per scuole, aziende e società sportive. Dalla scelta del tessuto alla consegna — filiera italiana, zero intermediari.</p>
+    <p class="hero-sub">Disegniamo e produciamo capi su misura: dal primo bozzetto alla consegna, ogni fase gestita da noi. Filiera italiana, zero intermediari.</p>
   </div>
 </section>
 
-<!-- MARQUEE -->
-<div class="marquee-stripe">
-  <div class="marquee-inner">
-    <span class="marquee-item">produzione</span><span class="marquee-item">scuole</span><span class="marquee-item">aziende</span>
-    <span class="marquee-item">sport &amp; grest</span><span class="marquee-item">design</span><span class="marquee-item">made in italy</span>
-    <span class="marquee-item">su misura</span><span class="marquee-item">qualità</span>
-    <span class="marquee-item">produzione</span><span class="marquee-item">scuole</span><span class="marquee-item">aziende</span>
-    <span class="marquee-item">sport &amp; grest</span><span class="marquee-item">design</span><span class="marquee-item">made in italy</span>
-    <span class="marquee-item">su misura</span><span class="marquee-item">qualità</span>
-  </div>
-</div>
 
 <!-- MANIFESTO -->
 <section class="manifesto" id="manifesto">
   <div class="manifesto-sticky">
     <div class="manifesto-label sec-label lt">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
+      <svg class="flask" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path class="flask-liquid" d="M9.33 11.6H14.67L17.95 16.9a1.5 1.5 0 0 1-1.33 2.2H7.38a1.5 1.5 0 0 1-1.33-2.2z" fill="currentColor"/><circle class="flask-bubble b1" cx="11.2" cy="4.7" r="1" fill="currentColor"/><circle class="flask-bubble b2" cx="12.3" cy="4" r="1.3" fill="currentColor"/><circle class="flask-bubble b3" cx="13" cy="5" r=".85" fill="currentColor"/><circle class="flask-bubble b4" cx="12" cy="5.3" r=".6" fill="currentColor"/><path d="M9.3 3h5.4M10.6 3v6.4L6.05 16.9a1.5 1.5 0 0 0 1.33 2.2h9.24a1.5 1.5 0 0 0 1.33-2.2L13.4 9.4V3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span>Il nostro manifesto</span>
     </div>
     <svg class="manifesto-svg" id="manifestoSvg" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
@@ -280,34 +262,33 @@
         <textPath id="manifestoText" href="#manifestoPath" startOffset="-80%">Su misura — filiera italiana — zero intermediari</textPath>
       </text>
     </svg>
-    <h2 class="manifesto-statement" id="manifestoStatement">Aiutiamo scuole, aziende e squadre a <em>farsi riconoscere</em> — con capi pensati, disegnati e prodotti su misura.</h2>
+    <h2 class="manifesto-statement" id="manifestoStatement">Trasformiamo un'idea in capi che si indossano con <em>orgoglio</em> — pensati, disegnati e prodotti su misura.</h2>
   </div>
 </section>
 
-<!-- CHI SIAMO -->
-<section id="chi-siamo">
-  <div class="chi-grid">
-    <div class="reveal">
-      <div class="sec-label dk">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
-        <span>Chi siamo</span>
-      </div>
-      <h2>Un team.<br>Un progetto <span class="ghost">alla volta.</span></h2>
-      <div class="body-text">
-        <p>Siamo un gruppo con anni di esperienza diretta nel mondo moda, specializzati nella <strong>produzione di abbigliamento personalizzato</strong> per il mercato B2B.</p>
-        <p>Affianchiamo ogni cliente dalla prima idea al prodotto finito: materiali, grafica, filiera produttiva — tutto gestito internamente, senza intermediari. Lavoriamo con <strong>fornitori selezionati</strong> e privilegiamo la <strong>filiera italiana</strong>.</p>
-        <p>Ogni progetto nasce da un ascolto attento e si traduce in qualcosa di unico, fatto per durare.</p>
-      </div>
-      <div class="stats">
-        <div class="stat"><div class="num">50+</div><div class="lbl">Clienti attivi</div></div>
-        <div class="stat"><div class="num">3</div><div class="lbl">Settori</div></div>
-        <div class="stat"><div class="num">360°</div><div class="lbl">Servizio</div></div>
-      </div>
-      <div style="margin-top:40px"><a href="about.html" class="btn btn-dark">Scopri chi siamo</a></div>
+<!-- NUMERI (fascia compatta) -->
+<section id="numeri-home">
+  <div class="nh-wrap reveal">
+    <p class="nh-lead">Un solo interlocutore, <em>dall'idea alla consegna.</em></p>
+    <div class="nh-stats">
+      <div class="nh-stat"><span class="num">50+</span><span class="lbl">Clienti attivi</span></div>
+      <div class="nh-stat"><span class="num">360&deg;</span><span class="lbl">Servizio completo</span></div>
+      <div class="nh-stat"><span class="num">0</span><span class="lbl">Intermediari</span></div>
+      <div class="nh-stat"><span class="num">100%</span><span class="lbl">Made in Italy</span></div>
     </div>
-    <div class="reveal-scale d2">
-      <div class="chi-img"><div class="chi-img-inner" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNTAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnMSIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwYjE5MjkiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwZjI1NDQiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0iZjEiIHgxPSIwIiB5MT0iMCIgeDI9IjAuMyIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmNGVmZTQiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNjOGJmYWEiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0iZjIiIHgxPSIwIiB5MT0iMCIgeDI9IjAuMyIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMxYTNhNmIiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwYjE5MjkiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0iZjMiIHgxPSIwIiB5MT0iMCIgeDI9IjAuMyIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMyYzVmYWEiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxYTNhNmIiLz48L2xpbmVhckdyYWRpZW50PjxmaWx0ZXIgaWQ9InNoIj48ZmVEcm9wU2hhZG93IGR4PSI0IiBkeT0iOCIgc3RkRGV2aWF0aW9uPSIxMCIgZmxvb2Qtb3BhY2l0eT0iMC40NSIvPjwvZmlsdGVyPjwvZGVmcz48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0idXJsKCNiZzEpIi8+PHBhdHRlcm4gaWQ9ImdyIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPjxwYXRoIGQ9Ik00MCAwTDAgMCAwIDQwIiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMjQ0LDIzOSwyMjgsMC4wMjUpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI1MDAiIGZpbGw9InVybCgjZ3IpIi8+PGcgZmlsdGVyPSJ1cmwoI3NoKSI+PHJlY3QgeD0iNzYiIHk9IjEwMCIgd2lkdGg9IjEwOCIgaGVpZ2h0PSIzMjAiIHJ4PSI1NCIgZmlsbD0idXJsKCNmMSkiIHRyYW5zZm9ybT0icm90YXRlKC04LDEzMCwyNjApIi8+PGxpbmUgeDE9IjExMCIgeTE9IjEwNSIgeDI9IjEwNSIgeTI9IjQxNSIgc3Ryb2tlPSJyZ2JhKDE0LDI2LDQwLDAuMSkiIHN0cm9rZS13aWR0aD0iMS41IiB0cmFuc2Zvcm09InJvdGF0ZSgtOCwxMzAsMjYwKSIvPjxsaW5lIHgxPSIxMzAiIHkxPSIxMDAiIHgyPSIxMjUiIHkyPSI0MjAiIHN0cm9rZT0icmdiYSgxNCwyNiw0MCwwLjA3KSIgc3Ryb2tlLXdpZHRoPSIxIiB0cmFuc2Zvcm09InJvdGF0ZSgtOCwxMzAsMjYwKSIvPjwvZz48ZyBmaWx0ZXI9InVybCgjc2gpIj48cmVjdCB4PSIxODYiIHk9IjgwIiB3aWR0aD0iMTEyIiBoZWlnaHQ9IjM1MCIgcng9IjU2IiBmaWxsPSJ1cmwoI2YyKSIgdHJhbnNmb3JtPSJyb3RhdGUoNCwyNDIsMjU1KSIvPjxsaW5lIHgxPSIyMjYiIHkxPSI4MiIgeDI9IjIyMCIgeTI9IjQyOCIgc3Ryb2tlPSJyZ2JhKDI0NCwyMzksMjI4LDAuMDUpIiBzdHJva2Utd2lkdGg9IjEiIHRyYW5zZm9ybT0icm90YXRlKDQsMjQyLDI1NSkiLz48L2c+PGcgZmlsdGVyPSJ1cmwoI3NoKSI+PHJlY3QgeD0iMjkwIiB5PSIxMTAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMzAwIiByeD0iNTAiIGZpbGw9InVybCgjZjMpIiB0cmFuc2Zvcm09InJvdGF0ZSgtNSwzNDAsMjYwKSIvPjwvZz48ZyBmaWx0ZXI9InVybCgjc2gpIj48cmVjdCB4PSIzODAiIHk9IjEzMCIgd2lkdGg9Ijg4IiBoZWlnaHQ9IjI2MCIgcng9IjQ0IiBmaWxsPSJ1cmwoI2YxKSIgb3BhY2l0eT0iMC42NSIgdHJhbnNmb3JtPSJyb3RhdGUoNiw0MjQsMjYwKSIvPjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSgtOCwxMzAsMjYwKSB0cmFuc2xhdGUoNzYsMTkwKSI+PHJlY3QgeD0iLTIiIHk9IjAiIHdpZHRoPSI1MiIgaGVpZ2h0PSIzMCIgZmlsbD0iI2Y0ZWZlNCIgcng9IjIiLz48bGluZSB4MT0iMTAiIHkxPSIzMCIgeDI9IjEwIiB5Mj0iNDgiIHN0cm9rZT0iIzBiMTkyOSIgc3Ryb2tlLXdpZHRoPSIxIi8+PHRleHQgeD0iMjYiIHk9IjE5IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI4IiBmaWxsPSIjMGIxOTI5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCI+TUNMPC90ZXh0PjwvZz48dGV4dCB4PSI1NDAiIHk9IjE4MCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9InJnYmEoMjQ0LDIzOSwyMjgsMC4yKSIgbGV0dGVyLXNwYWNpbmc9IjUiPk1BVEVSSUFMSTwvdGV4dD48dGV4dCB4PSI1NDAiIHk9IjIyMCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9InJnYmEoMjQ0LDIzOSwyMjgsMC4yKSIgbGV0dGVyLXNwYWNpbmc9IjUiPlNFTEVaSU9OQVRJPC90ZXh0Pjx0ZXh0IHg9IjU0MCIgeT0iMzEwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSI0NCIgZmlsbD0icmdiYSgyNDQsMjM5LDIyOCwwLjA1KSIgZm9udC1zdHlsZT0iaXRhbGljIj5xdWFsaXTDoDwvdGV4dD48bGluZSB4MT0iNDgiIHkxPSI0NzAiIHgyPSI3NTIiIHkyPSI0NzAiIHN0cm9rZT0icmdiYSgyNDQsMjM5LDIyOCwwLjA2KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9zdmc+')"></div></div>
-    </div>
+    <a href="about.html" class="btn btn-dark nh-cta">Scopri chi siamo</a>
+  </div>
+</section>
+
+<!-- CLIENTI (fascia loghi a scorrimento) -->
+<section id="clienti">
+  <div class="cli-head reveal">
+    <div class="sec-label lt" style="justify-content:center"><svg class="flask" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path class="flask-liquid" d="M9.33 11.6H14.67L17.95 16.9a1.5 1.5 0 0 1-1.33 2.2H7.38a1.5 1.5 0 0 1-1.33-2.2z" fill="currentColor"/><circle class="flask-bubble b1" cx="11.2" cy="4.7" r="1" fill="currentColor"/><circle class="flask-bubble b2" cx="12.3" cy="4" r="1.3" fill="currentColor"/><circle class="flask-bubble b3" cx="13" cy="5" r=".85" fill="currentColor"/><circle class="flask-bubble b4" cx="12" cy="5.3" r=".6" fill="currentColor"/><path d="M9.3 3h5.4M10.6 3v6.4L6.05 16.9a1.5 1.5 0 0 0 1.33 2.2h9.24a1.5 1.5 0 0 0 1.33-2.2L13.4 9.4V3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Partner &amp; Clienti</span></div>
+    <h2>Si sono <span class="ghost">fidati di noi.</span></h2>
+    <p>Oltre 50 realt&agrave; tra scuole, aziende e societ&agrave; sportive in tutta Italia.</p>
+  </div>
+  <div class="logos-wrap">
+    <div class="logos-track"><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_60d301924ebd.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_406ef07ef9f6.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_0a4beec35a52.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_4b7dc9e7fae8.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_ce6fa0396a56.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_d1b8991e1caf.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_65f9cb0fb60b.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_4a37d2e56cfc.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_9b18748bc42e.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_2f9dc3fa1218.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_1dee76b465fd.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_3a9cdf39d50d.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_f365a0a88a41.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_3046723ac06f.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_562607011d3b.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_60d301924ebd.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_406ef07ef9f6.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_0a4beec35a52.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_4b7dc9e7fae8.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_ce6fa0396a56.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_d1b8991e1caf.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_65f9cb0fb60b.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_4a37d2e56cfc.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_9b18748bc42e.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_2f9dc3fa1218.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_1dee76b465fd.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_3a9cdf39d50d.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_f365a0a88a41.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_3046723ac06f.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_562607011d3b.webp" alt="Cliente Mea Culpa Lab"></div></div>
   </div>
 </section>
 
@@ -315,7 +296,7 @@
 <section id="servizi">
   <div class="svc-wrap">
     <div class="sec-label lt reveal">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
+      <svg class="flask" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path class="flask-liquid" d="M9.33 11.6H14.67L17.95 16.9a1.5 1.5 0 0 1-1.33 2.2H7.38a1.5 1.5 0 0 1-1.33-2.2z" fill="currentColor"/><circle class="flask-bubble b1" cx="11.2" cy="4.7" r="1" fill="currentColor"/><circle class="flask-bubble b2" cx="12.3" cy="4" r="1.3" fill="currentColor"/><circle class="flask-bubble b3" cx="13" cy="5" r=".85" fill="currentColor"/><circle class="flask-bubble b4" cx="12" cy="5.3" r=".6" fill="currentColor"/><path d="M9.3 3h5.4M10.6 3v6.4L6.05 16.9a1.5 1.5 0 0 0 1.33 2.2h9.24a1.5 1.5 0 0 0 1.33-2.2L13.4 9.4V3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span>Cosa facciamo</span>
     </div>
     <h2 class="reveal" style="color:#fff;margin-bottom:24px">Un servizio <span class="ghost">completo.</span></h2>
@@ -324,7 +305,7 @@
     <div class="svc-flex">
       <div class="svc-accordion reveal" id="svcAccordion">
 
-        <div class="svc-item open" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNTAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnMyIgeDE9IjAiIHkxPSIwIiB4Mj0iMC40IiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y0ZWZlNCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2RkZDVjMiIvPjwvbGluZWFyR3JhZGllbnQ+PGZpbHRlciBpZD0ic2gzIj48ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iOCIgc3RkRGV2aWF0aW9uPSIxNCIgZmxvb2Qtb3BhY2l0eT0iMC4xMyIvPjwvZmlsdGVyPjxmaWx0ZXIgaWQ9InNoNCI+PGZlRHJvcFNoYWRvdyBkeD0iMCIgZHk9IjQiIHN0ZERldmlhdGlvbj0iOCIgZmxvb2Qtb3BhY2l0eT0iMC4xIi8+PC9maWx0ZXI+PC9kZWZzPjxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNTAwIiBmaWxsPSJ1cmwoI2JnMykiLz48cGF0dGVybiBpZD0ibGluIiB3aWR0aD0iMyIgaGVpZ2h0PSIzIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48bGluZSB4MT0iMCIgeTE9IjAiIHgyPSIzIiB5Mj0iMyIgc3Ryb2tlPSJyZ2JhKDE0LDI2LDQwLDAuMDM1KSIgc3Ryb2tlLXdpZHRoPSIwLjUiLz48L3BhdHRlcm4+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI1MDAiIGZpbGw9InVybCgjbGluKSIvPjxnIGZpbHRlcj0idXJsKCNzaDMpIj48cmVjdCB4PSI2MCIgeT0iMTEwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIxMCIgcng9IjQiIGZpbGw9IiMwZjI1NDQiLz48cmVjdCB4PSI2MCIgeT0iMTEwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjM4IiByeD0iNCIgZmlsbD0iIzFhM2E2YiIvPjxsaW5lIHgxPSI2MCIgeTE9IjIxMCIgeDI9IjM2MCIgeTI9IjIxMCIgc3Ryb2tlPSJyZ2JhKDI0NCwyMzksMjI4LDAuMDcpIiBzdHJva2Utd2lkdGg9IjEiLz48cmVjdCB4PSIxNDAiIHk9IjI5NiIgd2lkdGg9IjY0IiBoZWlnaHQ9IjIwIiBmaWxsPSJyZ2JhKDI0NCwyMzksMjI4LDAuOSkiIHJ4PSIyIi8+PHRleHQgeD0iMTcyIiB5PSIzMDkiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjciIGZpbGw9IiMwYjE5MjkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSJib2xkIiBsZXR0ZXItc3BhY2luZz0iMiI+TUNMPC90ZXh0PjwvZz48ZyBmaWx0ZXI9InVybCgjc2g0KSI+PHJlY3QgeD0iMzQwIiB5PSI4MCIgd2lkdGg9IjI2MCIgaGVpZ2h0PSIxOTAiIHJ4PSI0IiBmaWxsPSIjYzhiZmFhIi8+PGxpbmUgeDE9IjM0MCIgeTE9IjE3MCIgeDI9IjYwMCIgeTI9IjE3MCIgc3Ryb2tlPSJyZ2JhKDE0LDI2LDQwLDAuMDUpIiBzdHJva2Utd2lkdGg9IjEiLz48cmVjdCB4PSI0MzAiIHk9IjI1MCIgd2lkdGg9IjU0IiBoZWlnaHQ9IjE3IiBmaWxsPSJyZ2JhKDE0LDI2LDQwLDAuODIpIiByeD0iMiIvPjx0ZXh0IHg9IjQ1NyIgeT0iMjYyIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI3IiBmaWxsPSIjZjRlZmU0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCIgbGV0dGVyLXNwYWNpbmc9IjIiPk1DTDwvdGV4dD48L2c+PGcgZmlsdGVyPSJ1cmwoI3NoNCkiIHRyYW5zZm9ybT0icm90YXRlKC0xNCw2MzIsMzUwKSI+PHJlY3QgeD0iNTkyIiB5PSIyOTAiIHdpZHRoPSI4MCIgaGVpZ2h0PSIxMTgiIHJ4PSIzIiBmaWxsPSIjZjRlZmU0IiBzdHJva2U9InJnYmEoMTQsMjYsNDAsMC4xKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PHJlY3QgeD0iNjA0IiB5PSIzMDIiIHdpZHRoPSI1NiIgaGVpZ2h0PSI1OCIgZmlsbD0iIzBmMjU0NCIgcng9IjIiLz48dGV4dCB4PSI2MzIiIHk9IjMzOSIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiNmNGVmZTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc3R5bGU9Iml0YWxpYyI+TUNMPC90ZXh0PjxsaW5lIHgxPSI2MDgiIHkxPSIzNjgiIHgyPSI2NTYiIHkyPSIzNjgiIHN0cm9rZT0icmdiYSgxNCwyNiw0MCwwLjEyKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PHRleHQgeD0iNjMyIiB5PSIzODAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjYuNSIgZmlsbD0icmdiYSgxNCwyNiw0MCwwLjM4KSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjEuNSI+TUFERSBJTiBJVEFMWTwvdGV4dD48Y2lyY2xlIGN4PSI2MzIiIGN5PSIyOTQiIHI9IjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgxNCwyNiw0MCwwLjI1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PGxpbmUgeDE9IjYzMiIgeTE9IjI5MCIgeDI9IjYzMiIgeTI9IjI4MyIgc3Ryb2tlPSJyZ2JhKDE0LDI2LDQwLDAuMjUpIiBzdHJva2Utd2lkdGg9IjEiLz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTUsMzQ1KSByb3RhdGUoLTI4KSIgb3BhY2l0eT0iMC4xMiI+PGxpbmUgeDE9IjAiIHkxPSI0IiB4Mj0iOTAiIHkyPSI0IiBzdHJva2U9IiMwYjE5MjkiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIHgxPSIwIiB5MT0iMTAiIHgyPSI5MCIgeTI9IjEwIiBzdHJva2U9IiMwYjE5MjkiIHN0cm9rZS13aWR0aD0iMiIvPjxjaXJjbGUgY3g9IjAiIGN5PSI0IiByPSI2IiBmaWxsPSJub25lIiBzdHJva2U9IiMwYjE5MjkiIHN0cm9rZS13aWR0aD0iMS41Ii8+PGNpcmNsZSBjeD0iMCIgY3k9IjEwIiByPSI2IiBmaWxsPSJub25lIiBzdHJva2U9IiMwYjE5MjkiIHN0cm9rZS13aWR0aD0iMS41Ii8+PC9nPjx0ZXh0IHg9IjQwMCIgeT0iNDYyIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI5IiBmaWxsPSJyZ2JhKDE0LDI2LDQwLDAuMTgpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iNSI+T0dOSSBDQVBPLiBTVSBNSVNVUkEuPC90ZXh0Pjwvc3ZnPg==">
+        <div class="svc-item open" data-img="assets/svc_produzione.webp">
           <button class="svc-toggle" type="button">
             <span class="svc-name">Produzione &amp; Capi</span>
           </button>
@@ -337,11 +318,11 @@
               <span class="svc-tag">Accessori</span>
               <span class="svc-tag">Filiera italiana</span>
             </div>
-            <div class="svc-mini-img"><img loading="lazy" decoding="async" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNTAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnMyIgeDE9IjAiIHkxPSIwIiB4Mj0iMC40IiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y0ZWZlNCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2RkZDVjMiIvPjwvbGluZWFyR3JhZGllbnQ+PGZpbHRlciBpZD0ic2gzIj48ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iOCIgc3RkRGV2aWF0aW9uPSIxNCIgZmxvb2Qtb3BhY2l0eT0iMC4xMyIvPjwvZmlsdGVyPjxmaWx0ZXIgaWQ9InNoNCI+PGZlRHJvcFNoYWRvdyBkeD0iMCIgZHk9IjQiIHN0ZERldmlhdGlvbj0iOCIgZmxvb2Qtb3BhY2l0eT0iMC4xIi8+PC9maWx0ZXI+PC9kZWZzPjxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNTAwIiBmaWxsPSJ1cmwoI2JnMykiLz48cGF0dGVybiBpZD0ibGluIiB3aWR0aD0iMyIgaGVpZ2h0PSIzIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48bGluZSB4MT0iMCIgeTE9IjAiIHgyPSIzIiB5Mj0iMyIgc3Ryb2tlPSJyZ2JhKDE0LDI2LDQwLDAuMDM1KSIgc3Ryb2tlLXdpZHRoPSIwLjUiLz48L3BhdHRlcm4+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI1MDAiIGZpbGw9InVybCgjbGluKSIvPjxnIGZpbHRlcj0idXJsKCNzaDMpIj48cmVjdCB4PSI2MCIgeT0iMTEwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIxMCIgcng9IjQiIGZpbGw9IiMwZjI1NDQiLz48cmVjdCB4PSI2MCIgeT0iMTEwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjM4IiByeD0iNCIgZmlsbD0iIzFhM2E2YiIvPjxsaW5lIHgxPSI2MCIgeTE9IjIxMCIgeDI9IjM2MCIgeTI9IjIxMCIgc3Ryb2tlPSJyZ2JhKDI0NCwyMzksMjI4LDAuMDcpIiBzdHJva2Utd2lkdGg9IjEiLz48cmVjdCB4PSIxNDAiIHk9IjI5NiIgd2lkdGg9IjY0IiBoZWlnaHQ9IjIwIiBmaWxsPSJyZ2JhKDI0NCwyMzksMjI4LDAuOSkiIHJ4PSIyIi8+PHRleHQgeD0iMTcyIiB5PSIzMDkiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjciIGZpbGw9IiMwYjE5MjkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSJib2xkIiBsZXR0ZXItc3BhY2luZz0iMiI+TUNMPC90ZXh0PjwvZz48ZyBmaWx0ZXI9InVybCgjc2g0KSI+PHJlY3QgeD0iMzQwIiB5PSI4MCIgd2lkdGg9IjI2MCIgaGVpZ2h0PSIxOTAiIHJ4PSI0IiBmaWxsPSIjYzhiZmFhIi8+PGxpbmUgeDE9IjM0MCIgeTE9IjE3MCIgeDI9IjYwMCIgeTI9IjE3MCIgc3Ryb2tlPSJyZ2JhKDE0LDI2LDQwLDAuMDUpIiBzdHJva2Utd2lkdGg9IjEiLz48cmVjdCB4PSI0MzAiIHk9IjI1MCIgd2lkdGg9IjU0IiBoZWlnaHQ9IjE3IiBmaWxsPSJyZ2JhKDE0LDI2LDQwLDAuODIpIiByeD0iMiIvPjx0ZXh0IHg9IjQ1NyIgeT0iMjYyIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI3IiBmaWxsPSIjZjRlZmU0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCIgbGV0dGVyLXNwYWNpbmc9IjIiPk1DTDwvdGV4dD48L2c+PGcgZmlsdGVyPSJ1cmwoI3NoNCkiIHRyYW5zZm9ybT0icm90YXRlKC0xNCw2MzIsMzUwKSI+PHJlY3QgeD0iNTkyIiB5PSIyOTAiIHdpZHRoPSI4MCIgaGVpZ2h0PSIxMTgiIHJ4PSIzIiBmaWxsPSIjZjRlZmU0IiBzdHJva2U9InJnYmEoMTQsMjYsNDAsMC4xKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PHJlY3QgeD0iNjA0IiB5PSIzMDIiIHdpZHRoPSI1NiIgaGVpZ2h0PSI1OCIgZmlsbD0iIzBmMjU0NCIgcng9IjIiLz48dGV4dCB4PSI2MzIiIHk9IjMzOSIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiNmNGVmZTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc3R5bGU9Iml0YWxpYyI+TUNMPC90ZXh0PjxsaW5lIHgxPSI2MDgiIHkxPSIzNjgiIHgyPSI2NTYiIHkyPSIzNjgiIHN0cm9rZT0icmdiYSgxNCwyNiw0MCwwLjEyKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PHRleHQgeD0iNjMyIiB5PSIzODAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjYuNSIgZmlsbD0icmdiYSgxNCwyNiw0MCwwLjM4KSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjEuNSI+TUFERSBJTiBJVEFMWTwvdGV4dD48Y2lyY2xlIGN4PSI2MzIiIGN5PSIyOTQiIHI9IjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgxNCwyNiw0MCwwLjI1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PGxpbmUgeDE9IjYzMiIgeTE9IjI5MCIgeDI9IjYzMiIgeTI9IjI4MyIgc3Ryb2tlPSJyZ2JhKDE0LDI2LDQwLDAuMjUpIiBzdHJva2Utd2lkdGg9IjEiLz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTUsMzQ1KSByb3RhdGUoLTI4KSIgb3BhY2l0eT0iMC4xMiI+PGxpbmUgeDE9IjAiIHkxPSI0IiB4Mj0iOTAiIHkyPSI0IiBzdHJva2U9IiMwYjE5MjkiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIHgxPSIwIiB5MT0iMTAiIHgyPSI5MCIgeTI9IjEwIiBzdHJva2U9IiMwYjE5MjkiIHN0cm9rZS13aWR0aD0iMiIvPjxjaXJjbGUgY3g9IjAiIGN5PSI0IiByPSI2IiBmaWxsPSJub25lIiBzdHJva2U9IiMwYjE5MjkiIHN0cm9rZS13aWR0aD0iMS41Ii8+PGNpcmNsZSBjeD0iMCIgY3k9IjEwIiByPSI2IiBmaWxsPSJub25lIiBzdHJva2U9IiMwYjE5MjkiIHN0cm9rZS13aWR0aD0iMS41Ii8+PC9nPjx0ZXh0IHg9IjQwMCIgeT0iNDYyIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI5IiBmaWxsPSJyZ2JhKDE0LDI2LDQwLDAuMTgpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iNSI+T0dOSSBDQVBPLiBTVSBNSVNVUkEuPC90ZXh0Pjwvc3ZnPg==" alt="Produzione capi"></div>
+            <div class="svc-mini-img"><img loading="lazy" decoding="async" src="assets/svc_produzione.webp" alt="Produzione capi"></div>
           </div>
         </div>
 
-        <div class="svc-item" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNTAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnMiIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwZjI1NDQiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwYjE5MjkiLz48L2xpbmVhckdyYWRpZW50PjxmaWx0ZXIgaWQ9InNoMiI+PGZlRHJvcFNoYWRvdyBkeD0iMiIgZHk9IjUiIHN0ZERldmlhdGlvbj0iOCIgZmxvb2Qtb3BhY2l0eT0iMC41Ii8+PC9maWx0ZXI+PC9kZWZzPjxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNTAwIiBmaWxsPSJ1cmwoI2JnMikiLz48cGF0dGVybiBpZD0id2VhdmUiIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPjxyZWN0IHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9InJnYmEoMjQ0LDIzOSwyMjgsMC4wMykiLz48cmVjdCB4PSI0IiB5PSI0IiB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSJyZ2JhKDI0NCwyMzksMjI4LDAuMDMpIi8+PC9wYXR0ZXJuPjxyZWN0IHg9IjgwIiB5PSI2MCIgd2lkdGg9IjY0MCIgaGVpZ2h0PSIzODAiIHJ4PSI0IiBmaWxsPSIjMGUxZTM4Ii8+PHJlY3QgeD0iODAiIHk9IjYwIiB3aWR0aD0iNjQwIiBoZWlnaHQ9IjM4MCIgZmlsbD0idXJsKCN3ZWF2ZSkiLz48ZyBmaWx0ZXI9InVybCgjc2gyKSI+PHJlY3QgeD0iMjYwIiB5PSIxNDAiIHdpZHRoPSIyODAiIGhlaWdodD0iMjIwIiByeD0iMyIgZmlsbD0iIzFhM2E2YiIvPjxyZWN0IHg9IjI3NCIgeT0iMTU0IiB3aWR0aD0iMjUyIiBoZWlnaHQ9IjE5MiIgcng9IjIiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNDQsMjM5LDIyOCwwLjEyKSIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtZGFzaGFycmF5PSI1LDQiLz48dGV4dCB4PSI0MDAiIHk9IjI1NiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iNTgiIGZpbGw9InJnYmEoMjQ0LDIzOSwyMjgsMC44OCkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmb250LXN0eWxlPSJpdGFsaWMiPk1DTDwvdGV4dD48bGluZSB4MT0iMjkyIiB5MT0iMjc0IiB4Mj0iNTA4IiB5Mj0iMjc0IiBzdHJva2U9InJnYmEoMjQ0LDIzOSwyMjgsMC4xOCkiIHN0cm9rZS13aWR0aD0iMSIvPjx0ZXh0IHg9IjQwMCIgeT0iMjk2IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI5IiBmaWxsPSJyZ2JhKDI0NCwyMzksMjI4LDAuMzUpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iNSI+TUVBIENVTFBBIExBQjwvdGV4dD48Y2lyY2xlIGN4PSIyNzgiIGN5PSIxNTgiIHI9IjIuNSIgZmlsbD0icmdiYSgyNDQsMjM5LDIyOCwwLjI1KSIvPjxjaXJjbGUgY3g9IjUyMiIgY3k9IjE1OCIgcj0iMi41IiBmaWxsPSJyZ2JhKDI0NCwyMzksMjI4LDAuMjUpIi8+PGNpcmNsZSBjeD0iMjc4IiBjeT0iMzU4IiByPSIyLjUiIGZpbGw9InJnYmEoMjQ0LDIzOSwyMjgsMC4yNSkiLz48Y2lyY2xlIGN4PSI1MjIiIGN5PSIzNTgiIHI9IjIuNSIgZmlsbD0icmdiYSgyNDQsMjM5LDIyOCwwLjI1KSIvPjwvZz48bGluZSB4MT0iNTgwIiB5MT0iMTIwIiB4Mj0iNTY4IiB5Mj0iMzkwIiBzdHJva2U9InJnYmEoMjQ0LDIzOSwyMjgsMC4xKSIgc3Ryb2tlLXdpZHRoPSIyIi8+PGVsbGlwc2UgY3g9IjU3NCIgY3k9IjEyNiIgcng9IjciIHJ5PSIxNCIgZmlsbD0icmdiYSgyNDQsMjM5LDIyOCwwLjEyKSIgdHJhbnNmb3JtPSJyb3RhdGUoLTUsNTc0LDEyNikiLz48dGV4dCB4PSIxMjAiIHk9IjQ0MCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOSIgZmlsbD0icmdiYSgyNDQsMjM5LDIyOCwwLjE1KSIgbGV0dGVyLXNwYWNpbmc9IjQiPkRFVFRBR0xJTyAvIENVUkEgLyBQUkVDSVNJT05FPC90ZXh0Pjwvc3ZnPg==">
+        <div class="svc-item" data-img="assets/svc_design.webp">
           <button class="svc-toggle" type="button">
             <span class="svc-name">Design &amp; Identità</span>
           </button>
@@ -352,11 +333,11 @@
               <span class="svc-tag">Grafiche divise</span>
               <span class="svc-tag">Identità visiva</span>
             </div>
-            <div class="svc-mini-img"><img loading="lazy" decoding="async" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNTAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnMiIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwZjI1NDQiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwYjE5MjkiLz48L2xpbmVhckdyYWRpZW50PjxmaWx0ZXIgaWQ9InNoMiI+PGZlRHJvcFNoYWRvdyBkeD0iMiIgZHk9IjUiIHN0ZERldmlhdGlvbj0iOCIgZmxvb2Qtb3BhY2l0eT0iMC41Ii8+PC9maWx0ZXI+PC9kZWZzPjxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNTAwIiBmaWxsPSJ1cmwoI2JnMikiLz48cGF0dGVybiBpZD0id2VhdmUiIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPjxyZWN0IHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9InJnYmEoMjQ0LDIzOSwyMjgsMC4wMykiLz48cmVjdCB4PSI0IiB5PSI0IiB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSJyZ2JhKDI0NCwyMzksMjI4LDAuMDMpIi8+PC9wYXR0ZXJuPjxyZWN0IHg9IjgwIiB5PSI2MCIgd2lkdGg9IjY0MCIgaGVpZ2h0PSIzODAiIHJ4PSI0IiBmaWxsPSIjMGUxZTM4Ii8+PHJlY3QgeD0iODAiIHk9IjYwIiB3aWR0aD0iNjQwIiBoZWlnaHQ9IjM4MCIgZmlsbD0idXJsKCN3ZWF2ZSkiLz48ZyBmaWx0ZXI9InVybCgjc2gyKSI+PHJlY3QgeD0iMjYwIiB5PSIxNDAiIHdpZHRoPSIyODAiIGhlaWdodD0iMjIwIiByeD0iMyIgZmlsbD0iIzFhM2E2YiIvPjxyZWN0IHg9IjI3NCIgeT0iMTU0IiB3aWR0aD0iMjUyIiBoZWlnaHQ9IjE5MiIgcng9IjIiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNDQsMjM5LDIyOCwwLjEyKSIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtZGFzaGFycmF5PSI1LDQiLz48dGV4dCB4PSI0MDAiIHk9IjI1NiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iNTgiIGZpbGw9InJnYmEoMjQ0LDIzOSwyMjgsMC44OCkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmb250LXN0eWxlPSJpdGFsaWMiPk1DTDwvdGV4dD48bGluZSB4MT0iMjkyIiB5MT0iMjc0IiB4Mj0iNTA4IiB5Mj0iMjc0IiBzdHJva2U9InJnYmEoMjQ0LDIzOSwyMjgsMC4xOCkiIHN0cm9rZS13aWR0aD0iMSIvPjx0ZXh0IHg9IjQwMCIgeT0iMjk2IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI5IiBmaWxsPSJyZ2JhKDI0NCwyMzksMjI4LDAuMzUpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iNSI+TUVBIENVTFBBIExBQjwvdGV4dD48Y2lyY2xlIGN4PSIyNzgiIGN5PSIxNTgiIHI9IjIuNSIgZmlsbD0icmdiYSgyNDQsMjM5LDIyOCwwLjI1KSIvPjxjaXJjbGUgY3g9IjUyMiIgY3k9IjE1OCIgcj0iMi41IiBmaWxsPSJyZ2JhKDI0NCwyMzksMjI4LDAuMjUpIi8+PGNpcmNsZSBjeD0iMjc4IiBjeT0iMzU4IiByPSIyLjUiIGZpbGw9InJnYmEoMjQ0LDIzOSwyMjgsMC4yNSkiLz48Y2lyY2xlIGN4PSI1MjIiIGN5PSIzNTgiIHI9IjIuNSIgZmlsbD0icmdiYSgyNDQsMjM5LDIyOCwwLjI1KSIvPjwvZz48bGluZSB4MT0iNTgwIiB5MT0iMTIwIiB4Mj0iNTY4IiB5Mj0iMzkwIiBzdHJva2U9InJnYmEoMjQ0LDIzOSwyMjgsMC4xKSIgc3Ryb2tlLXdpZHRoPSIyIi8+PGVsbGlwc2UgY3g9IjU3NCIgY3k9IjEyNiIgcng9IjciIHJ5PSIxNCIgZmlsbD0icmdiYSgyNDQsMjM5LDIyOCwwLjEyKSIgdHJhbnNmb3JtPSJyb3RhdGUoLTUsNTc0LDEyNikiLz48dGV4dCB4PSIxMjAiIHk9IjQ0MCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOSIgZmlsbD0icmdiYSgyNDQsMjM5LDIyOCwwLjE1KSIgbGV0dGVyLXNwYWNpbmc9IjQiPkRFVFRBR0xJTyAvIENVUkEgLyBQUkVDSVNJT05FPC90ZXh0Pjwvc3ZnPg==" alt="Design e identità"></div>
+            <div class="svc-mini-img"><img loading="lazy" decoding="async" src="assets/svc_design.webp" alt="Design e identità"></div>
           </div>
         </div>
 
-        <div class="svc-item" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNTAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnMSIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwYjE5MjkiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwZjI1NDQiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0iZjEiIHgxPSIwIiB5MT0iMCIgeDI9IjAuMyIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmNGVmZTQiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNjOGJmYWEiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0iZjIiIHgxPSIwIiB5MT0iMCIgeDI9IjAuMyIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMxYTNhNmIiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwYjE5MjkiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0iZjMiIHgxPSIwIiB5MT0iMCIgeDI9IjAuMyIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMyYzVmYWEiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxYTNhNmIiLz48L2xpbmVhckdyYWRpZW50PjxmaWx0ZXIgaWQ9InNoIj48ZmVEcm9wU2hhZG93IGR4PSI0IiBkeT0iOCIgc3RkRGV2aWF0aW9uPSIxMCIgZmxvb2Qtb3BhY2l0eT0iMC40NSIvPjwvZmlsdGVyPjwvZGVmcz48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0idXJsKCNiZzEpIi8+PHBhdHRlcm4gaWQ9ImdyIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPjxwYXRoIGQ9Ik00MCAwTDAgMCAwIDQwIiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMjQ0LDIzOSwyMjgsMC4wMjUpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI1MDAiIGZpbGw9InVybCgjZ3IpIi8+PGcgZmlsdGVyPSJ1cmwoI3NoKSI+PHJlY3QgeD0iNzYiIHk9IjEwMCIgd2lkdGg9IjEwOCIgaGVpZ2h0PSIzMjAiIHJ4PSI1NCIgZmlsbD0idXJsKCNmMSkiIHRyYW5zZm9ybT0icm90YXRlKC04LDEzMCwyNjApIi8+PGxpbmUgeDE9IjExMCIgeTE9IjEwNSIgeDI9IjEwNSIgeTI9IjQxNSIgc3Ryb2tlPSJyZ2JhKDE0LDI2LDQwLDAuMSkiIHN0cm9rZS13aWR0aD0iMS41IiB0cmFuc2Zvcm09InJvdGF0ZSgtOCwxMzAsMjYwKSIvPjxsaW5lIHgxPSIxMzAiIHkxPSIxMDAiIHgyPSIxMjUiIHkyPSI0MjAiIHN0cm9rZT0icmdiYSgxNCwyNiw0MCwwLjA3KSIgc3Ryb2tlLXdpZHRoPSIxIiB0cmFuc2Zvcm09InJvdGF0ZSgtOCwxMzAsMjYwKSIvPjwvZz48ZyBmaWx0ZXI9InVybCgjc2gpIj48cmVjdCB4PSIxODYiIHk9IjgwIiB3aWR0aD0iMTEyIiBoZWlnaHQ9IjM1MCIgcng9IjU2IiBmaWxsPSJ1cmwoI2YyKSIgdHJhbnNmb3JtPSJyb3RhdGUoNCwyNDIsMjU1KSIvPjxsaW5lIHgxPSIyMjYiIHkxPSI4MiIgeDI9IjIyMCIgeTI9IjQyOCIgc3Ryb2tlPSJyZ2JhKDI0NCwyMzksMjI4LDAuMDUpIiBzdHJva2Utd2lkdGg9IjEiIHRyYW5zZm9ybT0icm90YXRlKDQsMjQyLDI1NSkiLz48L2c+PGcgZmlsdGVyPSJ1cmwoI3NoKSI+PHJlY3QgeD0iMjkwIiB5PSIxMTAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMzAwIiByeD0iNTAiIGZpbGw9InVybCgjZjMpIiB0cmFuc2Zvcm09InJvdGF0ZSgtNSwzNDAsMjYwKSIvPjwvZz48ZyBmaWx0ZXI9InVybCgjc2gpIj48cmVjdCB4PSIzODAiIHk9IjEzMCIgd2lkdGg9Ijg4IiBoZWlnaHQ9IjI2MCIgcng9IjQ0IiBmaWxsPSJ1cmwoI2YxKSIgb3BhY2l0eT0iMC42NSIgdHJhbnNmb3JtPSJyb3RhdGUoNiw0MjQsMjYwKSIvPjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSgtOCwxMzAsMjYwKSB0cmFuc2xhdGUoNzYsMTkwKSI+PHJlY3QgeD0iLTIiIHk9IjAiIHdpZHRoPSI1MiIgaGVpZ2h0PSIzMCIgZmlsbD0iI2Y0ZWZlNCIgcng9IjIiLz48bGluZSB4MT0iMTAiIHkxPSIzMCIgeDI9IjEwIiB5Mj0iNDgiIHN0cm9rZT0iIzBiMTkyOSIgc3Ryb2tlLXdpZHRoPSIxIi8+PHRleHQgeD0iMjYiIHk9IjE5IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI4IiBmaWxsPSIjMGIxOTI5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCI+TUNMPC90ZXh0PjwvZz48dGV4dCB4PSI1NDAiIHk9IjE4MCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9InJnYmEoMjQ0LDIzOSwyMjgsMC4yKSIgbGV0dGVyLXNwYWNpbmc9IjUiPk1BVEVSSUFMSTwvdGV4dD48dGV4dCB4PSI1NDAiIHk9IjIyMCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9InJnYmEoMjQ0LDIzOSwyMjgsMC4yKSIgbGV0dGVyLXNwYWNpbmc9IjUiPlNFTEVaSU9OQVRJPC90ZXh0Pjx0ZXh0IHg9IjU0MCIgeT0iMzEwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSI0NCIgZmlsbD0icmdiYSgyNDQsMjM5LDIyOCwwLjA1KSIgZm9udC1zdHlsZT0iaXRhbGljIj5xdWFsaXTDoDwvdGV4dD48bGluZSB4MT0iNDgiIHkxPSI0NzAiIHgyPSI3NTIiIHkyPSI0NzAiIHN0cm9rZT0icmdiYSgyNDQsMjM5LDIyOCwwLjA2KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9zdmc+">
+        <div class="svc-item" data-img="assets/svc_digital.webp">
           <button class="svc-toggle" type="button">
             <span class="svc-name">Digital &amp; Comunicazione</span>
           </button>
@@ -367,12 +348,12 @@
               <span class="svc-tag">Shooting</span>
               <span class="svc-tag">Video</span>
             </div>
-            <div class="svc-mini-img"><img loading="lazy" decoding="async" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNTAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnMSIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwYjE5MjkiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwZjI1NDQiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0iZjEiIHgxPSIwIiB5MT0iMCIgeDI9IjAuMyIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmNGVmZTQiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNjOGJmYWEiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0iZjIiIHgxPSIwIiB5MT0iMCIgeDI9IjAuMyIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMxYTNhNmIiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwYjE5MjkiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0iZjMiIHgxPSIwIiB5MT0iMCIgeDI9IjAuMyIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMyYzVmYWEiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxYTNhNmIiLz48L2xpbmVhckdyYWRpZW50PjxmaWx0ZXIgaWQ9InNoIj48ZmVEcm9wU2hhZG93IGR4PSI0IiBkeT0iOCIgc3RkRGV2aWF0aW9uPSIxMCIgZmxvb2Qtb3BhY2l0eT0iMC40NSIvPjwvZmlsdGVyPjwvZGVmcz48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0idXJsKCNiZzEpIi8+PHBhdHRlcm4gaWQ9ImdyIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPjxwYXRoIGQ9Ik00MCAwTDAgMCAwIDQwIiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMjQ0LDIzOSwyMjgsMC4wMjUpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI1MDAiIGZpbGw9InVybCgjZ3IpIi8+PGcgZmlsdGVyPSJ1cmwoI3NoKSI+PHJlY3QgeD0iNzYiIHk9IjEwMCIgd2lkdGg9IjEwOCIgaGVpZ2h0PSIzMjAiIHJ4PSI1NCIgZmlsbD0idXJsKCNmMSkiIHRyYW5zZm9ybT0icm90YXRlKC04LDEzMCwyNjApIi8+PGxpbmUgeDE9IjExMCIgeTE9IjEwNSIgeDI9IjEwNSIgeTI9IjQxNSIgc3Ryb2tlPSJyZ2JhKDE0LDI2LDQwLDAuMSkiIHN0cm9rZS13aWR0aD0iMS41IiB0cmFuc2Zvcm09InJvdGF0ZSgtOCwxMzAsMjYwKSIvPjxsaW5lIHgxPSIxMzAiIHkxPSIxMDAiIHgyPSIxMjUiIHkyPSI0MjAiIHN0cm9rZT0icmdiYSgxNCwyNiw0MCwwLjA3KSIgc3Ryb2tlLXdpZHRoPSIxIiB0cmFuc2Zvcm09InJvdGF0ZSgtOCwxMzAsMjYwKSIvPjwvZz48ZyBmaWx0ZXI9InVybCgjc2gpIj48cmVjdCB4PSIxODYiIHk9IjgwIiB3aWR0aD0iMTEyIiBoZWlnaHQ9IjM1MCIgcng9IjU2IiBmaWxsPSJ1cmwoI2YyKSIgdHJhbnNmb3JtPSJyb3RhdGUoNCwyNDIsMjU1KSIvPjxsaW5lIHgxPSIyMjYiIHkxPSI4MiIgeDI9IjIyMCIgeTI9IjQyOCIgc3Ryb2tlPSJyZ2JhKDI0NCwyMzksMjI4LDAuMDUpIiBzdHJva2Utd2lkdGg9IjEiIHRyYW5zZm9ybT0icm90YXRlKDQsMjQyLDI1NSkiLz48L2c+PGcgZmlsdGVyPSJ1cmwoI3NoKSI+PHJlY3QgeD0iMjkwIiB5PSIxMTAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMzAwIiByeD0iNTAiIGZpbGw9InVybCgjZjMpIiB0cmFuc2Zvcm09InJvdGF0ZSgtNSwzNDAsMjYwKSIvPjwvZz48ZyBmaWx0ZXI9InVybCgjc2gpIj48cmVjdCB4PSIzODAiIHk9IjEzMCIgd2lkdGg9Ijg4IiBoZWlnaHQ9IjI2MCIgcng9IjQ0IiBmaWxsPSJ1cmwoI2YxKSIgb3BhY2l0eT0iMC42NSIgdHJhbnNmb3JtPSJyb3RhdGUoNiw0MjQsMjYwKSIvPjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSgtOCwxMzAsMjYwKSB0cmFuc2xhdGUoNzYsMTkwKSI+PHJlY3QgeD0iLTIiIHk9IjAiIHdpZHRoPSI1MiIgaGVpZ2h0PSIzMCIgZmlsbD0iI2Y0ZWZlNCIgcng9IjIiLz48bGluZSB4MT0iMTAiIHkxPSIzMCIgeDI9IjEwIiB5Mj0iNDgiIHN0cm9rZT0iIzBiMTkyOSIgc3Ryb2tlLXdpZHRoPSIxIi8+PHRleHQgeD0iMjYiIHk9IjE5IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI4IiBmaWxsPSIjMGIxOTI5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCI+TUNMPC90ZXh0PjwvZz48dGV4dCB4PSI1NDAiIHk9IjE4MCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9InJnYmEoMjQ0LDIzOSwyMjgsMC4yKSIgbGV0dGVyLXNwYWNpbmc9IjUiPk1BVEVSSUFMSTwvdGV4dD48dGV4dCB4PSI1NDAiIHk9IjIyMCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9InJnYmEoMjQ0LDIzOSwyMjgsMC4yKSIgbGV0dGVyLXNwYWNpbmc9IjUiPlNFTEVaSU9OQVRJPC90ZXh0Pjx0ZXh0IHg9IjU0MCIgeT0iMzEwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSI0NCIgZmlsbD0icmdiYSgyNDQsMjM5LDIyOCwwLjA1KSIgZm9udC1zdHlsZT0iaXRhbGljIj5xdWFsaXTDoDwvdGV4dD48bGluZSB4MT0iNDgiIHkxPSI0NzAiIHgyPSI3NTIiIHkyPSI0NzAiIHN0cm9rZT0icmdiYSgyNDQsMjM5LDIyOCwwLjA2KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9zdmc+" alt="Digital e comunicazione"></div>
+            <div class="svc-mini-img"><img loading="lazy" decoding="async" src="assets/svc_digital.webp" alt="Digital e comunicazione"></div>
           </div>
         </div>
 
       </div>
-      <div class="svc-side-img reveal-scale d2"><img loading="lazy" decoding="async" id="svcSideImg" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNTAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnMyIgeDE9IjAiIHkxPSIwIiB4Mj0iMC40IiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y0ZWZlNCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2RkZDVjMiIvPjwvbGluZWFyR3JhZGllbnQ+PGZpbHRlciBpZD0ic2gzIj48ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iOCIgc3RkRGV2aWF0aW9uPSIxNCIgZmxvb2Qtb3BhY2l0eT0iMC4xMyIvPjwvZmlsdGVyPjxmaWx0ZXIgaWQ9InNoNCI+PGZlRHJvcFNoYWRvdyBkeD0iMCIgZHk9IjQiIHN0ZERldmlhdGlvbj0iOCIgZmxvb2Qtb3BhY2l0eT0iMC4xIi8+PC9maWx0ZXI+PC9kZWZzPjxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNTAwIiBmaWxsPSJ1cmwoI2JnMykiLz48cGF0dGVybiBpZD0ibGluIiB3aWR0aD0iMyIgaGVpZ2h0PSIzIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48bGluZSB4MT0iMCIgeTE9IjAiIHgyPSIzIiB5Mj0iMyIgc3Ryb2tlPSJyZ2JhKDE0LDI2LDQwLDAuMDM1KSIgc3Ryb2tlLXdpZHRoPSIwLjUiLz48L3BhdHRlcm4+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI1MDAiIGZpbGw9InVybCgjbGluKSIvPjxnIGZpbHRlcj0idXJsKCNzaDMpIj48cmVjdCB4PSI2MCIgeT0iMTEwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIxMCIgcng9IjQiIGZpbGw9IiMwZjI1NDQiLz48cmVjdCB4PSI2MCIgeT0iMTEwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjM4IiByeD0iNCIgZmlsbD0iIzFhM2E2YiIvPjxsaW5lIHgxPSI2MCIgeTE9IjIxMCIgeDI9IjM2MCIgeTI9IjIxMCIgc3Ryb2tlPSJyZ2JhKDI0NCwyMzksMjI4LDAuMDcpIiBzdHJva2Utd2lkdGg9IjEiLz48cmVjdCB4PSIxNDAiIHk9IjI5NiIgd2lkdGg9IjY0IiBoZWlnaHQ9IjIwIiBmaWxsPSJyZ2JhKDI0NCwyMzksMjI4LDAuOSkiIHJ4PSIyIi8+PHRleHQgeD0iMTcyIiB5PSIzMDkiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjciIGZpbGw9IiMwYjE5MjkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSJib2xkIiBsZXR0ZXItc3BhY2luZz0iMiI+TUNMPC90ZXh0PjwvZz48ZyBmaWx0ZXI9InVybCgjc2g0KSI+PHJlY3QgeD0iMzQwIiB5PSI4MCIgd2lkdGg9IjI2MCIgaGVpZ2h0PSIxOTAiIHJ4PSI0IiBmaWxsPSIjYzhiZmFhIi8+PGxpbmUgeDE9IjM0MCIgeTE9IjE3MCIgeDI9IjYwMCIgeTI9IjE3MCIgc3Ryb2tlPSJyZ2JhKDE0LDI2LDQwLDAuMDUpIiBzdHJva2Utd2lkdGg9IjEiLz48cmVjdCB4PSI0MzAiIHk9IjI1MCIgd2lkdGg9IjU0IiBoZWlnaHQ9IjE3IiBmaWxsPSJyZ2JhKDE0LDI2LDQwLDAuODIpIiByeD0iMiIvPjx0ZXh0IHg9IjQ1NyIgeT0iMjYyIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI3IiBmaWxsPSIjZjRlZmU0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCIgbGV0dGVyLXNwYWNpbmc9IjIiPk1DTDwvdGV4dD48L2c+PGcgZmlsdGVyPSJ1cmwoI3NoNCkiIHRyYW5zZm9ybT0icm90YXRlKC0xNCw2MzIsMzUwKSI+PHJlY3QgeD0iNTkyIiB5PSIyOTAiIHdpZHRoPSI4MCIgaGVpZ2h0PSIxMTgiIHJ4PSIzIiBmaWxsPSIjZjRlZmU0IiBzdHJva2U9InJnYmEoMTQsMjYsNDAsMC4xKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PHJlY3QgeD0iNjA0IiB5PSIzMDIiIHdpZHRoPSI1NiIgaGVpZ2h0PSI1OCIgZmlsbD0iIzBmMjU0NCIgcng9IjIiLz48dGV4dCB4PSI2MzIiIHk9IjMzOSIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiNmNGVmZTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc3R5bGU9Iml0YWxpYyI+TUNMPC90ZXh0PjxsaW5lIHgxPSI2MDgiIHkxPSIzNjgiIHgyPSI2NTYiIHkyPSIzNjgiIHN0cm9rZT0icmdiYSgxNCwyNiw0MCwwLjEyKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PHRleHQgeD0iNjMyIiB5PSIzODAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjYuNSIgZmlsbD0icmdiYSgxNCwyNiw0MCwwLjM4KSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjEuNSI+TUFERSBJTiBJVEFMWTwvdGV4dD48Y2lyY2xlIGN4PSI2MzIiIGN5PSIyOTQiIHI9IjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgxNCwyNiw0MCwwLjI1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PGxpbmUgeDE9IjYzMiIgeTE9IjI5MCIgeDI9IjYzMiIgeTI9IjI4MyIgc3Ryb2tlPSJyZ2JhKDE0LDI2LDQwLDAuMjUpIiBzdHJva2Utd2lkdGg9IjEiLz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTUsMzQ1KSByb3RhdGUoLTI4KSIgb3BhY2l0eT0iMC4xMiI+PGxpbmUgeDE9IjAiIHkxPSI0IiB4Mj0iOTAiIHkyPSI0IiBzdHJva2U9IiMwYjE5MjkiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIHgxPSIwIiB5MT0iMTAiIHgyPSI5MCIgeTI9IjEwIiBzdHJva2U9IiMwYjE5MjkiIHN0cm9rZS13aWR0aD0iMiIvPjxjaXJjbGUgY3g9IjAiIGN5PSI0IiByPSI2IiBmaWxsPSJub25lIiBzdHJva2U9IiMwYjE5MjkiIHN0cm9rZS13aWR0aD0iMS41Ii8+PGNpcmNsZSBjeD0iMCIgY3k9IjEwIiByPSI2IiBmaWxsPSJub25lIiBzdHJva2U9IiMwYjE5MjkiIHN0cm9rZS13aWR0aD0iMS41Ii8+PC9nPjx0ZXh0IHg9IjQwMCIgeT0iNDYyIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSI5IiBmaWxsPSJyZ2JhKDE0LDI2LDQwLDAuMTgpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iNSI+T0dOSSBDQVBPLiBTVSBNSVNVUkEuPC90ZXh0Pjwvc3ZnPg==" alt="Servizio Mea Culpa Lab"></div>
+      <div class="svc-side-img reveal-scale d2"><img loading="lazy" decoding="async" id="svcSideImg" src="assets/svc_produzione.webp" alt="Servizio Mea Culpa Lab"></div>
     </div>
   </div>
 </section>
@@ -388,52 +369,17 @@
   </div>
 </div>
 
-<!-- SETTORI -->
-<section id="settori">
-  <div class="settori-wrap">
-    <div class="sec-label dk reveal">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
-      <span>I nostri settori</span>
-    </div>
-    <h2 class="reveal" style="margin-bottom:56px">Tre settori.<br>Un unico <span class="ghost">approccio.</span></h2>
-    <div class="sec-grid">
-      <a href="contatti.html" class="sec-card reveal">
-        <div class="sec-num">01</div>
-        <div class="sec-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M3 21V9L12 3L21 9V21" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="9" y="13" width="6" height="8" stroke="white" stroke-width="1.5"/></svg></div>
-        <div class="sec-cat">Istruzione</div>
-        <div class="sec-title">Scuole</div>
-        <p class="sec-desc">Vestiamo le scuole con divise e capi che rafforzano il senso di appartenenza. Offriamo anche una piattaforma d'ordine dedicata, così studenti e famiglie acquistano in autonomia.</p>
-        <div class="sec-tags"><span class="stag">Divise</span><span class="stag">Capi personalizzati</span><span class="stag">Piattaforma ordini</span></div>
-      </a>
-      <a href="contatti.html" class="sec-card reveal d1">
-        <div class="sec-num">02</div>
-        <div class="sec-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="white" stroke-width="1.5"/><path d="M12 7V12L15 15" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-        <div class="sec-cat">Sport &amp; Animazione</div>
-        <div class="sec-title">Sport &amp; Grest</div>
-        <p class="sec-desc">Kit completi per squadre e animatori: divise tecniche, felpe, gadget per eventi. Produciamo anche in tempi stretti, senza rinunciare alla cura del dettaglio.</p>
-        <div class="sec-tags"><span class="stag">Kit divise</span><span class="stag">Tecnico</span><span class="stag">Grest</span><span class="stag">Gadget</span></div>
-      </a>
-      <a href="contatti.html" class="sec-card reveal d2">
-        <div class="sec-num">03</div>
-        <div class="sec-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="2" y="7" width="20" height="14" rx="2" stroke="white" stroke-width="1.5"/><path d="M7 7V5C7 3.9 7.9 3 9 3H15C16.1 3 17 3.9 17 5V7" stroke="white" stroke-width="1.5"/><path d="M2 12H22" stroke="white" stroke-width="1.5"/></svg></div>
-        <div class="sec-cat">Corporate</div>
-        <div class="sec-title">Aziende</div>
-        <p class="sec-desc">Dal welcome kit ai nuovi assunti alle divise operative, il tuo brand è riconoscibile a ogni livello. Un'immagine aziendale coordinata, curata nei materiali e nei dettagli.</p>
-        <div class="sec-tags"><span class="stag">Welcome kit</span><span class="stag">Divise</span><span class="stag">Gadget aziendali</span></div>
-      </a>
-    </div>
-  </div>
-</section>
 
 <!-- PROCESSO -->
 <section id="processo">
   <div class="proc-wrap">
     <div class="sec-label lt reveal">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
+      <svg class="flask" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path class="flask-liquid" d="M9.33 11.6H14.67L17.95 16.9a1.5 1.5 0 0 1-1.33 2.2H7.38a1.5 1.5 0 0 1-1.33-2.2z" fill="currentColor"/><circle class="flask-bubble b1" cx="11.2" cy="4.7" r="1" fill="currentColor"/><circle class="flask-bubble b2" cx="12.3" cy="4" r="1.3" fill="currentColor"/><circle class="flask-bubble b3" cx="13" cy="5" r=".85" fill="currentColor"/><circle class="flask-bubble b4" cx="12" cy="5.3" r=".6" fill="currentColor"/><path d="M9.3 3h5.4M10.6 3v6.4L6.05 16.9a1.5 1.5 0 0 0 1.33 2.2h9.24a1.5 1.5 0 0 0 1.33-2.2L13.4 9.4V3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span>Il processo</span>
     </div>
-    <h2 class="reveal" style="color:#fff">Semplice, <span class="ghost">da subito.</span></h2>
-    <div class="steps" style="margin-top:70px">
+    <h2 class="reveal" style="color:#fff">Tu ci pensi, <span class="ghost">al resto pensiamo noi.</span></h2>
+    <p class="proc-lead reveal d1">Un unico interlocutore dall'idea alla consegna: design, materiali, produzione e logistica, tutto gestito internamente. Tu approvi, al resto pensiamo noi.</p>
+    <div class="steps" style="margin-top:52px">
       <div class="step reveal"><div class="step-n">01</div><div class="step-t">Ci parli</div><p class="step-d">Bastano pochi minuti — una mail, una call o un messaggio. Ci racconti il progetto: cosa ti serve, quando e per chi.</p></div>
       <div class="step reveal d1"><div class="step-n">02</div><div class="step-t">Ti proponiamo</div><p class="step-d">In pochi giorni ricevi una proposta su misura: grafiche, campionatura materiali e preventivo dettagliato.</p></div>
       <div class="step reveal d2"><div class="step-n">03</div><div class="step-t">Produciamo</div><p class="step-d">Approvato il progetto, gestiamo tutto. I nostri fornitori selezionati lavorano con noi su ogni ordine, con aggiornamenti costanti.</p></div>
@@ -446,54 +392,17 @@
 <section id="lavori">
   <div class="lavori-wrap">
     <div class="sec-label dk reveal">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
+      <svg class="flask" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path class="flask-liquid" d="M9.33 11.6H14.67L17.95 16.9a1.5 1.5 0 0 1-1.33 2.2H7.38a1.5 1.5 0 0 1-1.33-2.2z" fill="currentColor"/><circle class="flask-bubble b1" cx="11.2" cy="4.7" r="1" fill="currentColor"/><circle class="flask-bubble b2" cx="12.3" cy="4" r="1.3" fill="currentColor"/><circle class="flask-bubble b3" cx="13" cy="5" r=".85" fill="currentColor"/><circle class="flask-bubble b4" cx="12" cy="5.3" r=".6" fill="currentColor"/><path d="M9.3 3h5.4M10.6 3v6.4L6.05 16.9a1.5 1.5 0 0 0 1.33 2.2h9.24a1.5 1.5 0 0 0 1.33-2.2L13.4 9.4V3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span>I nostri progetti</span>
     </div>
 
-    <div class="hov-list" id="hovList" style="margin-top:28px">
-      <a class="hov-row reveal" href="progetti.html" data-img="assets/img_1b2a8f73d5d3.webp">
-        <span class="hov-index">01</span>
-        <span class="hov-name">DF Assicurazioni</span>
-        <span class="hov-cat">Azienda</span>
-        <span class="hov-go">&#8594;</span>
-      </a>
-      <a class="hov-row reveal" href="progetti.html" data-img="assets/img_9d553615f646.webp">
-        <span class="hov-index">02</span>
-        <span class="hov-name">ADP River Club</span>
-        <span class="hov-cat">Sport</span>
-        <span class="hov-go">&#8594;</span>
-      </a>
-      <a class="hov-row reveal" href="progetti.html" data-img="assets/img_2eb27dae3957.webp">
-        <span class="hov-index">03</span>
-        <span class="hov-name">Evergreen</span>
-        <span class="hov-cat">Azienda</span>
-        <span class="hov-go">&#8594;</span>
-      </a>
-      <a class="hov-row reveal" href="progetti.html" data-img="assets/img_784961e5e899.webp">
-        <span class="hov-index">04</span>
-        <span class="hov-name">Love Society</span>
-        <span class="hov-cat">Azienda</span>
-        <span class="hov-go">&#8594;</span>
-      </a>
-      <a class="hov-row reveal" href="progetti.html" data-img="assets/img_f48aa0d8c82c.webp">
-        <span class="hov-index">05</span>
-        <span class="hov-name">Konteiner X</span>
-        <span class="hov-cat">Azienda</span>
-        <span class="hov-go">&#8594;</span>
-      </a>
-      <a class="hov-row reveal" href="progetti.html" data-img="assets/img_8410ccc734d6.webp">
-        <span class="hov-index">06</span>
-        <span class="hov-name">Jet HR</span>
-        <span class="hov-cat">Azienda</span>
-        <span class="hov-go">&#8594;</span>
-      </a>
-      <a class="hov-row reveal" href="progetti.html" data-img="assets/img_2022e8719cf3.webp">
-        <span class="hov-index">07</span>
-        <span class="hov-name">CUS Brescia</span>
-        <span class="hov-cat">Sport</span>
-        <span class="hov-go">&#8594;</span>
-      </a>
-      <div class="hov-preview" id="hovPreview" aria-hidden="true"><img loading="lazy" decoding="async" id="hovPreviewImg" alt=""></div>
+    <div class="hp-grid" style="margin-top:28px">
+      <a class="hp-card reveal" href="progetti.html"><span class="hp-img"><img loading="lazy" decoding="async" src="assets/img_8410ccc734d6.webp" alt="Jet HR"></span><span class="hp-meta"><span class="hp-cat">Azienda</span><span class="hp-name">Jet HR</span></span></a>
+      <a class="hp-card reveal" href="progetti.html"><span class="hp-img"><img loading="lazy" decoding="async" src="assets/img_a2158988441a.webp" alt="Liceo Calini"></span><span class="hp-meta"><span class="hp-cat">Scuola</span><span class="hp-name">Liceo Calini</span></span></a>
+      <a class="hp-card reveal" href="progetti.html"><span class="hp-img"><img loading="lazy" decoding="async" src="assets/img_9d553615f646.webp" alt="APD River"></span><span class="hp-meta"><span class="hp-cat">Sport</span><span class="hp-name">APD River</span></span></a>
+      <a class="hp-card reveal" href="progetti.html"><span class="hp-img"><img loading="lazy" decoding="async" src="assets/img_1b2a8f73d5d3.webp" alt="DF Assicurazioni"></span><span class="hp-meta"><span class="hp-cat">Azienda</span><span class="hp-name">DF Assicurazioni</span></span></a>
+      <a class="hp-card reveal" href="progetti.html"><span class="hp-img"><img loading="lazy" decoding="async" src="assets/img_2e2f670de94f.webp" alt="Liceo Arnaldo"></span><span class="hp-meta"><span class="hp-cat">Scuola</span><span class="hp-name">Liceo Arnaldo</span></span></a>
+      <a class="hp-card reveal" href="progetti.html"><span class="hp-img"><img loading="lazy" decoding="async" src="assets/img_2022e8719cf3.webp" alt="CUS Brescia"></span><span class="hp-meta"><span class="hp-cat">Sport</span><span class="hp-name">CUS Brescia</span></span></a>
     </div>
 
     <div class="lavori-cta reveal">
@@ -507,7 +416,7 @@
   <div class="extra-grid">
     <div class="reveal">
       <div class="sec-label dk">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
+        <svg class="flask" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path class="flask-liquid" d="M9.33 11.6H14.67L17.95 16.9a1.5 1.5 0 0 1-1.33 2.2H7.38a1.5 1.5 0 0 1-1.33-2.2z" fill="currentColor"/><circle class="flask-bubble b1" cx="11.2" cy="4.7" r="1" fill="currentColor"/><circle class="flask-bubble b2" cx="12.3" cy="4" r="1.3" fill="currentColor"/><circle class="flask-bubble b3" cx="13" cy="5" r=".85" fill="currentColor"/><circle class="flask-bubble b4" cx="12" cy="5.3" r=".6" fill="currentColor"/><path d="M9.3 3h5.4M10.6 3v6.4L6.05 16.9a1.5 1.5 0 0 0 1.33 2.2h9.24a1.5 1.5 0 0 0 1.33-2.2L13.4 9.4V3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <span>Oltre il capo</span>
       </div>
       <h2>Il prodotto è solo <span class="ghost">l'inizio.</span></h2>
@@ -535,7 +444,7 @@
   <div class="ct-grid">
     <div class="reveal">
       <div class="sec-label lt">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
+        <svg class="flask" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path class="flask-liquid" d="M9.33 11.6H14.67L17.95 16.9a1.5 1.5 0 0 1-1.33 2.2H7.38a1.5 1.5 0 0 1-1.33-2.2z" fill="currentColor"/><circle class="flask-bubble b1" cx="11.2" cy="4.7" r="1" fill="currentColor"/><circle class="flask-bubble b2" cx="12.3" cy="4" r="1.3" fill="currentColor"/><circle class="flask-bubble b3" cx="13" cy="5" r=".85" fill="currentColor"/><circle class="flask-bubble b4" cx="12" cy="5.3" r=".6" fill="currentColor"/><path d="M9.3 3h5.4M10.6 3v6.4L6.05 16.9a1.5 1.5 0 0 0 1.33 2.2h9.24a1.5 1.5 0 0 0 1.33-2.2L13.4 9.4V3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <span>Contatti</span>
       </div>
       <h2 style="color:#fff">Parliamo del tuo <span class="ghost">progetto.</span></h2>
@@ -576,7 +485,7 @@
 // ── Loader ──
 const _ld0=performance.now();
 window.addEventListener('load',()=>{
-  const w=Math.max(0,2100-(performance.now()-_ld0));
+  const w=Math.max(0,1100-(performance.now()-_ld0));
   setTimeout(()=>document.getElementById('loader').classList.add('done'),w+150);
 });
 

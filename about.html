@@ -119,15 +119,25 @@
   .app-grid, .mat-grid { grid-template-columns: 1fr; }
   .team-grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* ── MERGE APPROCCIO + QUALITÀ ───────────────────── */
+#approccio .app-quality { margin-top: 60px; padding-top: 46px; border-top: 1px solid rgba(255,255,255,.12); }
+#approccio .app-q-title { font-family: var(--ff-d); font-size: clamp(24px,2.6vw,34px); text-transform: uppercase; color: #fff; margin-bottom: 16px; }
+#approccio .mat-intro { color: rgba(255,255,255,.78); max-width: 640px; }
+#approccio .mat-badges { margin-top: 26px; }
+#approccio .mat-badge { border-color: rgba(255,255,255,.22); color: rgba(255,255,255,.82); }
+/* VM compatta in fondo */
+#visione-missione .vm-card p:last-of-type { margin-bottom: 0; }
+#visione-missione .vm-card { padding-bottom: 40px; }
+/* badge storia: ferma (no rotazione) */
+.storia-badge { animation: none; }
 </style>
 </head>
 <body>
 
 <!-- LOADER -->
 <div class="loader" id="loader">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-    <path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/>
-  </svg>
+  <svg class="flask" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path class="flask-liquid" d="M9.33 11.6H14.67L17.95 16.9a1.5 1.5 0 0 1-1.33 2.2H7.38a1.5 1.5 0 0 1-1.33-2.2z" fill="currentColor"/><circle class="flask-bubble b1" cx="11.2" cy="4.7" r="1" fill="currentColor"/><circle class="flask-bubble b2" cx="12.3" cy="4" r="1.3" fill="currentColor"/><circle class="flask-bubble b3" cx="13" cy="5" r=".85" fill="currentColor"/><circle class="flask-bubble b4" cx="12" cy="5.3" r=".6" fill="currentColor"/><path d="M9.3 3h5.4M10.6 3v6.4L6.05 16.9a1.5 1.5 0 0 0 1.33 2.2h9.24a1.5 1.5 0 0 0 1.33-2.2L13.4 9.4V3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </div>
 
 <!-- NAV -->
@@ -158,17 +168,15 @@
 <section class="page-hero is-blue">
   <div>
     <div class="sec-label lt" style="margin-bottom:28px">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
-      <span>Mea Culpa Lab — Brescia, 2024</span>
+      <svg class="flask" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path class="flask-liquid" d="M9.33 11.6H14.67L17.95 16.9a1.5 1.5 0 0 1-1.33 2.2H7.38a1.5 1.5 0 0 1-1.33-2.2z" fill="currentColor"/><circle class="flask-bubble b1" cx="11.2" cy="4.7" r="1" fill="currentColor"/><circle class="flask-bubble b2" cx="12.3" cy="4" r="1.3" fill="currentColor"/><circle class="flask-bubble b3" cx="13" cy="5" r=".85" fill="currentColor"/><circle class="flask-bubble b4" cx="12" cy="5.3" r=".6" fill="currentColor"/><path d="M9.3 3h5.4M10.6 3v6.4L6.05 16.9a1.5 1.5 0 0 0 1.33 2.2h9.24a1.5 1.5 0 0 0 1.33-2.2L13.4 9.4V3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Mea Culpa Lab — Brescia</span>
     </div>
-    <h1><span class="anim-letters">Partiamo dalla tua idea.</span></h1>
+    <h1><span class="anim-letters">Niente catalogo.</span></h1>
     <div class="hero-row">
-      <h1><span class="anim-letters">Non dal catalogo</span></h1>
-      <svg class="hero-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-        <path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/>
-      </svg>
+      <h1><span class="anim-letters">Solo la tua idea.</span></h1>
+      <svg class="hero-star flask" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path class="flask-liquid" d="M9.33 11.6H14.67L17.95 16.9a1.5 1.5 0 0 1-1.33 2.2H7.38a1.5 1.5 0 0 1-1.33-2.2z" fill="currentColor"/><circle class="flask-bubble b1" cx="11.2" cy="4.7" r="1" fill="currentColor"/><circle class="flask-bubble b2" cx="12.3" cy="4" r="1.3" fill="currentColor"/><circle class="flask-bubble b3" cx="13" cy="5" r=".85" fill="currentColor"/><circle class="flask-bubble b4" cx="12" cy="5.3" r=".6" fill="currentColor"/><path d="M9.3 3h5.4M10.6 3v6.4L6.05 16.9a1.5 1.5 0 0 0 1.33 2.2h9.24a1.5 1.5 0 0 0 1.33-2.2L13.4 9.4V3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
-    <p class="hero-sub">Un team con anni di esperienza diretta nel prodotto moda. Nessun catalogo, nessun pacchetto standard — ogni progetto nasce da zero.</p>
+    <p class="hero-sub">Veniamo dal prodotto moda: anni passati tra fornitori, materiali e produzione vera. Oggi quel mestiere lo mettiamo al servizio di chi vuole capi su misura — curati nel dettaglio, fatti per durare, mai presi da un catalogo.</p>
   </div>
 </section>
 
@@ -177,7 +185,7 @@
   <div class="storia-grid">
     <div class="reveal">
       <div class="sec-label dk">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
+        <svg class="flask" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path class="flask-liquid" d="M9.33 11.6H14.67L17.95 16.9a1.5 1.5 0 0 1-1.33 2.2H7.38a1.5 1.5 0 0 1-1.33-2.2z" fill="currentColor"/><circle class="flask-bubble b1" cx="11.2" cy="4.7" r="1" fill="currentColor"/><circle class="flask-bubble b2" cx="12.3" cy="4" r="1.3" fill="currentColor"/><circle class="flask-bubble b3" cx="13" cy="5" r=".85" fill="currentColor"/><circle class="flask-bubble b4" cx="12" cy="5.3" r=".6" fill="currentColor"/><path d="M9.3 3h5.4M10.6 3v6.4L6.05 16.9a1.5 1.5 0 0 0 1.33 2.2h9.24a1.5 1.5 0 0 0 1.33-2.2L13.4 9.4V3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <span>La nostra storia</span>
       </div>
       <h2>Nati da un'idea <span class="ghost">concreta.</span></h2>
@@ -187,8 +195,8 @@
       <p>Nel <strong>2024</strong>, da quella base, nasce Mea Culpa Lab: il ramo B2B dedicato a scuole, aziende e società sportive. La risposta a una domanda che sentivamo sempre più spesso — <em>"potete fare qualcosa su misura per noi?"</em> — è diventata un servizio strutturato. Oggi lavoriamo con oltre 50 realtà in tutta Italia, ognuna con una storia diversa da raccontare attraverso i capi che produce.</p>
     </div>
     <div class="storia-img-wrap reveal-scale d2">
-      <img loading="lazy" decoding="async" class="storia-img" src="assets/img_4758dcb428cc.webp" alt="La storia di Mea Culpa Lab">
-      <div class="storia-badge"><div class="bt">MCL</div><div class="bs">2024</div></div>
+      <img loading="lazy" decoding="async" class="storia-img" src="assets/storia_corporate_a.webp" alt="Studio di produzione Mea Culpa Lab">
+      <div class="storia-badge"><div class="bt">MCL</div><div class="bs">LAB</div></div>
     </div>
   </div>
 </section>
@@ -197,44 +205,18 @@
 <section id="numeri">
   <div class="num-grid">
     <div class="reveal"><div class="num-n">50+</div><div class="num-l">Clienti attivi</div><p class="num-d">Scuole, aziende, società sportive e brand in tutta Italia</p></div>
-    <div class="reveal d1"><div class="num-n">2024</div><div class="num-l">Anno di fondazione</div><p class="num-d">Nati a Brescia da un'esperienza concreta nel mondo moda</p></div>
-    <div class="reveal d2"><div class="num-n">3</div><div class="num-l">Settori principali</div><p class="num-d">Scuole, aziende e sport — ma lavoriamo anche con eventi, startup e brand</p></div>
-    <div class="reveal d3"><div class="num-n">360°</div><div class="num-l">Dal concept alla consegna</div><p class="num-d">Grafica, produzione, shooting, piattaforma ordini: tutto sotto un tetto</p></div>
+    <div class="reveal d1"><div class="num-n">360°</div><div class="num-l">Dal concept alla consegna</div><p class="num-d">Grafica, produzione, shooting e logistica: tutto sotto un tetto</p></div>
+    <div class="reveal d2"><div class="num-n">0</div><div class="num-l">Intermediari</div><p class="num-d">Parli direttamente con chi segue e realizza il tuo progetto</p></div>
+    <div class="reveal d3"><div class="num-n">100%</div><div class="num-l">Filiera italiana</div><p class="num-d">Materiali e lavorazioni selezionati, privilegiando il Made in Italy</p></div>
   </div>
 </section>
 
-<!-- VISIONE & MISSIONE -->
-<section id="visione-missione">
-  <div class="vm-wrap">
-    <div class="sec-label dk reveal">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
-      <span>Dove andiamo</span>
-    </div>
-    <h2 class="reveal">Visione &amp; <span class="ghost">missione.</span></h2>
-    <div class="vm-grid">
-      <div class="vm-card reveal">
-        <span class="vm-card-tag">Visione</span>
-        <h3>Diventare il punto di riferimento per chi vuole abbigliamento che racconta qualcosa.</h3>
-        <p>Non vogliamo essere il fornitore più grande. Vogliamo essere quello che i clienti scelgono perché <strong>si fidano del risultato</strong> — non solo del prezzo.</p>
-        <p>Un futuro in cui ogni scuola, azienda e squadra sportiva abbia un'identità visiva curata — degna di essere indossata con orgoglio.</p>
-        <img loading="lazy" decoding="async" class="vm-img" src="assets/img_db81164faf4b.webp" alt="Visione">
-      </div>
-      <div class="vm-card reveal d2">
-        <span class="vm-card-tag">Missione</span>
-        <h3>Costruire prodotti su misura che abbiano senso per chi li indossa.</h3>
-        <p>Ogni giorno lavoriamo per fare una cosa sola bene: <strong>ascoltare il cliente</strong>, capire cosa vuole comunicare e trasformarlo in un capo che funziona — esteticamente, materialmente, praticamente.</p>
-        <p>Nessun pacchetto standard. Nessun catalogo da sfogliare. Solo una proposta costruita attorno a te.</p>
-        <img loading="lazy" decoding="async" class="vm-img" src="assets/img_9f70d1c4f73b.webp" alt="Missione">
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- APPROCCIO -->
 <section id="approccio">
   <div class="app-wrap">
     <div class="sec-label lt reveal">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
+      <svg class="flask" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path class="flask-liquid" d="M9.33 11.6H14.67L17.95 16.9a1.5 1.5 0 0 1-1.33 2.2H7.38a1.5 1.5 0 0 1-1.33-2.2z" fill="currentColor"/><circle class="flask-bubble b1" cx="11.2" cy="4.7" r="1" fill="currentColor"/><circle class="flask-bubble b2" cx="12.3" cy="4" r="1.3" fill="currentColor"/><circle class="flask-bubble b3" cx="13" cy="5" r=".85" fill="currentColor"/><circle class="flask-bubble b4" cx="12" cy="5.3" r=".6" fill="currentColor"/><path d="M9.3 3h5.4M10.6 3v6.4L6.05 16.9a1.5 1.5 0 0 0 1.33 2.2h9.24a1.5 1.5 0 0 0 1.33-2.2L13.4 9.4V3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span>Come lavoriamo</span>
     </div>
     <h2 class="reveal" style="color:#fff">Il nostro <span class="ghost">approccio.</span></h2>
@@ -259,62 +241,25 @@
       </div>
     </div>
   </div>
+    <div class="app-quality app-wrap reveal">
+      <h3 class="app-q-title">Qualit&agrave; &amp; materiali</h3>
+      <p class="mat-intro">Scegliamo i materiali con attenzione: &egrave; il motivo per cui i clienti tornano. Un capo che dura, che non si deforma al primo lavaggio e che mantiene i colori racconta bene chi lo indossa. Dove possibile privilegiamo la filiera italiana e materiali certificati.</p>
+      <div class="mat-badges">
+        <div class="mat-badge">Made in Italy</div>
+        <div class="mat-badge">Fornitori certificati</div>
+        <div class="mat-badge">Materiali selezionati</div>
+        <div class="mat-badge">Filiera tracciabile</div>
+        <div class="mat-badge">Qualit&agrave; garantita</div>
+      </div>
+    </div>
 </section>
 
-<!-- MATERIALI -->
-<section id="materiali">
-  <div class="mat-wrap">
-    <div class="mat-header">
-      <div class="reveal">
-        <div class="sec-label dk">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
-          <span>I materiali</span>
-        </div>
-        <h2>La qualità si <span class="ghost">tocca.</span></h2>
-      </div>
-      <p class="mat-intro reveal d2">Scegliamo i materiali con attenzione. Non è marketing: è il motivo per cui i clienti tornano. Un capo che dura, che non si deforma al primo lavaggio, che mantiene i colori — è un capo che racconta bene chi lo indossa.</p>
-    </div>
-    <div class="mat-grid">
-      <div class="mat-card reveal">
-        <img loading="lazy" decoding="async" class="mat-img" src="assets/img_33d769215dc0.webp" alt="Fornitori selezionati">
-        <div class="mat-body">
-          <div class="mat-tag">Fornitori</div>
-          <div class="mat-title">Selezionati, non casuali.</div>
-          <p class="mat-text">Ogni fornitore con cui lavoriamo è stato scelto dopo un processo di valutazione. Qualità del prodotto, tempi di consegna, affidabilità. Non cambiamo fornitore per risparmiare qualche euro.</p>
-        </div>
-      </div>
-      <div class="mat-card reveal d2">
-        <img loading="lazy" decoding="async" class="mat-img" src="assets/img_bdbca64aaf85.webp" alt="Made in Italy">
-        <div class="mat-body">
-          <div class="mat-tag">Produzione</div>
-          <div class="mat-title">Made in Italy, quando conta.</div>
-          <p class="mat-text">Dove possibile, privilegiamo la filiera italiana: tessuti, lavorazioni, stampe. Non è un claim pubblicitario — è una scelta che si riflette nella qualità del prodotto finito.</p>
-        </div>
-      </div>
-      <div class="mat-card reveal d3">
-        <img loading="lazy" decoding="async" class="mat-img" src="assets/img_c27c163e6ead.webp" alt="Qualità certificata">
-        <div class="mat-body">
-          <div class="mat-tag">Certificazioni</div>
-          <div class="mat-title">Standard che si vedono.</div>
-          <p class="mat-text">Lavoriamo con materiali certificati. Quando un cliente ci chiede prodotti ecosostenibili, non usiamo quella parola a caso — usiamo materiali con certificazioni reali e tracciabili.</p>
-        </div>
-      </div>
-    </div>
-    <div class="mat-badges reveal">
-      <div class="mat-badge">Made in Italy</div>
-      <div class="mat-badge">Fornitori certificati</div>
-      <div class="mat-badge">Materiali selezionati</div>
-      <div class="mat-badge">Filiera tracciabile</div>
-      <div class="mat-badge">Qualità garantita</div>
-    </div>
-  </div>
-</section>
 
 <!-- TEAM -->
 <section id="team">
   <div class="team-wrap">
     <div class="sec-label lt reveal">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg>
+      <svg class="flask" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path class="flask-liquid" d="M9.33 11.6H14.67L17.95 16.9a1.5 1.5 0 0 1-1.33 2.2H7.38a1.5 1.5 0 0 1-1.33-2.2z" fill="currentColor"/><circle class="flask-bubble b1" cx="11.2" cy="4.7" r="1" fill="currentColor"/><circle class="flask-bubble b2" cx="12.3" cy="4" r="1.3" fill="currentColor"/><circle class="flask-bubble b3" cx="13" cy="5" r=".85" fill="currentColor"/><circle class="flask-bubble b4" cx="12" cy="5.3" r=".6" fill="currentColor"/><path d="M9.3 3h5.4M10.6 3v6.4L6.05 16.9a1.5 1.5 0 0 0 1.33 2.2h9.24a1.5 1.5 0 0 0 1.33-2.2L13.4 9.4V3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span>Le persone</span>
     </div>
     <h2 class="reveal" style="color:#fff">Il team che c'è <span class="ghost">dietro.</span></h2>
@@ -364,6 +309,31 @@
 </section>
 
 <!-- CTA FINALE -->
+<!-- VISIONE & MISSIONE -->
+<section id="visione-missione">
+  <div class="vm-wrap">
+    <div class="sec-label dk reveal">
+      <svg class="flask" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path class="flask-liquid" d="M9.33 11.6H14.67L17.95 16.9a1.5 1.5 0 0 1-1.33 2.2H7.38a1.5 1.5 0 0 1-1.33-2.2z" fill="currentColor"/><circle class="flask-bubble b1" cx="11.2" cy="4.7" r="1" fill="currentColor"/><circle class="flask-bubble b2" cx="12.3" cy="4" r="1.3" fill="currentColor"/><circle class="flask-bubble b3" cx="13" cy="5" r=".85" fill="currentColor"/><circle class="flask-bubble b4" cx="12" cy="5.3" r=".6" fill="currentColor"/><path d="M9.3 3h5.4M10.6 3v6.4L6.05 16.9a1.5 1.5 0 0 0 1.33 2.2h9.24a1.5 1.5 0 0 0 1.33-2.2L13.4 9.4V3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Dove andiamo</span>
+    </div>
+    <h2 class="reveal">Visione &amp; <span class="ghost">missione.</span></h2>
+    <div class="vm-grid">
+      <div class="vm-card reveal">
+        <span class="vm-card-tag">Visione</span>
+        <h3>Diventare il punto di riferimento per chi vuole abbigliamento che racconta qualcosa.</h3>
+        <p>Non vogliamo essere il fornitore più grande. Vogliamo essere quello che i clienti scelgono perché <strong>si fidano del risultato</strong> — non solo del prezzo.</p>
+        <p>Un futuro in cui ogni scuola, azienda e squadra sportiva abbia un'identità visiva curata — degna di essere indossata con orgoglio.</p>
+      </div>
+      <div class="vm-card reveal d2">
+        <span class="vm-card-tag">Missione</span>
+        <h3>Costruire prodotti su misura che abbiano senso per chi li indossa.</h3>
+        <p>Ogni giorno lavoriamo per fare una cosa sola bene: <strong>ascoltare il cliente</strong>, capire cosa vuole comunicare e trasformarlo in un capo che funziona — esteticamente, materialmente, praticamente.</p>
+        <p>Nessun pacchetto standard. Nessun catalogo da sfogliare. Solo una proposta costruita attorno a te.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="cta-final">
   <div class="cta-banner reveal">
     <p>Hai un progetto? Parliamone.</p>
