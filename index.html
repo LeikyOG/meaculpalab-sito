@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Abbigliamento Personalizzato B2B — Mea Culpa Lab</title>
-<meta name="description" content="Produciamo capi su misura per scuole, aziende e società sportive. Dalla scelta del tessuto alla consegna — filiera italiana, zero intermediari.">
+<title>Merchandising personalizzato B2B — Mea Culpa Lab</title>
+<meta name="description" content="Disegniamo e produciamo capi su misura per scuole, aziende e società sportive. Filiera italiana, zero intermediari, un solo interlocutore dall'idea alla consegna.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Mulish:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -203,7 +203,7 @@
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="index.html" class="nav-logo">MEA<em>CULPA</em>LAB</a>
+  <a href="index.html" class="nav-logo" aria-label="Mea Culpa Lab, vai alla home"><img src="assets/logo_mcl_white.webp" alt="Mea Culpa Lab" width="109" height="36"></a>
   <ul class="nav-links">
     <li><a href="index.html" class="active">Home</a></li>
     <li><a href="progetti.html">Progetti</a></li>
@@ -230,19 +230,21 @@
   <div>
     <div class="sec-label lt" style="margin-bottom:28px">
       <svg class="flask" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path class="flask-liquid" d="M9.33 11.6H14.67L17.95 16.9a1.5 1.5 0 0 1-1.33 2.2H7.38a1.5 1.5 0 0 1-1.33-2.2z" fill="currentColor"/><circle class="flask-bubble b1" cx="11.2" cy="4.7" r="1" fill="currentColor"/><circle class="flask-bubble b2" cx="12.3" cy="4" r="1.3" fill="currentColor"/><circle class="flask-bubble b3" cx="13" cy="5" r=".85" fill="currentColor"/><circle class="flask-bubble b4" cx="12" cy="5.3" r=".6" fill="currentColor"/><path d="M9.3 3h5.4M10.6 3v6.4L6.05 16.9a1.5 1.5 0 0 0 1.33 2.2h9.24a1.5 1.5 0 0 0 1.33-2.2L13.4 9.4V3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span>Abbigliamento B2B — Brescia, Italia</span>
+      <span>Merchandising B2B — Brescia, Italia</span>
     </div>
-    <h1><span class="anim-letters">Abbigliamento</span></h1>
+    <h1><span class="anim-letters">Merchandising</span></h1>
     <h1><span class="anim-letters">personalizzato</span></h1>
     <div class="hero-row">
-      <h1><span class="anim-letters">dal concept al capo</span></h1>
+      <h1><span class="anim-letters">dall'idea al prodotto</span></h1>
       <svg class="hero-star flask" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path class="flask-liquid" d="M9.33 11.6H14.67L17.95 16.9a1.5 1.5 0 0 1-1.33 2.2H7.38a1.5 1.5 0 0 1-1.33-2.2z" fill="currentColor"/><circle class="flask-bubble b1" cx="11.2" cy="4.7" r="1" fill="currentColor"/><circle class="flask-bubble b2" cx="12.3" cy="4" r="1.3" fill="currentColor"/><circle class="flask-bubble b3" cx="13" cy="5" r=".85" fill="currentColor"/><circle class="flask-bubble b4" cx="12" cy="5.3" r=".6" fill="currentColor"/><path d="M9.3 3h5.4M10.6 3v6.4L6.05 16.9a1.5 1.5 0 0 0 1.33 2.2h9.24a1.5 1.5 0 0 0 1.33-2.2L13.4 9.4V3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <a href="contatti.html" class="blob-cta">
-        <span class="blob-bg"></span>
-        <span>Richiedi<br>preventivo</span>
-      </a>
     </div>
-    <p class="hero-sub">Disegniamo e produciamo capi su misura: dal primo bozzetto alla consegna, ogni fase gestita da noi. Filiera italiana, zero intermediari.</p>
+    <p class="hero-sub">Disegniamo e produciamo capi su misura: dall'idea alla consegna, ogni fase gestita da noi. Filiera italiana, zero intermediari.</p>
+  </div>
+  <div class="hero-cta">
+    <a href="contatti.html" class="blob-cta">
+      <span class="blob-bg"></span>
+      <span>Richiedi<br>preventivo</span>
+    </a>
   </div>
 </section>
 
@@ -259,21 +261,22 @@
         <path id="manifestoPath" d="M0,200 C 240,60 480,60 720,200 C 960,340 1200,340 1440,200" fill="none"/>
       </defs>
       <text>
-        <textPath id="manifestoText" href="#manifestoPath" startOffset="-80%">Su misura — filiera italiana — zero intermediari</textPath>
+        <!-- La frase è ripetuta: il loop scorre di una ripetizione esatta,
+             così l'anello non ha stacchi. Vedi "Manifesto" negli script. -->
+        <textPath id="manifestoText" href="#manifestoPath" startOffset="0%">Dall'idea al prodotto&#160;·&#160;Dall'idea al prodotto&#160;·&#160;Dall'idea al prodotto&#160;·&#160;Dall'idea al prodotto&#160;·&#160;</textPath>
       </text>
     </svg>
-    <h2 class="manifesto-statement" id="manifestoStatement">Trasformiamo un'idea in capi che si indossano con <em>orgoglio</em> — pensati, disegnati e prodotti su misura.</h2>
+    <h2 class="manifesto-statement" id="manifestoStatement">Prima il <em>disegno</em>. Poi il tessuto, poi la macchina da cucire.</h2>
   </div>
 </section>
 
 <!-- NUMERI (fascia compatta) -->
 <section id="numeri-home">
   <div class="nh-wrap reveal">
-    <p class="nh-lead">Un solo interlocutore, <em>dall'idea alla consegna.</em></p>
+    <p class="nh-lead"><em>Dall'idea alla consegna.</em></p>
     <div class="nh-stats">
       <div class="nh-stat"><span class="num">50+</span><span class="lbl">Clienti attivi</span></div>
       <div class="nh-stat"><span class="num">360&deg;</span><span class="lbl">Servizio completo</span></div>
-      <div class="nh-stat"><span class="num">0</span><span class="lbl">Intermediari</span></div>
       <div class="nh-stat"><span class="num">100%</span><span class="lbl">Made in Italy</span></div>
     </div>
     <a href="about.html" class="btn btn-dark nh-cta">Scopri chi siamo</a>
@@ -288,7 +291,7 @@
     <p>Oltre 50 realt&agrave; tra scuole, aziende e societ&agrave; sportive in tutta Italia.</p>
   </div>
   <div class="logos-wrap">
-    <div class="logos-track"><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_60d301924ebd.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_406ef07ef9f6.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_0a4beec35a52.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_4b7dc9e7fae8.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_ce6fa0396a56.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_d1b8991e1caf.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_65f9cb0fb60b.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_4a37d2e56cfc.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_9b18748bc42e.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_2f9dc3fa1218.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_1dee76b465fd.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_3a9cdf39d50d.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_f365a0a88a41.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_3046723ac06f.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_562607011d3b.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_60d301924ebd.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_406ef07ef9f6.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_0a4beec35a52.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_4b7dc9e7fae8.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_ce6fa0396a56.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_d1b8991e1caf.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_65f9cb0fb60b.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_4a37d2e56cfc.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_9b18748bc42e.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_2f9dc3fa1218.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_1dee76b465fd.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_3a9cdf39d50d.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_f365a0a88a41.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_3046723ac06f.webp" alt="Cliente Mea Culpa Lab"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_562607011d3b.webp" alt="Cliente Mea Culpa Lab"></div></div>
+    <div class="logos-track"><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_3a9cdf39d50d.webp" alt="Jet HR"></div><div class="logo-item is-tall"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_1dee76b465fd.webp" alt="CUS Brescia"></div><div class="logo-item is-boxy"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_60d301924ebd.webp" alt="Evergreen"></div><div class="logo-item is-boxy"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_3046723ac06f.webp" alt="DFL Assicurazioni"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_4a37d2e56cfc.webp" alt="Ciocca"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_4b7dc9e7fae8.webp" alt="FAI Financial Advisory &amp; Investments"></div><div class="logo-item is-tall"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_0a4beec35a52.webp" alt="Areadocks"></div><div class="logo-item is-tall"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_562607011d3b.webp" alt="DGBS"></div><div class="logo-item is-boxy"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_65f9cb0fb60b.webp" alt="Innova Innovative Wear"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_9b18748bc42e.webp" alt="PMP Advertising"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_ce6fa0396a56.webp" alt="Project Group"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_d1b8991e1caf.webp" alt="Unisicur"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_406ef07ef9f6.webp" alt="Segnopulito"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_3a9cdf39d50d.webp" alt="Jet HR"></div><div class="logo-item is-tall"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_1dee76b465fd.webp" alt="CUS Brescia"></div><div class="logo-item is-boxy"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_60d301924ebd.webp" alt="Evergreen"></div><div class="logo-item is-boxy"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_3046723ac06f.webp" alt="DFL Assicurazioni"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_4a37d2e56cfc.webp" alt="Ciocca"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_4b7dc9e7fae8.webp" alt="FAI Financial Advisory &amp; Investments"></div><div class="logo-item is-tall"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_0a4beec35a52.webp" alt="Areadocks"></div><div class="logo-item is-tall"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_562607011d3b.webp" alt="DGBS"></div><div class="logo-item is-boxy"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_65f9cb0fb60b.webp" alt="Innova Innovative Wear"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_9b18748bc42e.webp" alt="PMP Advertising"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_ce6fa0396a56.webp" alt="Project Group"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_d1b8991e1caf.webp" alt="Unisicur"></div><div class="logo-item"><img class="logo-img" loading="lazy" decoding="async" src="assets/logo_406ef07ef9f6.webp" alt="Segnopulito"></div></div>
   </div>
 </section>
 
@@ -300,7 +303,7 @@
       <span>Cosa facciamo</span>
     </div>
     <h2 class="reveal" style="color:#fff;margin-bottom:24px">Un servizio <span class="ghost">completo.</span></h2>
-    <p class="svc-intro reveal d1">La produzione è il nostro cuore. Intorno ad essa costruiamo un percorso che abbraccia il design, i materiali e la comunicazione — tutto gestito internamente.</p>
+    <p class="svc-intro reveal d1">La produzione è il centro di tutto. Attorno le abbiamo costruito il resto: il disegno, la scelta dei materiali, le immagini per far vedere il risultato. Nessun passaggio esce dalle nostre mani.</p>
 
     <div class="svc-flex">
       <div class="svc-accordion reveal" id="svcAccordion">
@@ -311,7 +314,7 @@
           </button>
           <div class="svc-content">
             <span class="core-pill">Core business</span>
-            <p>Capi personalizzati, accessori e gadget prodotti con materiali selezionati. Dall'approvvigionamento alla consegna, gestiamo ogni passaggio con fornitori qualificati e filiera italiana.</p>
+            <p>Capi, accessori e gadget prodotti con materiali scelti uno per uno. Seguiamo ogni passaggio, dall'acquisto del tessuto alla consegna, con fornitori italiani che conosciamo di persona.</p>
             <div class="svc-tags">
               <span class="svc-tag">Capi personalizzati</span>
               <span class="svc-tag">Divise</span>
@@ -327,7 +330,7 @@
             <span class="svc-name">Design &amp; Identità</span>
           </button>
           <div class="svc-content">
-            <p>Loghi, grafiche per divise e materiali coordinati. Il design nasce dall'identità del cliente, non da template preconfezionati. Ogni progetto visivo è pensato per fare la differenza.</p>
+            <p>Loghi, grafiche per le divise, materiali coordinati. Partiamo da come sei fatto tu: colori, storia, pubblico. Se hai già un'identità la rispettiamo, se non ce l'hai la costruiamo insieme.</p>
             <div class="svc-tags">
               <span class="svc-tag">Loghi</span>
               <span class="svc-tag">Grafiche divise</span>
@@ -342,7 +345,7 @@
             <span class="svc-name">Digital &amp; Comunicazione</span>
           </button>
           <div class="svc-content">
-            <p>Sito d'ordine dedicato, shooting fotografico, video promo. Un supporto opzionale che trasforma i capi in uno strumento di comunicazione reale, capace di raccontare il tuo brand.</p>
+            <p>Piattaforma d'ordine dedicata, shooting fotografico, video. È un servizio in più, non è obbligatorio: serve a chi vuole far girare i capi anche fuori dal magazzino.</p>
             <div class="svc-tags">
               <span class="svc-tag">Piattaforma ordini</span>
               <span class="svc-tag">Shooting</span>
@@ -361,7 +364,7 @@
 <!-- CTA BAND -->
 <div class="cta-band">
   <div class="cta-banner reveal">
-    <p>Pronti quando lo sei tu. Raccontaci il tuo progetto.</p>
+    <p>Hai un'idea? Il primo passo è una mail.</p>
     <a href="contatti.html" class="blob-cta">
       <span class="blob-bg"></span>
       <span>Parliamone</span>
@@ -375,15 +378,15 @@
   <div class="proc-wrap">
     <div class="sec-label lt reveal">
       <svg class="flask" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path class="flask-liquid" d="M9.33 11.6H14.67L17.95 16.9a1.5 1.5 0 0 1-1.33 2.2H7.38a1.5 1.5 0 0 1-1.33-2.2z" fill="currentColor"/><circle class="flask-bubble b1" cx="11.2" cy="4.7" r="1" fill="currentColor"/><circle class="flask-bubble b2" cx="12.3" cy="4" r="1.3" fill="currentColor"/><circle class="flask-bubble b3" cx="13" cy="5" r=".85" fill="currentColor"/><circle class="flask-bubble b4" cx="12" cy="5.3" r=".6" fill="currentColor"/><path d="M9.3 3h5.4M10.6 3v6.4L6.05 16.9a1.5 1.5 0 0 0 1.33 2.2h9.24a1.5 1.5 0 0 0 1.33-2.2L13.4 9.4V3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span>Il processo</span>
+      <span>Come si lavora</span>
     </div>
-    <h2 class="reveal" style="color:#fff">Tu ci pensi, <span class="ghost">al resto pensiamo noi.</span></h2>
-    <p class="proc-lead reveal d1">Un unico interlocutore dall'idea alla consegna: design, materiali, produzione e logistica, tutto gestito internamente. Tu approvi, al resto pensiamo noi.</p>
+    <h2 class="reveal" style="color:#fff">Quattro passaggi, <span class="ghost">nient'altro.</span></h2>
+    <p class="proc-lead reveal d1">Tu intervieni due volte: quando ci racconti il progetto e quando approvi la proposta. Il resto del percorso lo seguiamo noi, dal disegno alla consegna.</p>
     <div class="steps" style="margin-top:52px">
-      <div class="step reveal"><div class="step-n">01</div><div class="step-t">Ci parli</div><p class="step-d">Bastano pochi minuti — una mail, una call o un messaggio. Ci racconti il progetto: cosa ti serve, quando e per chi.</p></div>
-      <div class="step reveal d1"><div class="step-n">02</div><div class="step-t">Ti proponiamo</div><p class="step-d">In pochi giorni ricevi una proposta su misura: grafiche, campionatura materiali e preventivo dettagliato.</p></div>
-      <div class="step reveal d2"><div class="step-n">03</div><div class="step-t">Produciamo</div><p class="step-d">Approvato il progetto, gestiamo tutto. I nostri fornitori selezionati lavorano con noi su ogni ordine, con aggiornamenti costanti.</p></div>
-      <div class="step reveal d3"><div class="step-n">04</div><div class="step-t">Consegniamo</div><p class="step-d">I capi arrivano direttamente a destinazione. Per le scuole, attiviamo la piattaforma d'ordine per studenti e famiglie.</p></div>
+      <div class="step reveal"><div class="step-n">01</div><div class="step-t">Il brief</div><p class="step-d">Ci dici chi siete, a cosa servono i capi, quanti e per quando. Basta una mail o una call di venti minuti.</p></div>
+      <div class="step reveal d1"><div class="step-n">02</div><div class="step-t">La proposta</div><p class="step-d">In pochi giorni ricevi le grafiche, i campioni di tessuto da toccare e un preventivo dettagliato voce per voce.</p></div>
+      <div class="step reveal d2"><div class="step-n">03</div><div class="step-t">L'approvazione</div><p class="step-d">Rivedi, chiedi le modifiche che servono, approvi. Niente entra in produzione prima del tuo via libera.</p></div>
+      <div class="step reveal d3"><div class="step-n">04</div><div class="step-t">La produzione</div><p class="step-d">Produciamo e consegniamo dove ti serve. Per le scuole apriamo la piattaforma d'ordine per studenti e famiglie.</p></div>
     </div>
   </div>
 </section>
@@ -420,20 +423,20 @@
         <span>Oltre il capo</span>
       </div>
       <h2>Il prodotto è solo <span class="ghost">l'inizio.</span></h2>
-      <p class="lead">Per chi vuole andare oltre, offriamo servizi che trasformano i capi in strumenti di comunicazione: immagini, video e piattaforme digitali costruiti attorno al tuo progetto.</p>
+      <p class="lead">Se serve, ci occupiamo anche di quello che viene dopo: le foto dei capi, i video, la piattaforma per gli ordini. Sono servizi separati, li attivi solo se ti servono davvero.</p>
     </div>
     <div class="extra-cards reveal d2">
       <div class="extra-card">
         <div class="ec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13.5" r="3.5"/><path d="M8 7l1.5-2.5h5L16 7"/></svg></div>
-        <div><div class="ec-title">Shooting fotografico</div><p class="ec-desc">Foto professionali dei capi, pronte per social, sito web o materiali interni.</p></div>
+        <div><div class="ec-title">Shooting fotografico</div><p class="ec-desc">Foto dei capi finiti, pronte per social, sito e materiali interni.</p></div>
       </div>
       <div class="extra-card">
         <div class="ec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10.5l5-3v9l-5-3"/></svg></div>
-        <div><div class="ec-title">Video &amp; Reel</div><p class="ec-desc">Contenuti video pensati per raccontare l'identità del cliente in modo diretto ed efficace.</p></div>
+        <div><div class="ec-title">Video &amp; Reel</div><p class="ec-desc">Video brevi per social e presentazioni, girati sui capi veri.</p></div>
       </div>
       <div class="extra-card">
         <div class="ec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-        <div><div class="ec-title">Sito &amp; Piattaforma</div><p class="ec-desc">Siti vetrina e piattaforme d'ordine dedicate — ideali per scuole che vogliono offrire l'acquisto diretto.</p></div>
+        <div><div class="ec-title">Sito &amp; Piattaforma</div><p class="ec-desc">Siti vetrina e piattaforme d'ordine: le scuole le usano per far comprare direttamente a studenti e famiglie.</p></div>
       </div>
     </div>
   </div>
@@ -448,7 +451,7 @@
         <span>Contatti</span>
       </div>
       <h2 style="color:#fff">Parliamo del tuo <span class="ghost">progetto.</span></h2>
-      <p class="lead">Raccontaci cosa hai in mente. Riceverai una proposta pensata su di te — nessun listino, nessun pacchetto fisso.</p>
+      <p class="lead">Scrivici cosa ti serve. Rispondiamo con una proposta costruita sul tuo progetto: non abbiamo un listino da consultare.</p>
       <div class="ct-info">
         <div class="ct-row"><span>✉</span><a href="mailto:info@meaculpalab.it">info@meaculpalab.it</a></div>
         <div class="ct-row"><span>◎</span><a href="https://instagram.com/meaculpalab" target="_blank" rel="noopener">@meaculpalab</a></div>
@@ -463,7 +466,7 @@
         <div class="fld"><label>Email *</label><input type="email" name="email" placeholder="mario@esempio.it" required></div>
         <div class="fld"><label>Settore</label><select name="settore"><option value="">Seleziona...</option><option>Scuola</option><option>Sport / Grest</option><option>Azienda</option><option>Altro</option></select></div>
       </div>
-      <div class="fld"><label>Messaggio</label><textarea name="messaggio" placeholder="Descrivi il progetto — tipologia di capo, quantità, tempistiche..."></textarea></div>
+      <div class="fld"><label>Messaggio</label><textarea name="messaggio" placeholder="Tipo di capo, quantità, tempi, occasione..."></textarea></div>
       <button type="submit" class="submit">Invia richiesta →</button>
     </form>
   </div>
@@ -471,7 +474,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="foot-logo">MEA<em>CULPA</em>LAB</div>
+  <div class="foot-logo"><img loading="lazy" src="assets/logo_mcl_white.webp" alt="Mea Culpa Lab" width="121" height="40"></div>
   <ul class="foot-links">
     <li><a href="index.html" class="active">Home</a></li>
     <li><a href="progetti.html">Progetti</a></li>
@@ -521,17 +524,50 @@ const burger=document.getElementById('navBurger'),mob=document.getElementById('n
 burger.addEventListener('click',()=>{burger.classList.toggle('open');mob.classList.toggle('open');document.body.style.overflow=mob.classList.contains('open')?'hidden':'';});
 mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('open');mob.classList.remove('open');document.body.style.overflow='';}));
 
-// ── Manifesto scroll ──
+// ── Manifesto ──
+// Il testo sul percorso curvo scorre da solo, in loop continuo e nel senso
+// di lettura (prima parola per prima). Prima era agganciato allo scroll e
+// per questo si "generava al contrario". Allo scroll resta solo la
+// comparsa dello statement centrale.
 const man=document.getElementById('manifesto');
 const manText=document.getElementById('manifestoText');
 const manStmt=document.getElementById('manifestoStatement');
 const manSvg=document.getElementById('manifestoSvg');
+const REPS=4;                       // ripetizioni della frase nel textPath
+const SPEED=3.2;                    // % del percorso al secondo
+
+(()=>{
+  if(!manText) return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){
+    manText.setAttribute('startOffset','0%'); return;
+  }
+  const path=document.getElementById('manifestoPath');
+  let period=40, off=0, last=null;   // period = una ripetizione, in % di percorso
+  function measure(){
+    try{
+      const pathLen=path.getTotalLength();
+      const textLen=manText.getComputedTextLength();
+      if(pathLen>0 && textLen>0) period=(textLen/REPS)/pathLen*100;
+    }catch(e){/* font non ancora pronto: si riprova */}
+  }
+  function frame(t){
+    if(last===null) last=t;
+    off=(off+(t-last)/1000*SPEED)%period;   // avanza e rientra senza stacchi
+    last=t;
+    manText.setAttribute('startOffset',(-off)+'%');
+    requestAnimationFrame(frame);
+  }
+  measure();
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(measure);
+  addEventListener('resize',measure);
+  requestAnimationFrame(frame);
+})();
+
 function manTick(){
   const r=man.getBoundingClientRect();
   const total=man.offsetHeight-innerHeight;
   const p=Math.min(1,Math.max(0,-r.top/total));
-  manText.setAttribute('startOffset',(-85+p*150)+'%');
-  if(p>.52){manStmt.classList.add('in');manSvg.style.opacity=.14;}
+  if(p>.5){manStmt.classList.add('in');manSvg.style.opacity=.14;}
   else{manStmt.classList.remove('in');manSvg.style.opacity=1;}
 }
 window.addEventListener('scroll',manTick,{passive:true});

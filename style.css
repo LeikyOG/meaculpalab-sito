@@ -720,3 +720,83 @@ nav.nav-hidden { transform: translateY(-110%); }
 /* Loader: uscita con zoom */
 .loader svg { transition: transform .5s ease, opacity .5s ease; }
 .loader.done svg { transform: scale(.55) rotate(90deg); opacity: 0; }
+
+/* ════════════════════════════════════════════════════════════════
+   REVISIONE COMMENTI CLIENTE — agosto 2026
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── Hero home: passo verticale uniforme fra le righe del titolo ──
+   Prima la terza riga stava dentro un flex insieme all'ampolla (fino a
+   118px) e al blob-CTA (136px): erano loro a dettare l'altezza della riga,
+   quindi l'ultima riga risultava più distante dalle precedenti.
+   Ora l'ampolla è vincolata all'altezza della riga di testo
+   (font-size × line-height .9) e il blob-CTA esce dal flusso. */
+#hero h1 { margin: 0; }
+#hero .hero-row { align-items: center; gap: clamp(12px, 1.6vw, 26px); }
+#hero .hero-row .hero-star {
+  width: clamp(41px, 6.84vw, 106px);
+  height: clamp(41px, 6.84vw, 106px);
+}
+#hero .hero-cta { position: absolute; right: var(--pad-x); bottom: 48px; z-index: 2; }
+
+/* ── Fascia loghi: card e marchi normalizzati ─────────────────── */
+/* Padding verticale ridotto: altrimenti il box interno resta piu basso
+   dei max-height sotto e i marchi quadrati non possono crescere. */
+.logo-item { width: 190px; height: 104px; padding: 13px 22px; }
+.logo-img  { max-height: 52px; }
+
+/* ── Contenitore foto in attesa di materiale reale ─────────────
+   Segnaposto per le immagini di tessuti / macchinari di produzione:
+   sostituire il blocco .photo-slot con <img> quando arrivano gli scatti. */
+.photo-slot {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 10px; text-align: center;
+  border: 1px dashed rgba(255,255,255,.28);
+  border-radius: 18px;
+  background: rgba(255,255,255,.03);
+  padding: 28px 22px;
+  min-height: 100%;
+}
+.photo-slot svg { width: 30px; height: 30px; color: rgba(255,255,255,.4); }
+.photo-slot span {
+  font-family: var(--ff-b); font-size: 11px; font-weight: 800;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(255,255,255,.62);
+}
+.photo-slot em { font-style: normal; font-size: 12px; font-weight: 400; letter-spacing: 0;
+  text-transform: none; color: rgba(255,255,255,.45); line-height: 1.5; }
+
+/* Griglia foto produzione (sezione approccio / qualità) */
+.prod-shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 34px; }
+.prod-shot { aspect-ratio: 4/3; border-radius: 18px; overflow: hidden; }
+.prod-shot img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 900px) { .prod-shots { grid-template-columns: 1fr; } }
+
+@media (max-width: 900px) {
+  #hero .hero-cta { position: static; right: auto; bottom: auto; margin-top: 34px; }
+}
+
+/* ── Manifesto: il testo sul percorso curvo ora scorre da solo ──
+   Non è più agganciato allo scroll, quindi serve meno corsa verticale.
+   Il solo effetto legato allo scroll resta la comparsa dello statement. */
+.manifesto { height: 140vh; }
+@media (max-width: 900px) { .manifesto { height: 125vh; } }
+@media (prefers-reduced-motion: reduce) { .manifesto-svg textPath { animation: none; } }
+.prod-shots .photo-slot { aspect-ratio: 4/3; min-height: 0; }
+
+/* Equilibrio ottico dei marchi: quelli quadrati o poco allungati
+   possono crescere in altezza, quelli a lettering largo restano bassi.
+   Serve a farli "pesare" uguale dentro la card. */
+.logo-item.is-tall  .logo-img { max-height: 74px; }
+.logo-item.is-boxy  .logo-img { max-height: 62px; }
+
+/* ── Logo Lab (lettering ufficiale, bianco su fondi scuri) ─────
+   Sostituisce il lockup testuale in Bebas. Il file e bianco con la
+   forma nel canale alpha, quindi funziona sia sul blu dell'hero sia
+   sul navy di nav-scrollata e footer. */
+.nav-logo img  { height: 36px; width: auto; display: block; }
+.foot-logo img { height: 40px; width: auto; display: block; }
+@media (max-width: 700px) {
+  .nav-logo img  { height: 29px; }
+  .foot-logo img { height: 34px; }
+}
