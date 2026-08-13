@@ -745,31 +745,22 @@ nav.nav-hidden { transform: translateY(-110%); }
 .logo-item { width: 190px; height: 104px; padding: 13px 22px; }
 .logo-img  { max-height: 52px; }
 
-/* ── Contenitore foto in attesa di materiale reale ─────────────
-   Segnaposto per le immagini di tessuti / macchinari di produzione:
-   sostituire il blocco .photo-slot con <img> quando arrivano gli scatti. */
-.photo-slot {
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 10px; text-align: center;
-  border: 1px dashed rgba(255,255,255,.28);
-  border-radius: 18px;
-  background: rgba(255,255,255,.03);
-  padding: 28px 22px;
-  min-height: 100%;
+/* ── Griglia foto produzione (sezione approccio / qualità) ─────── */
+.prod-shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 34px; }
+.prod-shot { margin: 0; }
+.prod-shot img {
+  /* height:auto e' necessario: gli attributi width/height sull'<img> (che
+     servono a evitare il salto di layout) valgono come dichiarazioni, e
+     senza questo l'altezza resterebbe fissa a 900px ignorando aspect-ratio. */
+  width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover;
+  border-radius: 18px; display: block;
 }
-.photo-slot svg { width: 30px; height: 30px; color: rgba(255,255,255,.4); }
-.photo-slot span {
+.prod-shot figcaption {
   font-family: var(--ff-b); font-size: 11px; font-weight: 800;
   letter-spacing: .14em; text-transform: uppercase;
   color: rgba(255,255,255,.62);
+  margin-top: 12px;
 }
-.photo-slot em { font-style: normal; font-size: 12px; font-weight: 400; letter-spacing: 0;
-  text-transform: none; color: rgba(255,255,255,.45); line-height: 1.5; }
-
-/* Griglia foto produzione (sezione approccio / qualità) */
-.prod-shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 34px; }
-.prod-shot { aspect-ratio: 4/3; border-radius: 18px; overflow: hidden; }
-.prod-shot img { width: 100%; height: 100%; object-fit: cover; }
 @media (max-width: 900px) { .prod-shots { grid-template-columns: 1fr; } }
 
 @media (max-width: 900px) {
@@ -782,7 +773,6 @@ nav.nav-hidden { transform: translateY(-110%); }
 .manifesto { height: 140vh; }
 @media (max-width: 900px) { .manifesto { height: 125vh; } }
 @media (prefers-reduced-motion: reduce) { .manifesto-svg textPath { animation: none; } }
-.prod-shots .photo-slot { aspect-ratio: 4/3; min-height: 0; }
 
 /* Equilibrio ottico dei marchi: quelli quadrati o poco allungati
    possono crescere in altezza, quelli a lettering largo restano bassi.
